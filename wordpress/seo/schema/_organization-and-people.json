@@ -1,0 +1,53 @@
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "NGO",
+   "@id": "https://bmpc.bd/#organization",
+   "name": "বাংলাদেশ মুক্তিযোদ্ধা প্রজন্ম কাউন্সিল",
+   "alternateName": [
+    "BMPC",
+    "Bangladesh Muktijoddha Projonmo Council"
+   ],
+   "url": "https://bmpc.bd/",
+   "logo": {
+    "@type": "ImageObject",
+    "url": "https://bmpc.bd/wp-content/uploads/bmpc-logo.png"
+   },
+   "description": "মুক্তিযুদ্ধের চেতনা ধারণকারী বীর মুক্তিযোদ্ধার সন্তান ও প্রজন্মের অরাজনৈতিক সংগঠন।",
+   "areaServed": {
+    "@type": "Country",
+    "name": "Bangladesh"
+   },
+   "inLanguage": "bn-BD",
+   "member": [
+    {
+     "@id": "https://bmpc.bd/#chairman"
+    },
+    {
+     "@id": "https://bmpc.bd/#secretary-general"
+    }
+   ]
+  },
+  {
+   "@type": "Person",
+   "@id": "https://bmpc.bd/#chairman",
+   "name": "রহিমুল ফারুক বাবু",
+   "jobTitle": "চেয়ারম্যান, কেন্দ্রীয় কাউন্সিল",
+   "worksFor": {
+    "@id": "https://bmpc.bd/#organization"
+   },
+   "image": "https://bmpc.bd/wp-content/uploads/chairman.jpg"
+  },
+  {
+   "@type": "Person",
+   "@id": "https://bmpc.bd/#secretary-general",
+   "name": "মোঃ আল আমিন",
+   "jobTitle": "মহাসচিব, কেন্দ্রীয় কাউন্সিল",
+   "worksFor": {
+    "@id": "https://bmpc.bd/#organization"
+   },
+   "image": "https://bmpc.bd/wp-content/uploads/secretary.jpg"
+  }
+ ]
+}

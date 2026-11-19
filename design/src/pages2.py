@@ -22,6 +22,8 @@ COMMON_CSS='''
 .cta .wrap{display:flex;flex-wrap:wrap;gap:24px;align-items:center;justify-content:space-between;padding-block:48px}
 .cta h2{font-size:clamp(28px,3.4vw,40px);font-weight:800;font-stretch:80%}
 .cta p{opacity:.85;margin-top:6px}
+.meta{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font:500 14.5px/1.3 var(--f-body);color:var(--ink-soft)}
+.chip-cat{font:700 13px/1 var(--f-body);background:var(--red);color:#fff;padding:7px 10px}
 .note-draft{display:inline-flex;gap:10px;align-items:center;font:600 14px/1.4 var(--f-body);background:var(--paper-2);border:1px dashed var(--ink-soft);padding:10px 14px;color:var(--ink-soft)}
 '''
 def cta(t="এই অঙ্গীকারে আপনিও যুক্ত হোন", p="বীর মুক্তিযোদ্ধার সন্তান ও প্রজন্মের জন্য সদস্যপদ উন্মুক্ত।"):
@@ -194,57 +196,93 @@ def bdate(iso):
 def news_items(content):
     d=f"{content}/news"; out=[]
     for f in sorted(os.listdir(d),reverse=True):
-        meta,b=fm(f"{d}/{f}"); meta["body"]=paras(b); meta["slug"]="news-post.html"; out.append(meta)
+        if not f.endswith(".md") or f == "README.md": continue
+        meta,b=fm(f"{d}/{f}"); stem=f[:-3]
+        meta.update(stem=stem, slug=f"news-{stem}.html", image_file=os.path.basename(meta.get("image","og-default.jpg")))
+        meta["alt"]=meta.get("alt") or meta["title"]
+        blocks=paras(b); meta["body"]=[p for p in blocks if not p.startswith("![")]
+        meta["gallery"]=re.findall(r"!\[(.*?)\]\((.*?)\)",b)
+        out.append(meta)
     return out
+def card(n, big=False):
+    return (f'<a class="story{" big" if big else ""}" href="{n["slug"]}"><img src="img/{n["image_file"]}" alt="{n["alt"]}" width="795" height="497" loading="{"eager" if big else "lazy"}">'
+            f'<div class="txt"><div class="meta"><span class="chip-cat">{n.get("category","সংবাদ")}</span><time datetime="{n["date"]}">{bdate(n["date"])}</time></div>'
+            f'<h2>{n["title"]}</h2>{"<p>"+n["body"][0]+"</p>" if big else ""}<span class="more">পুরো সংবাদ পড়ুন →</span></div></a>')
+def home_news(content):
+    n=news_items(content)[0]
+    return (f'<a class="nstory" href="{n["slug"]}"><img src="img/{n["image_file"]}" alt="{n["alt"]}" width="795" height="497" loading="lazy"><div>'
+            f'<span class="ndate">{bdate(n["date"])}{" · "+n["place"] if n.get("place") else ""}</span><h3>{n["title"]}</h3><p>{n.get("summary") or n["body"][0][:160]}</p></div></a>')
 NEWS_CSS=COMMON_CSS+'''
 .feat{padding-block:64px 40px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.grid-sec{padding-block:8px 88px}
+.ngrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,320px),1fr));gap:24px}
+.ngrid a.story{display:grid;grid-template-rows:auto 1fr;text-decoration:none;border:2px solid var(--ink);background:var(--field)}
+.ngrid img{display:block;width:100%;aspect-ratio:16/10;object-fit:cover}
+.ngrid .txt{padding:18px 20px 22px;display:grid;gap:10px;align-content:start;border-top:2px solid var(--ink)}
+.ngrid h2{font-size:22px;font-weight:800;font-stretch:86%;line-height:1.3}
+.ngrid a.story:hover{box-shadow:6px 6px 0 var(--green)}
 .feat a.story{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);text-decoration:none;border:2px solid var(--ink);background:var(--field);box-shadow:10px 10px 0 var(--green)}
 .feat a.story:hover h2{text-decoration:underline;text-underline-offset:6px}
-.feat img{display:block;width:100%;height:100%;object-fit:cover;min-height:260px}
-.feat .txt{padding:32px clamp(20px,3vw,40px);display:grid;gap:14px;align-content:center;border-left:2px solid var(--ink)}
-.meta{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font:500 14.5px/1.3 var(--f-body);color:var(--ink-soft)}
-.chip-cat{font:700 13px/1 var(--f-body);background:var(--red);color:#fff;padding:7px 10px}
+.feat a.story img{display:block;width:100%;height:100%;object-fit:cover;min-height:260px}
+.feat a.story .txt{padding:32px clamp(20px,3vw,40px);display:grid;gap:14px;align-content:center;border-left:2px solid var(--ink)}
 .feat h2{font-size:clamp(28px,3.2vw,40px);font-weight:800;font-stretch:82%;line-height:1.2}
 .feat p{font-size:16.5px;line-height:1.85}
 .feat .more{font:700 16px/1 var(--f-display);color:var(--green)}
-@media (max-width:860px){.feat a.story{grid-template-columns:1fr}.feat .txt{border-left:0;border-top:2px solid var(--ink)}}
+@media (max-width:860px){.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.grid-sec{padding-block:8px 88px}
+.ngrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,320px),1fr));gap:24px}
+.ngrid a.story{display:grid;grid-template-rows:auto 1fr;text-decoration:none;border:2px solid var(--ink);background:var(--field)}
+.ngrid img{display:block;width:100%;aspect-ratio:16/10;object-fit:cover}
+.ngrid .txt{padding:18px 20px 22px;display:grid;gap:10px;align-content:start;border-top:2px solid var(--ink)}
+.ngrid h2{font-size:22px;font-weight:800;font-stretch:86%;line-height:1.3}
+.ngrid a.story:hover{box-shadow:6px 6px 0 var(--green)}
+.feat a.story{grid-template-columns:1fr}.feat a.story .txt{border-left:0;border-top:2px solid var(--ink)}}
 .empty{padding-block:0 88px}
 .empty .box{border:2px dashed var(--ink-soft);padding:28px;display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between;color:var(--ink-soft)}
 .empty b{font:700 20px/1.3 var(--f-display);color:var(--ink)}
 '''
 def news_list(content):
-    it=news_items(content); n=it[0]
-    body=phero('<span>সর্বশেষ সংবাদ</span>','সর্বশেষ সংবাদ','কাউন্সিলের কর্মসূচি, মানববন্ধন, দিবস পালন ও সাংগঠনিক কার্যক্রমের খবর।')+f'''
-<section class="feat"><div class="wrap">
- <a class="story" href="{n["slug"]}"><img src="img/{os.path.basename(n["image"])}" alt="জাতীয় প্রেসক্লাবের সামনে বাংলাদেশ মুক্তিযোদ্ধা প্রজন্ম কাউন্সিলের মানববন্ধন ও প্রতিবাদ সমাবেশ" width="795" height="497">
- <div class="txt"><div class="meta"><span class="chip-cat">{n["category"]}</span><time datetime="{n["date"]}">{bdate(n["date"])}</time><span>{n["author"]}</span></div>
- <h2>{n["title"]}</h2><p>{n["body"][0]}</p><span class="more">পুরো সংবাদ পড়ুন →</span></div></a>
-</div></section>
-<section class="empty"><div class="wrap"><div class="box"><div><b>আরও সংবাদ শীঘ্রই</b><p>নতুন পোস্ট প্রকাশ হলে এখানে তালিকা আকারে দেখা যাবে।</p></div><a class="btn btn-green" href="join.html">সদস্য হোন</a></div></div></section>'''
+    it=news_items(content); first, rest = it[0], it[1:]
+    grid = ('<section class="grid-sec"><div class="wrap"><h2 class="sr">আরও সংবাদ</h2><div class="ngrid">' + "".join(card(n) for n in rest) + '</div></div></section>') if rest else \
+           '<section class="empty"><div class="wrap"><div class="box"><div><b>আরও সংবাদ শীঘ্রই</b><p>নতুন পোস্ট প্রকাশ হলে এখানে তালিকা আকারে দেখা যাবে।</p></div><a class="btn btn-green" href="join.html">সদস্য হোন</a></div></div></section>'
+    body=phero('<span>সর্বশেষ সংবাদ</span>','সর্বশেষ সংবাদ','কাউন্সিলের কর্মসূচি, মানববন্ধন, দিবস পালন ও সাংগঠনিক কার্যক্রমের খবর।')+ \
+        f'<section class="feat"><div class="wrap">{card(first, True)}</div></section>' + grid
     return NEWS_CSS, body
 POST_CSS=COMMON_CSS+'''
 .post .wrap{max-width:860px;padding-block:56px 88px;display:grid;gap:24px}
 .post figure{margin:0;border:2px solid var(--ink);box-shadow:10px 10px 0 var(--green)}
 .post figure img{display:block;width:100%;height:auto}
 .post figcaption{font-size:13.5px;color:var(--ink-soft);padding:10px 14px;background:var(--field);border-top:1px solid var(--rule)}
-.event{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border:2px solid var(--ink);background:var(--field)}
-.event div{padding:16px 18px;border-left:1px solid var(--rule)}
+.gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,240px),1fr));gap:16px}
+.gallery figure{margin:0;border:2px solid var(--ink);box-shadow:none}
+.gallery img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover}
+.event{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));border:2px solid var(--ink);background:var(--field)}
+.event div{padding:12px 16px;border-left:1px solid var(--rule)}
 .event div:first-child{border-left:0}
 .event small{display:block;font:600 12.5px/1 var(--f-body);letter-spacing:.06em;color:var(--red);margin-bottom:6px}
 .event b{font:700 18px/1.3 var(--f-display)}
-@media (max-width:620px){.event{grid-template-columns:1fr}.event div{border-left:0;border-top:1px solid var(--rule)}.event div:first-child{border-top:0}}
+
 .post .body p{font-size:18.5px;line-height:1.95}
 .back{font:700 16px/1 var(--f-display);color:var(--green)}
 '''
-def news_post(content):
-    n=news_items(content)[0]
+def news_post(n):
+    ev=""
+    if n.get("event"):
+        parts=[x.strip() for x in n["event"].split("·")]
+        labels=["কর্মসূচি","তারিখ","সময়","স্থান"]
+        ev='<div class="event" aria-label="কর্মসূচির তথ্য">'+"".join(f'<div><small>{labels[i] if i<4 else ""}</small><b>{p}</b></div>' for i,p in enumerate(parts))+'</div>'
+    gal=""
+    if n["gallery"]:
+        gal='<div class="gallery">'+"".join(f'<figure><img src="img/{os.path.basename(src)}" alt="{alt}" loading="lazy"><figcaption>{alt}</figcaption></figure>' for alt,src in n["gallery"])+'</div>'
+    note=f'<p class="note-draft">নকশার নমুনা: লাইভ সাইটের তালিকা থেকে শুধু সারাংশ নেওয়া হয়েছে; পূর্ণ সংবাদ এখানে বসবে।</p>' if n.get("note") else ""
     body=phero('<a href="news.html">সর্বশেষ সংবাদ</a><span aria-hidden="true">/</span><span>সংবাদ</span>', n["title"])+f'''
 <article class="post"><div class="wrap">
- <div class="meta"><span class="chip-cat">{n["category"]}</span><time datetime="{n["date"]}">{bdate(n["date"])}</time><span>{n["author"]}</span></div>
- <figure><img src="img/{os.path.basename(n["image"])}" alt="জাতীয় প্রেসক্লাবের সামনে বাংলাদেশ মুক্তিযোদ্ধা প্রজন্ম কাউন্সিলের মানববন্ধন ও প্রতিবাদ সমাবেশ" width="795" height="497"><figcaption>জাতীয় প্রেসক্লাব, ঢাকা</figcaption></figure>
- <div class="event" aria-label="কর্মসূচির তথ্য"><div><small>কর্মসূচি</small><b>মানববন্ধন ও প্রতিবাদ সমাবেশ</b></div><div><small>তারিখ ও সময়</small><b>৩০ অক্টোবর ২০২৬, বিকাল ৪:০০</b></div><div><small>স্থান</small><b>জাতীয় প্রেসক্লাব, ঢাকা</b></div></div>
+ <div class="meta"><span class="chip-cat">{n.get("category","সংবাদ")}</span><time datetime="{n["date"]}">{bdate(n["date"])}</time><span>{n.get("author","")}</span></div>
+ <figure><img src="img/{n["image_file"]}" alt="{n["alt"]}" width="795" height="497"><figcaption>{n.get("caption") or n.get("place","")}</figcaption></figure>
+ {ev}
  <div class="body">{"".join(f"<p>{p}</p>" for p in n["body"])}</div>
- <p class="note-draft">নকশার নমুনা: লাইভ সাইটের তালিকা থেকে শুধু সারাংশ নেওয়া হয়েছে; পূর্ণ সংবাদ এখানে বসবে।</p>
+ {gal}{note}
  <a class="back" href="news.html">← সব সংবাদ</a>
 </div></article>'''
     return POST_CSS, body

@@ -1,0 +1,87 @@
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "NGO",
+   "@id": "https://bmpc.bd/#organization",
+   "name": "বাংলাদেশ মুক্তিযোদ্ধা প্রজন্ম কাউন্সিল",
+   "alternateName": [
+    "BMPC",
+    "Bangladesh Muktijoddha Projonmo Council"
+   ],
+   "url": "https://bmpc.bd/",
+   "logo": {
+    "@type": "ImageObject",
+    "url": "https://bmpc.bd/wp-content/uploads/bmpc-logo.png"
+   },
+   "description": "মুক্তিযুদ্ধের চেতনা ধারণকারী বীর মুক্তিযোদ্ধার সন্তান ও প্রজন্মের অরাজনৈতিক সংগঠন।",
+   "areaServed": {
+    "@type": "Country",
+    "name": "Bangladesh"
+   },
+   "inLanguage": "bn-BD",
+   "member": [
+    {
+     "@id": "https://bmpc.bd/#chairman"
+    },
+    {
+     "@id": "https://bmpc.bd/#secretary-general"
+    }
+   ]
+  },
+  {
+   "@type": "WebSite",
+   "@id": "https://bmpc.bd/#website",
+   "url": "https://bmpc.bd/",
+   "name": "বাংলাদেশ মুক্তিযোদ্ধা প্রজন্ম কাউন্সিল",
+   "inLanguage": "bn-BD",
+   "publisher": {
+    "@id": "https://bmpc.bd/#organization"
+   },
+   "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://bmpc.bd/?s={search_term_string}",
+    "query-input": "required name=search_term_string"
+   }
+  },
+  {
+   "@type": "WebPage",
+   "@id": "https://bmpc.bd/join/#webpage",
+   "url": "https://bmpc.bd/join/",
+   "name": "সদস্য আবেদন ফর্ম | BMPC",
+   "description": "বীর মুক্তিযোদ্ধার সন্তান ও প্রজন্মের জন্য বাংলাদেশ মুক্তিযোদ্ধা প্রজন্ম কাউন্সিলের অনলাইন সদস্য আবেদন ফর্ম।",
+   "inLanguage": "bn-BD",
+   "isPartOf": {
+    "@id": "https://bmpc.bd/#website"
+   },
+   "about": {
+    "@id": "https://bmpc.bd/#organization"
+   },
+   "breadcrumb": {
+    "@id": "https://bmpc.bd/join/#breadcrumb"
+   },
+   "primaryImageOfPage": {
+    "@type": "ImageObject",
+    "url": "https://bmpc.bd/wp-content/uploads/og-default.jpg"
+   }
+  },
+  {
+   "@type": "BreadcrumbList",
+   "@id": "https://bmpc.bd/join/#breadcrumb",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "হোম",
+     "item": "https://bmpc.bd/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "সদস্য হোন",
+     "item": "https://bmpc.bd/join/"
+    }
+   ]
+  }
+ ]
+}

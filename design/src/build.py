@@ -2,7 +2,7 @@ import sys, re, os
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import art
 from art import bn
-import pages2
+import pages2, seo
 OUT = sys.argv[1]
 
 FONTS = ('<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>'
@@ -46,8 +46,10 @@ FOOTER = f'''<footer id="footer"><div class="wrap"><div class="cols">
 <div><h4>অংশ নিন</h4><ul><li><a href="join.html">সদস্য হোন</a></li><li><a href="chairman.html">চেয়ারম্যানের বাণী</a></li><li><a href="secretary.html">মহাসচিবের বাণী</a></li><li><a href="news.html">সর্বশেষ সংবাদ</a></li></ul></div>
 </div><div class="legal"><span>© ২০২৬ বাংলাদেশ মুক্তিযোদ্ধা প্রজন্ম কাউন্সিল</span><span>Developed by Rank On Fire LLC</span></div></div></footer>'''
 
-def page(title, css, body, full, script=""):
-    head = f'<title>{title}</title>\n<meta name="claude:viewport-fit-sides" content="cover">\n{FONTS}\n<style>{css}</style>\n'
+def page(title, css, body, full, script="", fname=None, news=None):
+    if fname and full: title = seo.PAGES[fname][1]
+    meta = ("\n" + seo.head(fname, news)) if fname else ""
+    head = f'<title>{title}</title>\n<meta name="claude:viewport-fit-sides" content="cover">{meta}\n{FONTS}\n<style>{css}</style>\n'
     content = head + body + (f"<script>{script}</script>" if script else "")
     if full:
         return ('<!doctype html><html lang="bn"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">'
@@ -94,7 +96,7 @@ HOME_CSS = '''
 .goals .wrap{position:relative}
 .goals .script{color:#FFC9C4}
 .goals ol{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:56px}
-.goals li{display:grid;grid-template-columns:60px minmax(0,1fr);gap:16px;padding:22px 0;border-top:1px solid rgba(251,243,230,.22)}
+.goals li{display:grid;grid-template-columns:clamp(38px,9vw,60px) minmax(0,1fr);gap:16px;padding:22px 0;border-top:1px solid rgba(251,243,230,.22)}
 .goals .n{font:800 46px/1 var(--f-display);font-stretch:75%}
 .goals li p{font-size:16.5px;line-height:1.8;opacity:.93}
 .goals .foot{display:flex;flex-wrap:wrap;gap:20px 40px;align-items:center;justify-content:space-between;margin-top:40px}
@@ -203,7 +205,7 @@ HOME = header("home") + f'''
 </div></section>
 <section class="hnews"><div class="wrap">
  <div class="sec-head row-head"><div><span class="script">সর্বশেষ সংবাদ</span><h2>মাঠের কর্মসূচি</h2></div><a class="btn btn-green" href="news.html">সব সংবাদ</a></div>
- <a class="nstory" href="news-post.html"><img src="img/news-press-club.jpg" alt="জাতীয় প্রেসক্লাবের সামনে কাউন্সিলের মানববন্ধন" width="795" height="497"><div><span class="ndate">৩০ অক্টোবর ২০২৬ · জাতীয় প্রেসক্লাব, ঢাকা</span><h3>বীর মুক্তিযোদ্ধাদের সম্মান ও অধিকার রক্ষায় সম্মিলিত উদ্যোগের আহ্বান</h3><p>জাতীয় প্রেস ক্লাবে নিজেদের স্বতন্ত্র ব্যানারে মানববন্ধন ও প্রতিবাদ সভার কর্মসূচি সফলভাবে সম্পন্ন হয়েছে।</p></div></a>
+ {pages2.home_news(os.path.dirname(sys.argv[2]))}
 </div></section>
 <section class="days" id="days"><div class="wrap">
  <div class="sec-head"><span class="script">কার্যক্রম</span><h2>যে দিনগুলো আমরা প্রতি বছর পালন করি</h2></div>
@@ -236,8 +238,8 @@ OBJ_CSS = '''
 @media (max-width:820px){.hero .wrap{grid-template-columns:1fr}.hero-art{order:-1}.hero-art svg{max-width:200px;margin:0}}
 @media (max-width:460px){.jump b{font-size:32px}.jump span{font-size:13px}.jump a{padding:12px}}
 .mission ol{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 56px}
-.mission li{display:grid;grid-template-columns:72px minmax(0,1fr);gap:18px;padding:26px 0;border-top:2px solid var(--ink)}
-.mission .n{font:800 58px/.9 var(--f-display);font-stretch:75%;color:var(--red)}
+.mission li{display:grid;grid-template-columns:clamp(40px,10vw,72px) minmax(0,1fr);gap:clamp(10px,3vw,18px);padding:26px 0;border-top:2px solid var(--ink)}
+.mission .n{font:800 clamp(40px,9vw,58px)/.9 var(--f-display);font-stretch:75%;color:var(--red)}
 .mission li p{font-size:17px;line-height:1.85}
 .mission .closing{margin-top:40px;background:var(--green);color:var(--on-red);padding:28px 32px;font:600 21px/1.6 var(--f-display);box-shadow:8px 8px 0 #1A1514}
 @media (max-width:820px){.mission ol{grid-template-columns:1fr}}
@@ -258,7 +260,7 @@ OBJ_CSS = '''
 .chip[aria-pressed="true"]{background:var(--green);border-color:var(--green);color:#fff}
 .chip[aria-pressed="true"] i{opacity:1}
 .long-list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 48px}
-.long-list li{display:grid;grid-template-columns:56px minmax(0,1fr);gap:14px;padding:20px 0;border-top:1px solid var(--rule)}
+.long-list li{display:grid;grid-template-columns:clamp(36px,9vw,56px) minmax(0,1fr);gap:14px;padding:20px 0;border-top:1px solid var(--rule)}
 .long-list .n{font:800 36px/1 var(--f-display);font-stretch:75%;color:var(--red)}
 .long-list p{font-size:16px;line-height:1.8}
 .long-list .tag{display:inline-block;margin-top:10px;font:600 12.5px/1 var(--f-body);letter-spacing:.03em;padding:6px 10px;background:var(--paper-2);color:var(--ink-soft)}
@@ -278,7 +280,7 @@ chips='<button class="chip" type="button" data-f="all" aria-pressed="true">স�
 OBJ = header("objectives") + f'''
 <main>
 <section class="hero"><div class="wrap">
- <div><nav class="crumbs" aria-label="অবস্থান"><a href="index.html">প্রথম পাতা</a><span aria-hidden="true">/</span><span>লক্ষ্য ও উদ্দেশ্য</span></nav>
+ <div><nav class="crumbs" aria-label="অবস্থান"><a href="index.html">হোম</a><span aria-hidden="true">/</span><span>লক্ষ্য ও উদ্দেশ্য</span></nav>
   <h1>লক্ষ্য ও উদ্দেশ্য</h1>
   <p class="lede">{closing}</p>
   <div class="jump"><a href="#mission"><b>৮</b><span>মূল লক্ষ্য</span></a><a href="#short"><b>৬</b><span>স্বল্পমেয়াদী</span></a><a href="#long"><b>২৩</b><span>দীর্ঘমেয়াদী</span></a></div></div>
@@ -403,7 +405,7 @@ def fld(id, label, typ="text", req=True, ph="", full=False, opt=None, err="এ�
     elif typ=="textarea":
         ctl=f'<textarea id="{id}" name="{id}" placeholder="{ph}"{r}></textarea>'
     else:
-        ctl=f'<input id="{id}" name="{id}" type="{typ}" placeholder="{ph}"{r}{extra}>'
+        ctl=f'<input id="{id}" name="{id}" type="{typ}" autocomplete="{ {"name_bn":"name","name_en":"name","phone":"tel","email":"email","address":"street-address","dob":"bday","job":"organization-title"}.get(id,"off") }" placeholder="{ph}"{r}{extra}>'
     return f'<div class="f{" full" if full else ""}">{lab}{ctl}<span class="err">{err}</span></div>'
 def upload(id,label,hint,req=True):
     return (f'<div class="f"><span class="lbl" id="{id}-l">{label}{"<span class=req aria-hidden=true>*</span>" if req else "<span class=opt>(ঐচ্ছিক)</span>"}</span>'
@@ -413,7 +415,7 @@ SECTORS=["অজানা"]+[f"সেক্টর {bn(i)}" for i in range(1,12)]
 JOIN = header("join") + f'''
 <main>
 <section class="hero"><div class="wrap">
- <nav class="crumbs" aria-label="অবস্থান"><a href="index.html">প্রথম পাতা</a><span aria-hidden="true">/</span><span>সদস্য হোন</span></nav>
+ <nav class="crumbs" aria-label="অবস্থান"><a href="index.html">হোম</a><span aria-hidden="true">/</span><span>সদস্য হোন</span></nav>
  <h1>সদস্য আবেদন ফর্ম</h1>
  <p class="lede">শুধুমাত্র বীর মুক্তিযোদ্ধার সন্তান ও প্রজন্ম এই কাউন্সিলের সদস্য হতে পারবেন। সকল সদস্যকে তাদের প্রকৃত পরিচয়ে আবেদন করতে হবে।</p>
  <p class="draft">নকশার নমুনা: এই ফর্মটি এখনো কোথাও তথ্য পাঠায় না।</p>
@@ -492,17 +494,21 @@ form.addEventListener('submit',e=>{e.preventDefault(); let first=null;
   form.hidden=true; done.hidden=false; done.focus(); done.scrollIntoView({behavior:'smooth',block:'start'});});
 document.getElementById('again').addEventListener('click',()=>{done.hidden=true;form.hidden=false;form.scrollIntoView({block:'start'});});
 '''
-open(f"{OUT}/home-concept.html","w").write(page("BMPC Home Concept", HOME_CSS, HOME, False))
-open(f"{OUT}/objectives.html","w").write(page("লক্ষ্য ও উদ্দেশ্য · BMPC", OBJ_CSS, OBJ, True, OBJ_JS))
-open(f"{OUT}/join.html","w").write(page("সদস্য আবেদন · BMPC", JOIN_CSS, JOIN, True, JOIN_JS))
+open(f"{OUT}/home-concept.html","w").write(page("BMPC Home Concept", HOME_CSS, HOME, False, fname="index.html"))
+open(f"{OUT}/objectives.html","w").write(page("লক্ষ্য ও উদ্দেশ্য · BMPC", OBJ_CSS, OBJ, True, OBJ_JS, fname="objectives.html"))
+open(f"{OUT}/join.html","w").write(page("সদস্য আবেদন · BMPC", JOIN_CSS, JOIN, True, JOIN_JS, fname="join.html"))
 CONTENT=os.path.dirname(sys.argv[2])
-for fname,key,title,fn in [("about","about","আমাদের সম্পর্কে · BMPC",lambda:pages2.about(CONTENT)),
-  ("manifesto","manifesto","ঘোষণাপত্র · BMPC",lambda:pages2.manifesto(CONTENT)),
-  ("constitution","constitution","গঠনতন্ত্র · BMPC",lambda:pages2.constitution(CONTENT)),
-  ("chairman","chairman","চেয়ারম্যানের বাণী · BMPC",lambda:pages2.message(CONTENT,"message-chairman.md",("message-secretary.md","secretary.html"))),
-  ("secretary","secretary","মহাসচিবের বাণী · BMPC",lambda:pages2.message(CONTENT,"message-secretary.md",("message-chairman.md","chairman.html"))),
-  ("news","news","সর্বশেষ সংবাদ · BMPC",lambda:pages2.news_list(CONTENT)),
-  ("news-post","news","সংবাদ · BMPC",lambda:pages2.news_post(CONTENT))]:
-    css,b=fn(); open(f"{OUT}/{fname}.html","w").write(page(title,css,header(key)+"<main>"+b+"</main>"+FOOTER,True))
+for fname,key,title,fn in [("about","about","",lambda:pages2.about(CONTENT)),
+  ("manifesto","manifesto","",lambda:pages2.manifesto(CONTENT)),
+  ("constitution","constitution","",lambda:pages2.constitution(CONTENT)),
+  ("chairman","chairman","",lambda:pages2.message(CONTENT,"message-chairman.md",("message-secretary.md","secretary.html"))),
+  ("secretary","secretary","",lambda:pages2.message(CONTENT,"message-secretary.md",("message-chairman.md","chairman.html"))),
+  ("news","news","",lambda:pages2.news_list(CONTENT))]:
+    css,b=fn(); open(f"{OUT}/{fname}.html","w").write(page(title,css,header(key)+"<main>"+b+"</main>"+FOOTER,True,fname=fname+".html"))
+for item in pages2.news_items(CONTENT):
+    seo.news_entry(item); css,b=pages2.news_post(item)
+    open(f"{OUT}/{item['slug']}","w").write(page("",css,header("news")+"<main>"+b+"</main>"+FOOTER,True,fname=item["slug"],news=item))
+latest=pages2.news_items(CONTENT)[0]["slug"]
+open(f"{OUT}/news-post.html","w").write(f'<!doctype html><html lang="bn"><head><meta charset="utf-8"><meta http-equiv="refresh" content="0; url={latest}"><link rel="canonical" href="{latest}"><title>সংবাদ</title></head><body><a href="{latest}">সংবাদ পড়ুন</a></body></html>')
 import shutil; shutil.copy(os.path.join(os.path.dirname(os.path.abspath(__file__)),"site.css"), f"{OUT}/site.css")
 print("built")

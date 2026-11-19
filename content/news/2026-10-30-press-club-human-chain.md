@@ -5,6 +5,9 @@ author: BMPC Editor
 category: সর্বশেষ
 image: design/img/news-press-club.jpg
 event: মানববন্ধন ও প্রতিবাদ সমাবেশ · ৩০ অক্টোবর ২০২৬ · বিকাল ৪:০০ ঘটিকা · জাতীয় প্রেসক্লাব, ঢাকা
+place: জাতীয় প্রেসক্লাব, ঢাকা
+alt: জাতীয় প্রেসক্লাবের সামনে বাংলাদেশ মুক্তিযোদ্ধা প্রজন্ম কাউন্সিলের মানববন্ধন ও প্রতিবাদ সমাবেশ
+summary: জাতীয় প্রেস ক্লাবে নিজেদের স্বতন্ত্র ব্যানারে মানববন্ধন ও প্রতিবাদ সভার কর্মসূচি সফলভাবে সম্পন্ন হয়েছে।
 note: Only the excerpt is copied from the live-site listing. Paste the full article text below.
 ---
 
