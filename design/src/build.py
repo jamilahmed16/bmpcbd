@@ -8,7 +8,7 @@ OUT = sys.argv[1]
 FONTS = ('<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>'
  '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anek+Bangla:wdth,wght@75..100,400..800&family=Galada&family=Hind+Siliguri:wght@400;500;600&display=swap">'
  '<link rel="stylesheet" href="site.css">')
-LOGO = '<img class="logo" src="img/logo.png" width="48" height="48" alt="">'
+LOGO = '<img class="logo" src="img/logo.png" width="68" height="68" alt="">'
 
 NAV=[("index.html","হোম","home",None),
      (None,"আমাদের সম্পর্কে","about",[("about.html","পরিচিতি ও নীতিমালা"),("manifesto.html","ঘোষণাপত্র"),("constitution.html","গঠনতন্ত্র"),("objectives.html","লক্ষ্য ও উদ্দেশ্য")]),
