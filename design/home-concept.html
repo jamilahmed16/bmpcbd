@@ -1,0 +1,455 @@
+<title>BMPC Home Concept</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anek+Bangla:wdth,wght@75..100,400..800&family=Galada&family=Hind+Siliguri:wght@400;500;600&display=swap">
+<style>
+/* Layout: a 1971 resistance poster (linocut, two-ink print) that opens into the council's manifesto */
+:root{
+  --paper:#ECE7DA;      /* newsprint */
+  --paper-2:#E2DBC9;
+  --ink:#18201B;        /* print black, green-biased */
+  --ink-soft:#4A544C;
+  --green:#0B5B3E;      /* flag green */
+  --green-deep:#073D2A;
+  --green-mid:#167452;
+  --red:#D3262D;        /* flag red / sun */
+  --on-dark:#F1ECDF;
+  --rule:rgba(24,32,27,.18);
+  --f-display:"Anek Bangla","Noto Sans Bengali","Hind Siliguri",sans-serif;
+  --f-script:"Galada","Anek Bangla",cursive;
+  --f-body:"Hind Siliguri","Noto Sans Bengali",system-ui,sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --paper:#0F1914;--paper-2:#15221B;--ink:#ECE6D6;--ink-soft:#AEB6AC;
+  --green:#127A54;--green-deep:#0A2E20;--green-mid:#1C8C63;--red:#E2383E;
+  --on-dark:#F1ECDF;--rule:rgba(236,230,214,.16);color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#0F1914;--paper-2:#15221B;--ink:#ECE6D6;--ink-soft:#AEB6AC;
+  --green:#127A54;--green-deep:#0A2E20;--green-mid:#1C8C63;--red:#E2383E;
+  --on-dark:#F1ECDF;--rule:rgba(236,230,214,.16);color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font:400 17px/1.75 var(--f-body);
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .05 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.wrap{max-width:1180px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--red);outline-offset:3px}
+h1,h2,h3{font-family:var(--f-display);line-height:1.15;text-wrap:balance;margin:0}
+p{margin:0}
+
+/* header */
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--green-deep)}
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:var(--green-deep);color:var(--on-dark)}
+.top .wrap{display:flex;align-items:center;gap:24px;padding-block:12px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;margin-right:auto;min-width:0}
+.brand svg{flex:none}
+.brand b{font:700 19px/1.1 var(--f-display);display:block}
+.brand small{font:500 12px/1.2 var(--f-body);opacity:.75;letter-spacing:.02em}
+.nav{display:flex;gap:22px;font:500 15px/1 var(--f-body)}
+.nav a{text-decoration:none;opacity:.85}.nav a:hover{opacity:1;text-decoration:underline;text-underline-offset:6px}
+.btn{display:inline-flex;align-items:center;gap:8px;font:700 16px/1 var(--f-display);text-decoration:none;
+  padding:13px 20px;border:2px solid currentColor;border-radius:2px;white-space:nowrap}
+.btn-red{background:var(--red);border-color:var(--red);color:#fff}
+.btn-red:hover{background:transparent;color:var(--red)}
+.top .btn-red:hover{color:#fff;border-color:#fff}
+.menu{display:none}
+@media (max-width:960px){.nav{display:none}.menu{display:block}}
+.menu summary{list-style:none;cursor:pointer;padding:10px;border:1px solid rgba(255,255,255,.35)}
+.menu summary::-webkit-details-marker{display:none}
+.menu[open] .drop{display:grid}
+.drop{position:absolute;left:0;right:0;top:100%;background:var(--green-deep);padding:8px max(16px,env(safe-area-inset-right,0px)) 18px max(16px,env(safe-area-inset-left,0px));gap:4px}
+.drop a{padding:10px 0;border-bottom:1px solid rgba(255,255,255,.12);text-decoration:none}
+@media (max-width:520px){.top .btn-red{display:none}.brand small{display:none}}
+
+/* hero */
+.hero{border-bottom:6px solid var(--ink);overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:24px;align-items:end;padding-block:56px 0}
+.eyebrow{display:inline-flex;gap:10px;align-items:center;font:600 14px/1 var(--f-body);letter-spacing:.06em;color:var(--green)}
+.eyebrow::before{content:"";width:28px;height:3px;background:var(--red)}
+.hero h1{font-size:clamp(44px,6.4vw,84px);font-weight:800;font-stretch:78%;letter-spacing:-.01em;margin:18px 0 22px;line-height:1.05}
+.hero h1 em{font-style:normal;color:var(--red)}
+.hero .lede{font-size:19px;max-width:34em;color:var(--ink-soft)}
+.cta-row{display:flex;flex-wrap:wrap;gap:12px;margin:30px 0 56px}
+.btn-ghost{color:var(--ink)}.btn-ghost:hover{background:var(--ink);color:var(--paper)}
+.hero-art{align-self:end;max-width:100%}
+.hero-art svg{display:block;width:100%;height:auto}
+@media (max-width:860px){.hero .wrap{grid-template-columns:1fr;padding-top:36px}.cta-row{margin-bottom:8px}}
+
+/* war ribbon */
+.ribbon{background:var(--ink);color:var(--paper)}
+.ribbon .wrap{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));padding-block:22px}
+.ribbon div{padding:6px 18px;border-left:1px solid rgba(127,127,127,.35)}
+.ribbon div:first-child{border-left:0;padding-left:0}
+.ribbon b{display:block;font:800 30px/1.1 var(--f-display);font-stretch:80%;color:var(--paper)}
+.ribbon b.r{color:var(--red)}
+.ribbon span{font-size:14px;opacity:.75}
+@media (max-width:760px){.ribbon .wrap{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:16px}.ribbon div:nth-child(3){border-left:0;padding-left:0}}
+
+section{padding-block:88px}
+.sec-head{display:grid;gap:12px;margin-bottom:44px;max-width:760px}
+.sec-head h2{font-size:clamp(34px,4.4vw,54px);font-weight:800;font-stretch:82%}
+.script{font-family:var(--f-script);color:var(--red);font-size:26px;line-height:1}
+
+/* about */
+.about .wrap{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:64px;align-items:center}
+.about .big{font:800 clamp(110px,16vw,210px)/.85 var(--f-display);font-stretch:75%;color:transparent;
+  -webkit-text-stroke:2px var(--green);letter-spacing:-.02em;position:relative}
+.about .big span{color:var(--red);-webkit-text-stroke:0}
+.about .tag{display:inline-block;margin-top:18px;font:600 14px/1.4 var(--f-body);color:var(--ink-soft);max-width:22em}
+.about p.body{font-size:20px;line-height:1.85;margin-bottom:22px}
+.about p.body strong{color:var(--green);font-weight:600}
+.pill-row{display:flex;flex-wrap:wrap;gap:10px}
+.pill{font:600 14px/1 var(--f-body);padding:9px 14px;border:1.5px solid var(--green);color:var(--green);border-radius:999px}
+@media (max-width:860px){.about .wrap{grid-template-columns:1fr;gap:28px}}
+
+/* objectives */
+.goals{background:var(--green);color:var(--on-dark);position:relative;overflow:hidden}
+.goals .sec-head .script{color:#FFD1D1}
+.goals ol{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:56px;counter-reset:g}
+.goals li{display:grid;grid-template-columns:64px minmax(0,1fr);gap:16px;padding:22px 0;border-top:1px solid rgba(241,236,223,.22)}
+.goals li .n{font:800 46px/1 var(--f-display);font-stretch:75%;color:var(--on-dark);opacity:.95}
+.goals li .n::after{content:"";display:block;width:22px;height:4px;background:var(--red);margin-top:10px}
+.goals li p{font-size:16.5px;line-height:1.8;color:rgba(241,236,223,.92)}
+.goals .closing{margin-top:40px;font:600 20px/1.6 var(--f-display);max-width:44em;border-left:4px solid var(--red);padding-left:18px}
+.goals .sun{position:absolute;right:-140px;top:-140px;width:420px;height:420px;border-radius:50%;background:var(--red);opacity:.9;
+  -webkit-mask:repeating-linear-gradient(180deg,#000 0 14px,transparent 14px 20px);mask:repeating-linear-gradient(180deg,#000 0 14px,transparent 14px 20px)}
+.goals .wrap{position:relative}
+@media (max-width:860px){.goals ol{grid-template-columns:1fr}.goals .sun{width:260px;height:260px;right:-120px;top:-110px}}
+
+/* plans */
+.plans .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px}
+.plan{border:2px solid var(--ink);padding:32px;display:grid;gap:14px;align-content:start;background:var(--paper)}
+.plan .count{font:800 72px/1 var(--f-display);font-stretch:75%;color:var(--red)}
+.plan h3{font-size:28px;font-weight:700}
+.plan ul{margin:0;padding-left:20px;color:var(--ink-soft)}
+.plan li{margin:6px 0}
+.plan a.more{font:700 16px/1 var(--f-display);color:var(--green);text-underline-offset:6px;margin-top:6px}
+@media (max-width:760px){.plans .grid{grid-template-columns:1fr}}
+
+/* days */
+.days{background:var(--paper-2);border-block:1px solid var(--rule)}
+.day-row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px}
+.day{display:grid;grid-template-rows:auto auto 1fr;gap:10px}
+.day svg{width:100%;height:auto;max-width:100%;display:block;background:var(--paper);border:2px solid var(--ink)}
+.day .date{font:800 30px/1.1 var(--f-display);font-stretch:80%;margin-top:8px}
+.day .date small{display:block;font:500 15px/1.4 var(--f-body);color:var(--ink-soft);margin-top:4px}
+.acts{margin-top:52px;display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.acts strong{font:700 18px/1 var(--f-display);margin-right:8px}
+.acts span{font:500 15px/1 var(--f-body);padding:10px 14px;background:var(--paper);border:1px solid var(--rule)}
+@media (max-width:760px){.day-row{grid-template-columns:1fr}}
+
+/* join */
+.join{background:var(--red);color:#fff;position:relative;overflow:hidden}
+.join .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:56px;align-items:center}
+.join h2{font-size:clamp(36px,4.6vw,58px);font-weight:800;font-stretch:80%}
+.join p.lead{font-size:19px;margin-top:16px;opacity:.95}
+.steps{list-style:none;margin:0;padding:0;display:grid;gap:14px}
+.steps li{display:grid;grid-template-columns:52px minmax(0,1fr);gap:16px;align-items:center;background:rgba(0,0,0,.14);padding:16px 18px}
+.steps b{font:800 34px/1 var(--f-display);font-stretch:75%}
+.join .btn{margin-top:28px;background:#fff;color:var(--red);border-color:#fff}
+.join .btn:hover{background:transparent;color:#fff}
+@media (max-width:860px){.join .wrap{grid-template-columns:1fr;gap:32px}}
+
+/* footer */
+footer{background:var(--green-deep);color:var(--on-dark);padding-block:56px 32px}
+footer .cols{display:grid;grid-template-columns:minmax(0,2fr) repeat(2,minmax(0,1fr));gap:40px}
+footer h4{font:700 16px/1 var(--f-display);margin:0 0 14px;opacity:.7}
+footer ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+footer a{text-decoration:none;opacity:.85}footer a:hover{opacity:1;text-decoration:underline}
+footer .about-f{font-size:15px;opacity:.8;max-width:30em;margin-top:14px}
+footer .legal{margin-top:44px;padding-top:20px;border-top:1px solid rgba(241,236,223,.15);font-size:14px;opacity:.65;display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between}
+@media (max-width:760px){footer .cols{grid-template-columns:1fr 1fr}footer .cols>div:first-child{grid-column:1/-1}}
+
+@media (prefers-reduced-motion:no-preference){
+  .sunrise{animation:rise 1.6s cubic-bezier(.2,.7,.2,1) both}
+  @keyframes rise{from{transform:translateY(40px)}to{transform:none}}
+}
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <!-- freedom fighter, rifle across body -->
+    <symbol id="fighter" viewBox="0 -20 100 210" overflow="visible">
+      <g fill="var(--ink)" stroke="var(--ink)" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="22" y1="86" x2="80" y2="-6" stroke-width="5"/>
+        <line x1="24" y1="84" x2="16" y2="98" stroke-width="10"/>
+        <circle cx="50" cy="22" r="11" stroke="none"/>
+        <path d="M38 37 L62 37 L59 92 L41 92 Z" stroke-width="3"/>
+        <path d="M40 90 L60 90 L66 128 L34 128 Z" stroke-width="2"/>
+        <line x1="42" y1="126" x2="34" y2="180" stroke-width="9"/>
+        <line x1="58" y1="126" x2="68" y2="178" stroke-width="9"/>
+        <line x1="34" y1="181" x2="25" y2="183" stroke-width="6"/>
+        <line x1="68" y1="179" x2="77" y2="181" stroke-width="6"/>
+        <polyline points="40,42 33,66 38,74" fill="none" stroke-width="8"/>
+        <polyline points="60,42 64,58 58,46" fill="none" stroke-width="8"/>
+      </g>
+      <path d="M38 18 Q50 14 62 18 L70 28" fill="none" stroke="var(--red)" stroke-width="4" stroke-linecap="round"/>
+    </symbol>
+    <!-- woman freedom fighter in sari -->
+    <symbol id="fighter-w" viewBox="0 -20 100 210" overflow="visible">
+      <g fill="var(--ink)" stroke="var(--ink)" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="20" y1="90" x2="78" y2="0" stroke-width="5"/>
+        <line x1="22" y1="88" x2="14" y2="102" stroke-width="10"/>
+        <circle cx="50" cy="22" r="11" stroke="none"/>
+        <circle cx="38" cy="18" r="6" stroke="none"/>
+        <path d="M39 37 L61 37 L58 88 L42 88 Z" stroke-width="3"/>
+        <path d="M42 86 L58 86 L70 180 L30 180 Z" stroke-width="2"/>
+        <polyline points="41,42 34,66 38,76" fill="none" stroke-width="7"/>
+        <polyline points="59,42 62,58 56,48" fill="none" stroke-width="7"/>
+      </g>
+      <path d="M61 38 L42 88" stroke="var(--red)" stroke-width="4" stroke-linecap="round"/>
+      <line x1="31" y1="176" x2="69" y2="176" stroke="var(--red)" stroke-width="4"/>
+    </symbol>
+  </defs>
+</svg>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="বাংলাদেশ মুক্তিযোদ্ধা প্রজন্ম কাউন্সিল, প্রথম পাতা">
+      <svg width="44" height="44" viewBox="0 0 44 44" aria-hidden="true"><rect width="44" height="44" fill="#0B5B3E" stroke="#F1ECDF" stroke-width="2"/><circle cx="19" cy="22" r="10" fill="#D3262D"/><path d="M6 36h32" stroke="#F1ECDF" stroke-width="2"/></svg>
+      <span><b>মুক্তিযোদ্ধা প্রজন্ম কাউন্সিল</b><small>বাংলাদেশ · BMPC</small></span>
+    </a>
+    <nav class="nav" aria-label="প্রধান মেনু">
+      <a href="#about">আমাদের সম্পর্কে</a><a href="#goals">লক্ষ্য ও উদ্দেশ্য</a><a href="#days">কার্যক্রম</a><a href="#join">নীতিমালা</a><a href="#footer">যোগাযোগ</a>
+    </nav>
+    <a class="btn btn-red" href="#join">সদস্য হোন</a>
+    <details class="menu"><summary aria-label="মেনু খুলুন">মেনু</summary>
+      <div class="drop"><a href="#about">আমাদের সম্পর্কে</a><a href="#goals">লক্ষ্য ও উদ্দেশ্য</a><a href="#days">কার্যক্রম</a><a href="#join">সদস্য হোন</a><a href="#footer">যোগাযোগ</a></div>
+    </details>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero" style="padding-block:0">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow">অরাজনৈতিক · মুক্তিযুদ্ধের চেতনায়</span>
+      <h1>রক্তে কেনা স্বাধীনতা,<br><em>প্রজন্মের</em> অঙ্গীকার</h1>
+      <p class="lede">নতুন প্রজন্মকে মুক্তিযুদ্ধের সত্যিকার ইতিহাস জানানো এবং দেশপ্রেমে উদ্বুদ্ধ করা আমাদের মূল লক্ষ্য। বীর মুক্তিযোদ্ধার সন্তান ও প্রজন্মের ঐক্যবদ্ধ প্ল্যাটফর্ম।</p>
+      <div class="cta-row">
+        <a class="btn btn-red" href="#join">সদস্য হোন</a>
+        <a class="btn btn-ghost" href="#goals">আমাদের লক্ষ্য</a>
+      </div>
+    </div>
+    <div class="hero-art">
+      <svg viewBox="0 0 600 500" role="img" aria-labelledby="hero-t">
+        <title id="hero-t">উদীয়মান লাল সূর্যের সামনে জাতীয় স্মৃতিসৌধ, পতাকা হাতে মুক্তিযোদ্ধা ও তাঁর সহযোদ্ধারা</title>
+        <defs>
+          <pattern id="paddy" width="14" height="10" patternUnits="userSpaceOnUse">
+            <path d="M3 10 L5 2 M7 10 L7 1 M11 10 L9 3" stroke="var(--green-deep)" stroke-width="1.4" fill="none"/>
+          </pattern>
+          <clipPath id="sunclip"><circle cx="360" cy="250" r="185"/></clipPath>
+        </defs>
+        <g class="sunrise">
+          <circle cx="360" cy="250" r="185" fill="var(--red)"/>
+          <g clip-path="url(#sunclip)" fill="var(--paper)">
+            <rect x="160" y="318" width="420" height="5"/><rect x="160" y="340" width="420" height="8"/>
+            <rect x="160" y="364" width="420" height="11"/><rect x="160" y="390" width="420" height="15"/>
+          </g>
+        </g>
+        <!-- birds -->
+        <g fill="none" stroke="var(--ink)" stroke-width="2.4" stroke-linecap="round">
+          <path d="M120 96 q8 -8 16 0 q8 -8 16 0"/><path d="M168 70 q6 -6 12 0 q6 -6 12 0"/><path d="M90 136 q5 -5 10 0 q5 -5 10 0"/>
+        </g>
+        <!-- National Martyrs' Memorial, stylised -->
+        <g transform="translate(448 432)">
+          <path d="M-118 0 L0 -82 L118 0Z" fill="var(--green-deep)"/>
+          <path d="M-96 0 L0 -112 L96 0Z" fill="var(--green-mid)"/>
+          <path d="M-76 0 L0 -142 L76 0Z" fill="var(--green-deep)"/>
+          <path d="M-58 0 L0 -172 L58 0Z" fill="var(--green-mid)"/>
+          <path d="M-42 0 L0 -200 L42 0Z" fill="var(--green-deep)"/>
+          <path d="M-28 0 L0 -226 L28 0Z" fill="var(--green-mid)"/>
+          <path d="M-15 0 L0 -250 L15 0Z" fill="var(--green-deep)"/>
+        </g>
+        <!-- field -->
+        <path d="M0 430 C120 418 240 440 360 428 S560 420 600 426 L600 500 L0 500Z" fill="var(--green)"/>
+        <path d="M0 446 C140 436 260 456 400 446 S560 440 600 444 L600 500 L0 500Z" fill="url(#paddy)"/>
+        <path d="M0 472 C160 462 320 480 600 468 L600 500 L0 500Z" fill="var(--green-deep)"/>
+        <!-- fighters -->
+        <use href="#fighter" x="10" y="262" width="105" height="200"/>
+        <use href="#fighter-w" x="232" y="262" width="105" height="200"/>
+        <use href="#fighter" x="298" y="300" width="84" height="160" opacity=".92"/>
+        <!-- flag bearer -->
+        <g transform="translate(112 236) scale(1.18)">
+          <line x1="74" y1="-82" x2="70" y2="64" stroke="var(--ink)" stroke-width="4" stroke-linecap="round"/>
+          <path d="M76 -82 Q111 -94 146 -82 L146 -40 Q111 -52 76 -40 Z" fill="var(--green)" stroke="var(--ink)" stroke-width="2"/>
+          <circle cx="107" cy="-62" r="13" fill="var(--red)"/>
+          <g fill="var(--ink)" stroke="var(--ink)" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="50" cy="22" r="11" stroke="none"/>
+            <path d="M38 37 L62 37 L59 92 L41 92 Z" stroke-width="3"/>
+            <path d="M40 90 L60 90 L64 128 L36 128 Z" stroke-width="2"/>
+            <line x1="44" y1="126" x2="38" y2="180" stroke-width="9"/>
+            <line x1="56" y1="126" x2="63" y2="180" stroke-width="9"/>
+            <line x1="38" y1="181" x2="29" y2="183" stroke-width="6"/>
+            <line x1="63" y1="181" x2="72" y2="183" stroke-width="6"/>
+            <line x1="60" y1="42" x2="72" y2="2" stroke-width="8"/>
+            <polyline points="40,42 30,66 40,78" fill="none" stroke-width="8"/>
+          </g>
+          <path d="M38 18 Q50 14 62 18 L70 28" fill="none" stroke="var(--red)" stroke-width="4" stroke-linecap="round"/>
+        </g>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<div class="ribbon" aria-label="মুক্তিযুদ্ধ এক নজরে">
+  <div class="wrap">
+    <div><b>২৬ মার্চ</b><span>স্বাধীনতার ঘোষণা, ১৯৭১</span></div>
+    <div><b>২৬৬ দিন</b><span>নয় মাসের রক্তক্ষয়ী যুদ্ধ</span></div>
+    <div><b>১১টি</b><span>রণাঙ্গনের সেক্টর</span></div>
+    <div><b class="r">১৬ ডিসেম্বর</b><span>মহান বিজয়, ১৯৭১</span></div>
+  </div>
+</div>
+
+<section class="about" id="about">
+  <div class="wrap">
+    <div>
+      <div class="big" aria-hidden="true">১৯<span>৭১</span></div>
+      <span class="tag">যে ইতিহাস আমাদের পিতা ও পিতামহরা লিখেছেন, তা পৌঁছে দিতে হবে পরের প্রজন্মের হাতে।</span>
+    </div>
+    <div>
+      <div class="sec-head" style="margin-bottom:24px">
+        <span class="script">আমাদের সম্পর্কে</span>
+        <h2>মুক্তিযুদ্ধের চেতনা ধারণকারী অরাজনৈতিক সংগঠন</h2>
+      </div>
+      <p class="body">আমাদের সংগঠন <strong>অরাজনৈতিক</strong> এবং মুক্তিযুদ্ধের চেতনা ধারণ করে। এখানে আমরা বাংলাদেশের মহান মুক্তিযুদ্ধের ইতিহাস, গৌরবগাঁথা এবং মুক্তিযোদ্ধাদের অবদান সম্পর্কে আলোচনা করে থাকি। নতুন প্রজন্মকে মুক্তিযুদ্ধের <strong>সত্যিকার ইতিহাস</strong> জানানো এবং দেশপ্রেমে উদ্বুদ্ধ করা আমাদের মূল লক্ষ্য।</p>
+      <div class="pill-row"><span class="pill">ঐক্য ও সংহতি</span><span class="pill">সঠিক ইতিহাস</span><span class="pill">মুক্তিযোদ্ধা পরিবারের কল্যাণ</span><span class="pill">দুর্নীতিমুক্ত সমাজ</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="goals" id="goals">
+  <div class="sun" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="script">লক্ষ্য ও উদ্দেশ্য</span>
+      <h2>আটটি অঙ্গীকার</h2>
+    </div>
+    <ol>
+      <li><span class="n">১</span><p>মুক্তিযোদ্ধা প্রজন্মের মধ্যে ঐক্য ও সংহতি স্থাপন করা। মুক্তিযুদ্ধের সঠিক ইতিহাস ও গৌরবময় মুহূর্ত সংরক্ষণ এবং তরুণ প্রজন্মের মধ্যে দেশপ্রেম, নৈতিকতা ও সমাজের প্রতি দায়িত্ববোধ গড়ে তোলা।</p></li>
+      <li><span class="n">২</span><p>বীর মুক্তিযোদ্ধাদের জন্য উপযুক্ত সম্মাননা, সহায়তা, অধিকার ও মর্যাদা রক্ষা এবং তাঁদের পরিবারের জন্য কল্যাণমূলক কার্যক্রম পরিচালনা করা।</p></li>
+      <li><span class="n">৩</span><p>মুক্তিযুদ্ধের চেতনার আলোকে সামাজিক ন্যায়বিচার প্রতিষ্ঠা, দেশের সকল নাগরিকের সমান অধিকার নিশ্চিত করা ও দেশের সকল স্তরে দুর্নীতিমুক্ত করা।</p></li>
+      <li><span class="n">৪</span><p>মুক্তিযুদ্ধের ইতিহাস ও মুক্তিযোদ্ধাদের অবদান সম্পর্কে নতুন প্রজন্মকে সচেতন করা এবং ভুল তথ্য বা মিথ্যাচার প্রতিরোধ করা।</p></li>
+      <li><span class="n">৫</span><p>বীর মুক্তিযোদ্ধাদের সম্মানিত করা এবং তাদের পরিবারের জন্য সহায়তা প্রদান করা, বিশেষ করে যারা এখনও আর্থিক বা সামাজিক সমস্যার সম্মুখীন।</p></li>
+      <li><span class="n">৬</span><p>মুক্তিযুদ্ধের আদর্শ ও মূল্যবোধ, যেমন মুক্তি, স্বাধীনতা ও সাম্যের প্রতি শ্রদ্ধা, সমাজের সব স্তরে প্রচার করা এবং তাদের বাস্তবায়নে সহায়তা করা।</p></li>
+      <li><span class="n">৭</span><p>স্বাধীনতার আদর্শ এবং গণতান্ত্রিক মূল্যবোধ বজায় রাখা এবং প্রজন্মের পর প্রজন্মে তা সঞ্চারিত করা।</p></li>
+      <li><span class="n">৮</span><p>তরুণ প্রজন্মকে মুক্তিযুদ্ধের গুরুত্ব বোঝানো এবং তাদের মধ্যে মুক্তিযুদ্ধের চেতনাকে জাগ্রত করা।</p></li>
+    </ol>
+    <p class="closing">এই লক্ষ্যগুলির মাধ্যমে কাউন্সিল মুক্তিযুদ্ধের আদর্শ ও ইতিহাসকে বর্তমান এবং ভবিষ্যৎ প্রজন্মের কাছে সঠিকভাবে পৌঁছে দিতে সক্ষম হবে।</p>
+  </div>
+</section>
+
+<section class="plans">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="script">কর্মপরিকল্পনা</span>
+      <h2>আজকের কাজ, আগামীর বাংলাদেশ</h2>
+    </div>
+    <div class="grid">
+      <article class="plan">
+        <span class="count">৬</span>
+        <h3>স্বল্পমেয়াদী উদ্দেশ্য</h3>
+        <ul>
+          <li>সকল বীর মুক্তিযোদ্ধা, সন্তান ও প্রজন্মকে ডাটাবেজে অন্তর্ভুক্ত করে প্রত্যয়ন পত্র ও আইডি কার্ড প্রদান</li>
+          <li>জীবিত বীর মুক্তিযোদ্ধাদের যুদ্ধকালীন ইতিহাস অনলাইনে প্রচার ও সংরক্ষণ</li>
+          <li>অসচ্ছল মুক্তিযোদ্ধা পরিবারের সহায়তায় ফাউন্ডেশন গঠন</li>
+        </ul>
+        <a class="more" href="#goals">সবগুলো উদ্দেশ্য পড়ুন →</a>
+      </article>
+      <article class="plan">
+        <span class="count">২৩</span>
+        <h3>দীর্ঘমেয়াদী উদ্দেশ্য</h3>
+        <ul>
+          <li>স্কুল-কলেজে বিতর্ক, কুইজ, খেলাধুলা ও সাংস্কৃতিক কর্মশালা</li>
+          <li>বধ্যভূমি, কবরস্থান ও মুক্তিযুদ্ধের স্মৃতি জড়িত স্থাপনা সংরক্ষণ</li>
+          <li>নারী ও শিশু অধিকার প্রতিষ্ঠা এবং বাল্য বিবাহ রোধে প্রকল্প</li>
+        </ul>
+        <a class="more" href="#goals">সবগুলো উদ্দেশ্য পড়ুন →</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="days" id="days">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="script">কার্যক্রম</span>
+      <h2>যে দিনগুলো আমরা প্রতি বছর পালন করি</h2>
+    </div>
+    <div class="day-row">
+      <article class="day">
+        <svg viewBox="0 0 320 180" role="img" aria-label="কেন্দ্রীয় শহীদ মিনার">
+          <circle cx="160" cy="92" r="52" fill="var(--red)"/>
+          <g fill="var(--ink)">
+            <rect x="148" y="40" width="24" height="10"/>
+            <path d="M144 48 L176 48 L170 150 L150 150Z" transform="rotate(-8 160 150)"/>
+            <rect x="112" y="70" width="14" height="80"/><rect x="194" y="70" width="14" height="80"/>
+            <rect x="88" y="92" width="12" height="58"/><rect x="220" y="92" width="12" height="58"/>
+            <rect x="60" y="150" width="200" height="8"/><rect x="40" y="158" width="240" height="8"/>
+          </g>
+        </svg>
+        <p class="date">২১ ফেব্রুয়ারি<small>শহীদ দিবস ও আন্তর্জাতিক মাতৃভাষা দিবস</small></p>
+      </article>
+      <article class="day">
+        <svg viewBox="0 0 320 180" role="img" aria-label="ধানক্ষেতের উপর উদীয়মান সূর্য">
+          <circle cx="160" cy="120" r="64" fill="var(--red)"/>
+          <g stroke="var(--red)" stroke-width="5" stroke-linecap="round">
+            <line x1="160" y1="20" x2="160" y2="38"/><line x1="86" y1="50" x2="98" y2="62"/><line x1="234" y1="50" x2="222" y2="62"/>
+            <line x1="56" y1="104" x2="74" y2="106"/><line x1="264" y1="104" x2="246" y2="106"/>
+          </g>
+          <path d="M0 132 C80 124 220 140 320 128 L320 180 L0 180Z" fill="var(--green)"/>
+          <path d="M0 154 C120 146 220 160 320 150 L320 180 L0 180Z" fill="var(--green-deep)"/>
+        </svg>
+        <p class="date">২৬ মার্চ<small>স্বাধীনতা দিবস ও সংগঠনের প্রতিষ্ঠা বার্ষিকী</small></p>
+      </article>
+      <article class="day">
+        <svg viewBox="0 0 320 180" role="img" aria-label="উড়ন্ত জাতীয় পতাকা">
+          <line x1="78" y1="22" x2="78" y2="172" stroke="var(--ink)" stroke-width="6" stroke-linecap="round"/>
+          <path d="M80 28 Q160 6 240 28 L240 112 Q160 90 80 112Z" fill="var(--green)" stroke="var(--ink)" stroke-width="2"/>
+          <circle cx="152" cy="66" r="26" fill="var(--red)"/>
+          <g fill="none" stroke="var(--ink)" stroke-width="2.4" stroke-linecap="round"><path d="M250 140 q7 -7 14 0 q7 -7 14 0"/><path d="M224 158 q5 -5 10 0 q5 -5 10 0"/></g>
+        </svg>
+        <p class="date">১৬ ডিসেম্বর<small>মহান বিজয় দিবস</small></p>
+      </article>
+    </div>
+    <div class="acts">
+      <strong>সারা বছর:</strong>
+      <span>বিতর্ক ও কুইজ</span><span>স্বেচ্ছায় রক্তদান</span><span>ত্রাণ বিতরণ</span><span>দুর্নীতি ও মাদকবিরোধী মানববন্ধন</span><span>ঈদ পুনর্মিলনী</span><span>বিনামূল্যে তথ্য সেবা</span>
+    </div>
+  </div>
+</section>
+
+<section class="join" id="join">
+  <div class="wrap">
+    <div>
+      <span class="script" style="color:#fff">সদস্যপদ</span>
+      <h2>আপনি কি বীর মুক্তিযোদ্ধার সন্তান বা প্রজন্ম?</h2>
+      <p class="lead">শুধুমাত্র বীর মুক্তিযোদ্ধার সন্তান ও প্রজন্ম এই কাউন্সিলের সদস্য হতে পারবেন। আসুন, একসাথে ইতিহাসের দায়িত্ব নিই।</p>
+      <a class="btn" href="#join">অনলাইন ফর্ম পূরণ করুন</a>
+    </div>
+    <ol class="steps">
+      <li><b>১</b><span>প্রকৃত পরিচয়ে অ্যাকাউন্ট তৈরি করুন</span></li>
+      <li><b>২</b><span>অনলাইন সদস্য ফর্ম পূরণ করুন</span></li>
+      <li><b>৩</b><span>সদস্য নীতিমালা ও পারস্পরিক শ্রদ্ধা মেনে চলুন</span></li>
+    </ol>
+  </div>
+</section>
+</main>
+
+<footer id="footer">
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <a class="brand" href="#top" style="color:inherit">
+          <svg width="44" height="44" viewBox="0 0 44 44" aria-hidden="true"><rect width="44" height="44" fill="#0B5B3E" stroke="#F1ECDF" stroke-width="2"/><circle cx="19" cy="22" r="10" fill="#D3262D"/><path d="M6 36h32" stroke="#F1ECDF" stroke-width="2"/></svg>
+          <span><b>বাংলাদেশ মুক্তিযোদ্ধা প্রজন্ম কাউন্সিল</b></span>
+        </a>
+        <p class="about-f">মুক্তিযুদ্ধের চেতনা ধারণকারী অরাজনৈতিক সংগঠন। বীর মুক্তিযোদ্ধার সন্তান ও প্রজন্মের ঐক্যবদ্ধ প্ল্যাটফর্ম।</p>
+      </div>
+      <div><h4>সংগঠন</h4><ul><li><a href="#about">আমাদের সম্পর্কে</a></li><li><a href="#goals">লক্ষ্য ও উদ্দেশ্য</a></li><li><a href="#join">সদস্য নীতিমালা</a></li></ul></div>
+      <div><h4>অংশ নিন</h4><ul><li><a href="#join">সদস্য হোন</a></li><li><a href="#days">কার্যক্রম</a></li><li><a href="#footer">যোগাযোগ</a></li></ul></div>
+    </div>
+    <div class="legal"><span>© ২০২৬ বাংলাদেশ মুক্তিযোদ্ধা প্রজন্ম কাউন্সিল</span><span>bmpc.bd</span></div>
+  </div>
+</footer>
