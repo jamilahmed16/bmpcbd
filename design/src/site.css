@@ -119,3 +119,36 @@ footer .legal{margin-top:44px;padding-top:20px;border-top:1px solid rgba(243,233
 @media (min-width:2200px){.wrap{max-width:1560px}body{font-size:19px}}
 /* tap targets on touch screens */
 @media (pointer:coarse){.footer a,footer li a{display:inline-block;padding-block:6px}.crumbs a{padding-block:6px}}
+
+/* ---------- scroll motion (see motion.js) ---------- */
+.scroll-bar{position:fixed;left:0;right:0;top:env(safe-area-inset-top,0px);height:4px;background:linear-gradient(90deg,#E8362E,#FFD35C);transform:scaleX(0);transform-origin:0 50%;z-index:40;pointer-events:none}
+.top{transition:box-shadow .3s}
+.top .wrap{transition:padding .3s}
+.brand .logo{transition:width .3s,height .3s}
+.top.is-compact{box-shadow:0 6px 24px rgba(0,0,0,.28)}
+.top.is-compact .wrap{padding-block:4px}
+.top.is-compact .brand .logo{width:52px;height:52px}
+@media (max-width:540px){.top.is-compact .brand .logo{width:44px;height:44px}}
+.rv{opacity:0;transform:translateY(34px) scale(.985);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)}
+.rv.rv-in{opacity:1;transform:none}
+.goals li.rv,.mission li.rv,.long-list li.rv{transform:translateX(-28px)}
+.goals li.rv.rv-in,.mission li.rv.rv-in,.long-list li.rv.rv-in{transform:none}
+.goals li .n,.mission .n,.pledge .n{transition:color .4s}
+.rv-in .n{animation:numPop .6s .15s both}
+@keyframes numPop{0%{transform:scale(.6)}60%{transform:scale(1.12)}100%{transform:none}}
+.pl-burst{transform-box:view-box;transform-origin:360px 330px}
+.pl-burst,.pl-sun,.pl-crowd1,.pl-crowd2,.pl-mon,.pl-birds{will-change:transform}
+.flagcloth{transform-box:fill-box;transform-origin:0 50%;animation:wave 3.6s ease-in-out infinite}
+@keyframes wave{0%,100%{transform:skewY(0) scaleX(1)}50%{transform:skewY(-3deg) scaleX(.96)}}
+.goals::before,.short::before{background:repeating-conic-gradient(from var(--rot,0deg) at 100% 0%,rgba(0,0,0,.16) 0 4deg,transparent 4deg 8deg)!important}
+.slogan::before{background:repeating-conic-gradient(from var(--rot,0deg) at 50% 120%,rgba(0,0,0,.2) 0 4deg,transparent 4deg 8deg)!important}
+.plan,.lcard,.rule,.card,.ngrid a.story,.nstory,.day svg{transition:transform .35s cubic-bezier(.2,.7,.2,1),box-shadow .35s}
+.plan:hover,.lcard:hover,.rule:hover,.card:hover,.nstory:hover{transform:translate(-4px,-4px)}
+.plan:hover,.lcard:hover{box-shadow:12px 12px 0 var(--green)}
+.day:hover svg{transform:translateY(-6px) rotate(-1deg)}
+@media (prefers-reduced-motion:no-preference){
+  .hero h1,.phero h1{animation:heroIn .9s cubic-bezier(.2,.7,.2,1) both}
+  .hero .lede,.cta-row,.jump{animation:heroIn .9s .15s cubic-bezier(.2,.7,.2,1) both}
+  @keyframes heroIn{from{transform:translateY(22px)}to{transform:none}}
+}
+@media (prefers-reduced-motion:reduce){.flagcloth{animation:none}.scroll-bar{display:none}.rv{opacity:1!important;transform:none!important}}

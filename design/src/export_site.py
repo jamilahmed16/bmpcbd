@@ -6,7 +6,7 @@ SRC = os.path.join(ROOT, "design"); OUT = os.path.abspath(sys.argv[1] if len(sys
 NOINDEX = '<meta name="robots" content="noindex, nofollow">'
 shutil.rmtree(OUT, ignore_errors=True); os.makedirs(OUT)
 shutil.copytree(os.path.join(SRC, "img"), os.path.join(OUT, "img"))
-shutil.copy(os.path.join(SRC, "site.css"), OUT)
+shutil.copy(os.path.join(SRC, "site.css"), OUT); shutil.copy(os.path.join(SRC, "motion.js"), OUT)
 for f in os.listdir(SRC):
     if not f.endswith(".html"): continue
     html = open(os.path.join(SRC, f), encoding="utf-8").read()
@@ -28,7 +28,7 @@ for fp in glob.glob(os.path.join(OUT, "*.html")):
     h = open(fp, encoding="utf-8").read()
     def bust(m):
         v = ver(m.group(2)); return m.group(1) + m.group(2) + (f"?v={v}" if v else "") + m.group(3)
-    h = re.sub(r'((?:href|src)=")((?:site\.css|img/[^"?]+))(")', bust, h)
+    h = re.sub(r'((?:href|src)=")((?:site\.css|motion\.js|img/[^"?]+))(")', bust, h)
     open(fp, "w", encoding="utf-8").write(h)
 open(os.path.join(OUT, ".nojekyll"), "w").close()
 open(os.path.join(OUT, "robots.txt"), "w").write("User-agent: *\nDisallow: /\n")  # preview only; the live site has its own

@@ -7,7 +7,7 @@ OUT = sys.argv[1]
 
 FONTS = ('<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>'
  '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anek+Bangla:wdth,wght@75..100,400..800&family=Galada&family=Hind+Siliguri:wght@400;500;600&display=swap">'
- '<link rel="stylesheet" href="site.css">')
+ '<link rel="stylesheet" href="site.css"><script src="motion.js" defer></script>')
 LOGO = '<img class="logo" src="img/logo.png" width="68" height="68" alt="">'
 
 NAV=[("index.html","হোম","home",None),
@@ -510,5 +510,5 @@ for item in pages2.news_items(CONTENT):
     open(f"{OUT}/{item['slug']}","w").write(page("",css,header("news")+"<main>"+b+"</main>"+FOOTER,True,fname=item["slug"],news=item))
 latest=pages2.news_items(CONTENT)[0]["slug"]
 open(f"{OUT}/news-post.html","w").write(f'<!doctype html><html lang="bn"><head><meta charset="utf-8"><meta http-equiv="refresh" content="0; url={latest}"><link rel="canonical" href="{latest}"><title>সংবাদ</title></head><body><a href="{latest}">সংবাদ পড়ুন</a></body></html>')
-import shutil; shutil.copy(os.path.join(os.path.dirname(os.path.abspath(__file__)),"site.css"), f"{OUT}/site.css")
+import shutil; shutil.copy(os.path.join(os.path.dirname(os.path.abspath(__file__)),"site.css"), f"{OUT}/site.css"); shutil.copy(os.path.join(os.path.dirname(os.path.abspath(__file__)),"motion.js"), f"{OUT}/motion.js")
 print("built")

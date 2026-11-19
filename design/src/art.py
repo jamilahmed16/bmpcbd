@@ -38,7 +38,7 @@ def fist(x,y,r=6.5): return f'<circle cx="{x}" cy="{y}" r="{r}" fill="var(--ink)
 
 def fig_flag(tx, ty, s):
     flag = ('<line x1="80" y1="-96" x2="74" y2="70" stroke="var(--ink)" stroke-width="5" stroke-linecap="round"/>'
-            '<path d="M81 -96 Q103 -106 125 -96 T169 -96 L169 -44 Q147 -34 125 -44 T81 -44 Z" fill="var(--green)" stroke="var(--ink)" stroke-width="2.5"/>'
+            '<path class="flagcloth" d="M81 -96 Q103 -106 125 -96 T169 -96 L169 -44 Q147 -34 125 -44 T81 -44 Z" fill="var(--green)" stroke="var(--ink)" stroke-width="2.5"/>'
             '<path d="M86 -88 Q104 -96 120 -89" fill="none" stroke="var(--carve)" stroke-width="1.6" opacity=".4"/>'
             '<circle cx="119" cy="-70" r="16" fill="var(--sun)" stroke="var(--ink)" stroke-width="1.5"/>')
     return (f'<g transform="translate({tx} {ty}) scale({s})">{flag}{body_male()}'
@@ -68,8 +68,8 @@ def fig_woman(tx, ty, s):
             + rifle(10,104,-58,0.9)
             + arms([(36,48),(30,72),(34,84)], [(64,48),(60,68),(46,60)], 9) + fist(46,60,5.5) + '</g>')
 
-def crowd(y0, n, x0, x1, color, seed, scale=1.0, arms_p=.5):
-    rnd = random.Random(seed); out=[f'<g fill="{color}" stroke="{color}" stroke-linecap="round">']
+def crowd(y0, n, x0, x1, color, seed, scale=1.0, arms_p=.5, cls=""):
+    rnd = random.Random(seed); out=[f'<g class="{cls}" fill="{color}" stroke="{color}" stroke-linecap="round">']
     step=(x1-x0)/(n-1)
     for i in range(n):
         x = x0+i*step+rnd.uniform(-6,6); y=y0+rnd.uniform(-14,10); s=scale*rnd.uniform(.9,1.1)
@@ -85,8 +85,8 @@ def crowd(y0, n, x0, x1, color, seed, scale=1.0, arms_p=.5):
             out.append(f'<line x1="{x-side*14*s:.1f}" y1="{y+40*s:.1f}" x2="{x+side*16*s:.1f}" y2="{y-60*s:.1f}" stroke-width="{3.5*s:.1f}"/>')
     out.append('</g>'); return "".join(out)
 
-def sunburst(cx, cy, n, R, color, op):
-    out=[f'<g fill="{color}" opacity="{op}">']
+def sunburst(cx, cy, n, R, color, op, cls=""):
+    out=[f'<g class="{cls}" fill="{color}" opacity="{op}">']
     for i in range(n):
         a0=2*math.pi*i/n; a1=a0+math.pi/n
         out.append(f'<path d="M{cx} {cy} L{cx+R*math.cos(a0):.1f} {cy+R*math.sin(a0):.1f} L{cx+R*math.cos(a1):.1f} {cy+R*math.sin(a1):.1f}Z"/>')
@@ -94,10 +94,10 @@ def sunburst(cx, cy, n, R, color, op):
 
 def monument(tx, ty, s, c1="var(--green-deep)", c2="var(--green-mid)"):
     tri=[(118,82),(96,112),(76,142),(58,172),(42,200),(28,226),(15,250)]
-    out=[f'<g transform="translate({tx} {ty}) scale({s})">']
+    out=[f'<g class="pl-mon"><g transform="translate({tx} {ty}) scale({s})">']
     for i,(w,h) in enumerate(tri):
         out.append(f'<path d="M{-w} 0 L0 {-h} L{w} 0Z" fill="{c1 if i%2==0 else c2}"/>')
-    out.append('</g>'); return "".join(out)
+    out.append('</g></g>'); return "".join(out)
 
 def birds(items, c="var(--ink)"):
     return f'<g fill="none" stroke="{c}" stroke-width="2.6" stroke-linecap="round">' + "".join(
@@ -108,13 +108,13 @@ def hero_svg():
     p=[f'<svg viewBox="0 0 {W} {H}" role="img" aria-labelledby="hero-t"><title id="hero-t">উদীয়মান সূর্যের সামনে জাতীয় স্মৃতিসৌধ; পতাকা হাতে মুক্তিযোদ্ধা, অস্ত্র উঁচিয়ে সহযোদ্ধা ও নারী মুক্তিযোদ্ধা, পেছনে জনতার মিছিল</title>',
        '<defs><clipPath id="hclip"><rect width="640" height="560"/></clipPath><pattern id="paddy" width="16" height="12" patternUnits="userSpaceOnUse"><path d="M3 12 L6 3 M8 12 L8 1 M13 12 L10 4" stroke="var(--green-deep)" stroke-width="1.6" fill="none"/></pattern></defs>',
        '<g clip-path="url(#hclip)">',
-       sunburst(360,330,36,700,"var(--burst)",.5),
-       '<circle class="sunrise" cx="360" cy="300" r="190" fill="var(--sun)"/>',
-       '<g fill="var(--cut)">' + "".join(f'<rect x="150" y="{y}" width="430" height="{h}"/>' for y,h in [(330,5),(352,8),(378,11),(406,15)]) + '</g>',
-       birds([(70,90,30),(118,62,22),(40,140,18),(560,120,22)], "var(--ink)"),
-       crowd(392, 15, 10, 630, "var(--crowd-1)", 7, 1.0, .55),
+       sunburst(360,330,36,700,"var(--burst)",.5,"pl-burst"),
+       '<g class="pl-sun"><circle class="sunrise" cx="360" cy="300" r="190" fill="var(--sun)"/>',
+       '<g fill="var(--cut)">' + "".join(f'<rect x="150" y="{y}" width="430" height="{h}"/>' for y,h in [(330,5),(352,8),(378,11),(406,15)]) + '</g></g>',
+       '<g class="pl-birds">'+birds([(70,90,30),(118,62,22),(40,140,18),(560,120,22)], "var(--ink)")+'</g>',
+       crowd(392, 15, 10, 630, "var(--crowd-1)", 7, 1.0, .55, "pl-crowd1"),
        monument(548,486,1.22),
-       crowd(428, 8, -10, 420, "var(--crowd-2)", 11, 1.25, .45),
+       crowd(428, 8, -10, 420, "var(--crowd-2)", 11, 1.25, .45, "pl-crowd2"),
        '<path d="M0 478 C120 466 260 488 380 474 S580 466 640 472 L640 560 L0 560Z" fill="var(--field-1)"/>',
        '<path d="M0 494 C140 484 280 504 420 494 S580 488 640 492 L640 560 L0 560Z" fill="url(#paddy)"/>',
        '<path d="M0 528 C160 516 340 536 640 522 L640 560 L0 560Z" fill="var(--green-deep)"/>',
