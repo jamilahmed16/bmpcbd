@@ -2,30 +2,49 @@ import sys, re, os
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import art
 from art import bn
+import pages2
 OUT = sys.argv[1]
 
 FONTS = ('<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>'
  '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anek+Bangla:wdth,wght@75..100,400..800&family=Galada&family=Hind+Siliguri:wght@400;500;600&display=swap">'
  '<link rel="stylesheet" href="site.css">')
-LOGO = '<svg width="46" height="46" viewBox="0 0 46 46" aria-hidden="true"><rect x="1" y="1" width="44" height="44" fill="#0B5B3E" stroke="#FBF3E6" stroke-width="2"/><circle cx="20" cy="23" r="11" fill="#E8362E"/><path d="M7 38h32" stroke="#FBF3E6" stroke-width="2"/></svg>'
+LOGO = '<img class="logo" src="img/logo.png" width="48" height="48" alt="">'
 
+NAV=[("index.html","হোম","home",None),
+     (None,"আমাদের সম্পর্কে","about",[("about.html","পরিচিতি ও নীতিমালা"),("manifesto.html","ঘোষণাপত্র"),("constitution.html","গঠনতন্ত্র"),("objectives.html","লক্ষ্য ও উদ্দেশ্য")]),
+     (None,"বাণী","msg",[("chairman.html","চেয়ারম্যানের বাণী"),("secretary.html","মহাসচিবের বাণী")]),
+     ("news.html","সর্বশেষ সংবাদ","news",None),("#footer","যোগাযোগ","contact",None)]
+GROUP={"about":"about","manifesto":"about","constitution":"about","objectives":"about","chairman":"msg","secretary":"msg","news":"news","home":"home"}
 def header(cur):
-    items=[("index.html","প্রথম পাতা","home"),("index.html#about","আমাদের সম্পর্কে","about"),("objectives.html","লক্ষ্য ও উদ্দেশ্য","objectives"),("index.html#days","কার্যক্রম","days"),("#footer","যোগাযোগ","contact")]
-    nav="".join(f'<a href="{h}"{" aria-current=\"page\"" if k==cur else ""}>{t}</a>' for h,t,k in items)
-    drop="".join(f'<a href="{h}">{t}</a>' for h,t,k in items)+'<a href="join.html">সদস্য হোন</a>'
-    return f'''<header class="top"><div class="wrap">
-<a class="brand" href="index.html" aria-label="বাংলাদেশ মুক্তিযোদ্ধা প্রজন্ম কাউন্সিল, প্রথম পাতা">{LOGO}<span><b>মুক্তিযোদ্ধা প্রজন্ম কাউন্সিল</b><small>বাংলাদেশ · BMPC</small></span></a>
+    g=GROUP.get(cur,cur); nav=""; drop=""
+    for href,t,k,sub in NAV:
+        cc=' aria-current="page"' if k==g else ''
+        if sub:
+            items="".join(f'<a href="{h}">{x}</a>' for h,x in sub)
+            nav+=f'<div class="dd"><button type="button" class="dd-btn"{cc} aria-haspopup="true">{t}<span aria-hidden="true">▾</span></button><div class="dd-menu">{items}</div></div>'
+            drop+=f'<span class="drop-h">{t}</span>'+"".join(f'<a class="sub" href="{h}">{x}</a>' for h,x in sub)
+        else:
+            nav+=f'<a href="{href}"{cc}>{t}</a>'; drop+=f'<a href="{href}">{t}</a>'
+    drop+='<a href="join.html">সদস্য হোন</a>'
+    return f"""<header class="top"><div class="wrap">
+<a class="brand" href="index.html" aria-label="বাংলাদেশ মুক্তিযোদ্ধা প্রজন্ম কাউন্সিল, হোম">{LOGO}<span><b>মুক্তিযোদ্ধা প্রজন্ম কাউন্সিল</b><small>বাংলাদেশ · BMPC</small></span></a>
 <nav class="nav" aria-label="প্রধান মেনু">{nav}</nav>
 <a class="btn btn-paper" href="join.html">সদস্য হোন</a>
 <details class="menu"><summary>মেনু</summary><nav class="drop" aria-label="মোবাইল মেনু">{drop}</nav></details>
-</div></header>'''
+</div></header>"""
+
+SOCIAL = ('<div class="social" aria-label="সামাজিক যোগাযোগ">'
+  '<a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M14 8h3V4h-3c-2.8 0-4 1.7-4 4.2V10H7v4h3v8h4v-8h3l1-4h-4V8.6c0-.4.3-.6.6-.6z"/></svg></a>'
+  '<a href="#" aria-label="X"><svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M17.7 3h3.1l-6.8 7.8L22 21h-6.3l-4.9-6.4L5.2 21H2.1l7.3-8.3L1.8 3h6.4l4.4 5.9zm-1.1 16.2h1.7L7.5 4.7H5.7z"/></svg></a>'
+  '<a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M12 7.3A4.7 4.7 0 1 0 12 16.7 4.7 4.7 0 0 0 12 7.3zm0 7.7a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm4.9-8.9a1.1 1.1 0 1 1 0 2.2 1.1 1.1 0 0 1 0-2.2zM12 2.5c-2.6 0-2.9 0-3.9.1C4.6 2.7 2.7 4.6 2.6 8.1c-.1 1-.1 1.3-.1 3.9s0 2.9.1 3.9c.1 3.5 2 5.4 5.5 5.5 1 .1 1.3.1 3.9.1s2.9 0 3.9-.1c3.5-.1 5.4-2 5.5-5.5.1-1 .1-1.3.1-3.9s0-2.9-.1-3.9c-.1-3.5-2-5.4-5.5-5.5-1-.1-1.3-.1-3.9-.1zm0 1.7c2.5 0 2.8 0 3.8.1 2.5.1 3.7 1.3 3.8 3.8.1 1 .1 1.3.1 3.8s0 2.8-.1 3.8c-.1 2.5-1.3 3.7-3.8 3.8-1 .1-1.3.1-3.8.1s-2.8 0-3.8-.1c-2.5-.1-3.7-1.3-3.8-3.8-.1-1-.1-1.3-.1-3.8s0-2.8.1-3.8C4.5 5.6 5.7 4.4 8.2 4.3c1-.1 1.3-.1 3.8-.1z"/></svg></a>'
+  '<a href="news.html" aria-label="সংবাদ (RSS)"><svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M5 17a2 2 0 1 1 0 4 2 2 0 0 1 0-4zM3 10v3a8 8 0 0 1 8 8h3A11 11 0 0 0 3 10zm0-6v3a14 14 0 0 1 14 14h3A17 17 0 0 0 3 4z"/></svg></a></div>')
 
 FOOTER = f'''<footer id="footer"><div class="wrap"><div class="cols">
 <div><a class="brand" href="index.html">{LOGO}<span><b>বাংলাদেশ মুক্তিযোদ্ধা প্রজন্ম কাউন্সিল</b></span></a>
-<p class="about-f">মুক্তিযুদ্ধের চেতনা ধারণকারী অরাজনৈতিক সংগঠন। বীর মুক্তিযোদ্ধার সন্তান ও প্রজন্মের ঐক্যবদ্ধ প্ল্যাটফর্ম।</p></div>
-<div><h4>সংগঠন</h4><ul><li><a href="index.html#about">আমাদের সম্পর্কে</a></li><li><a href="objectives.html">লক্ষ্য ও উদ্দেশ্য</a></li><li><a href="join.html#policy">সদস্য নীতিমালা</a></li></ul></div>
-<div><h4>অংশ নিন</h4><ul><li><a href="join.html">সদস্য হোন</a></li><li><a href="index.html#days">কার্যক্রম</a></li><li><a href="#footer">যোগাযোগ (শীঘ্রই)</a></li></ul></div>
-</div><div class="legal"><span>© ২০২৬ বাংলাদেশ মুক্তিযোদ্ধা প্রজন্ম কাউন্সিল</span><span>bmpc.bd</span></div></div></footer>'''
+<p class="about-f">মুক্তিযুদ্ধের চেতনা ধারণকারী অরাজনৈতিক সংগঠন। বীর মুক্তিযোদ্ধার সন্তান ও প্রজন্মের ঐক্যবদ্ধ প্ল্যাটফর্ম।</p>{SOCIAL}</div>
+<div><h4>সংগঠন</h4><ul><li><a href="about.html">আমাদের সম্পর্কে</a></li><li><a href="manifesto.html">ঘোষণাপত্র</a></li><li><a href="constitution.html">গঠনতন্ত্র</a></li><li><a href="objectives.html">লক্ষ্য ও উদ্দেশ্য</a></li></ul></div>
+<div><h4>অংশ নিন</h4><ul><li><a href="join.html">সদস্য হোন</a></li><li><a href="chairman.html">চেয়ারম্যানের বাণী</a></li><li><a href="secretary.html">মহাসচিবের বাণী</a></li><li><a href="news.html">সর্বশেষ সংবাদ</a></li></ul></div>
+</div><div class="legal"><span>© ২০২৬ বাংলাদেশ মুক্তিযোদ্ধা প্রজন্ম কাউন্সিল</span><span>Developed by Rank On Fire LLC</span></div></div></footer>'''
 
 def page(title, css, body, full, script=""):
     head = f'<title>{title}</title>\n<meta name="claude:viewport-fit-sides" content="cover">\n{FONTS}\n<style>{css}</style>\n'
@@ -81,6 +100,26 @@ HOME_CSS = '''
 .goals .foot{display:flex;flex-wrap:wrap;gap:20px 40px;align-items:center;justify-content:space-between;margin-top:40px}
 .goals .closing{font:600 20px/1.6 var(--f-display);max-width:40em;border-left:4px solid var(--on-red);padding-left:18px}
 @media (max-width:880px){.goals ol{grid-template-columns:1fr}}
+.leaders .lgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px}
+.lcard{display:grid;grid-template-columns:190px minmax(0,1fr);text-decoration:none;border:2px solid var(--ink);background:var(--field);box-shadow:8px 8px 0 var(--green)}
+.lcard img{width:100%;height:100%;object-fit:cover;object-position:top;display:block;border-right:2px solid var(--ink);min-height:240px}
+.lcard div{padding:24px;display:grid;gap:8px;align-content:start}
+.lcard q{font:600 17px/1.7 var(--f-display);quotes:"“" "”";margin-bottom:6px}
+.lcard b{font:800 22px/1.2 var(--f-display)}
+.lcard span{font-size:14.5px;color:var(--ink-soft)}
+.lcard em{font:700 15px/1 var(--f-display);font-style:normal;color:var(--green);margin-top:8px}
+.lcard:hover em{text-decoration:underline}
+@media (max-width:980px){.leaders .lgrid{grid-template-columns:1fr}}
+@media (max-width:520px){.lcard{grid-template-columns:120px minmax(0,1fr)}.lcard div{padding:16px}.lcard q{font-size:15.5px}}
+.row-head{display:flex;flex-wrap:wrap;gap:16px;align-items:end;justify-content:space-between;max-width:none}
+.hnews{padding-top:0}
+.nstory{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);text-decoration:none;border:2px solid var(--ink);background:var(--field)}
+.nstory img{width:100%;height:100%;object-fit:cover;display:block;min-height:240px}
+.nstory div{padding:30px clamp(20px,3vw,40px);display:grid;gap:12px;align-content:center;border-left:2px solid var(--ink)}
+.ndate{font:600 14px/1.3 var(--f-body);color:var(--red)}
+.nstory h3{font-size:clamp(24px,2.6vw,32px);font-weight:800;font-stretch:84%}
+.nstory:hover h3{text-decoration:underline;text-underline-offset:6px}
+@media (max-width:820px){.nstory{grid-template-columns:1fr}.nstory div{border-left:0;border-top:2px solid var(--ink)}}
 .plans .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px}
 .plan{border:2px solid var(--ink);padding:32px;display:grid;gap:14px;align-content:start;background:var(--field);box-shadow:8px 8px 0 var(--green)}
 .plan .count{font:800 76px/1 var(--f-display);font-stretch:75%;color:var(--red)}
@@ -133,12 +172,19 @@ HOME = header("home") + f'''
   <span class="tag">যে ইতিহাস আমাদের পিতা ও পিতামহরা লিখেছেন, তা পৌঁছে দিতে হবে পরের প্রজন্মের হাতে।</span></div>
  <div><div class="sec-head" style="margin-bottom:24px"><span class="script">আমাদের সম্পর্কে</span><h2>মুক্তিযুদ্ধের চেতনা ধারণকারী অরাজনৈতিক সংগঠন</h2></div>
   <p class="body">আমাদের সংগঠন <strong>অরাজনৈতিক</strong> এবং মুক্তিযুদ্ধের চেতনা ধারণ করে। এখানে আমরা বাংলাদেশের মহান মুক্তিযুদ্ধের ইতিহাস, গৌরবগাঁথা এবং মুক্তিযোদ্ধাদের অবদান সম্পর্কে আলোচনা করে থাকি। নতুন প্রজন্মকে মুক্তিযুদ্ধের <strong>সত্যিকার ইতিহাস</strong> জানানো এবং দেশপ্রেমে উদ্বুদ্ধ করা আমাদের মূল লক্ষ্য।</p>
-  <div class="pill-row"><span class="pill">ঐক্য ও সংহতি</span><span class="pill">সঠিক ইতিহাস</span><span class="pill">মুক্তিযোদ্ধা পরিবারের কল্যাণ</span><span class="pill">দুর্নীতিমুক্ত সমাজ</span></div></div>
+  <div class="pill-row"><a class="pill" href="about.html" style="text-decoration:none;background:var(--green);color:#fff;border-color:var(--green)">বিস্তারিত পরিচিতি →</a><span class="pill">ঐক্য ও সংহতি</span><span class="pill">সঠিক ইতিহাস</span><span class="pill">মুক্তিযোদ্ধা পরিবারের কল্যাণ</span><span class="pill">দুর্নীতিমুক্ত সমাজ</span></div></div>
 </div></section>
 <section class="goals" id="goals"><div class="wrap">
  <div class="sec-head"><span class="script">লক্ষ্য ও উদ্দেশ্য</span><h2>আটটি অঙ্গীকার</h2></div>
  <ol>{goal_li}</ol>
  <div class="foot"><p class="closing">{closing}</p><a class="btn btn-paper" href="objectives.html">সব উদ্দেশ্য দেখুন</a></div>
+</div></section>
+<section class="leaders"><div class="wrap">
+ <div class="sec-head"><span class="script">নেতৃত্বের বাণী</span><h2>শেকড় সন্ধানী এক আন্দোলন</h2></div>
+ <div class="lgrid">
+  <a class="lcard" href="chairman.html"><img src="img/chairman.jpg" alt="রহিমুল ফারুক বাবু" width="375" height="666"><div><q>আমাদের এই ওয়েবসাইটটি হবে আমাদের মিলনকেন্দ্র—যেখানে আমরা ইতিহাসের সঠিক চর্চা করব, আমাদের সামাজিক দায়বদ্ধতা পালন করব এবং একে অপরের পাশে দাঁড়াব।</q><b>রহিমুল ফারুক বাবু</b><span>চেয়ারম্যান, কেন্দ্রীয় কাউন্সিল</span><em>চেয়ারম্যানের বাণী পড়ুন →</em></div></a>
+  <a class="lcard" href="secretary.html"><img src="img/secretary.jpg" alt="মোঃ আল আমিন" width="480" height="458"><div><q>মহাসচিব হিসেবে আমার অঙ্গীকার হলো—সংগঠনের প্রতিটি স্তরে প্রশাসনিক স্বচ্ছতা বজায় রাখা।</q><b>মোঃ আল আমিন</b><span>মহাসচিব, কেন্দ্রীয় কাউন্সিল</span><em>মহাসচিবের বাণী পড়ুন →</em></div></a>
+ </div>
 </div></section>
 <section class="plans"><div class="wrap">
  <div class="sec-head"><span class="script">কর্মপরিকল্পনা</span><h2>আজকের কাজ, আগামীর বাংলাদেশ</h2></div>
@@ -154,6 +200,10 @@ HOME = header("home") + f'''
    <li>নারী ও শিশু অধিকার প্রতিষ্ঠা এবং বাল্য বিবাহ রোধে প্রকল্প</li></ul>
    <a href="objectives.html#long">দীর্ঘমেয়াদী উদ্দেশ্য পড়ুন →</a></article>
  </div>
+</div></section>
+<section class="hnews"><div class="wrap">
+ <div class="sec-head row-head"><div><span class="script">সর্বশেষ সংবাদ</span><h2>মাঠের কর্মসূচি</h2></div><a class="btn btn-green" href="news.html">সব সংবাদ</a></div>
+ <a class="nstory" href="news-post.html"><img src="img/news-press-club.jpg" alt="জাতীয় প্রেসক্লাবের সামনে কাউন্সিলের মানববন্ধন" width="795" height="497"><div><span class="ndate">৩০ অক্টোবর ২০২৬ · জাতীয় প্রেসক্লাব, ঢাকা</span><h3>বীর মুক্তিযোদ্ধাদের সম্মান ও অধিকার রক্ষায় সম্মিলিত উদ্যোগের আহ্বান</h3><p>জাতীয় প্রেস ক্লাবে নিজেদের স্বতন্ত্র ব্যানারে মানববন্ধন ও প্রতিবাদ সভার কর্মসূচি সফলভাবে সম্পন্ন হয়েছে।</p></div></a>
 </div></section>
 <section class="days" id="days"><div class="wrap">
  <div class="sec-head"><span class="script">কার্যক্রম</span><h2>যে দিনগুলো আমরা প্রতি বছর পালন করি</h2></div>
@@ -445,5 +495,14 @@ document.getElementById('again').addEventListener('click',()=>{done.hidden=true;
 open(f"{OUT}/home-concept.html","w").write(page("BMPC Home Concept", HOME_CSS, HOME, False))
 open(f"{OUT}/objectives.html","w").write(page("লক্ষ্য ও উদ্দেশ্য · BMPC", OBJ_CSS, OBJ, True, OBJ_JS))
 open(f"{OUT}/join.html","w").write(page("সদস্য আবেদন · BMPC", JOIN_CSS, JOIN, True, JOIN_JS))
+CONTENT=os.path.dirname(sys.argv[2])
+for fname,key,title,fn in [("about","about","আমাদের সম্পর্কে · BMPC",lambda:pages2.about(CONTENT)),
+  ("manifesto","manifesto","ঘোষণাপত্র · BMPC",lambda:pages2.manifesto(CONTENT)),
+  ("constitution","constitution","গঠনতন্ত্র · BMPC",lambda:pages2.constitution(CONTENT)),
+  ("chairman","chairman","চেয়ারম্যানের বাণী · BMPC",lambda:pages2.message(CONTENT,"message-chairman.md",("message-secretary.md","secretary.html"))),
+  ("secretary","secretary","মহাসচিবের বাণী · BMPC",lambda:pages2.message(CONTENT,"message-secretary.md",("message-chairman.md","chairman.html"))),
+  ("news","news","সর্বশেষ সংবাদ · BMPC",lambda:pages2.news_list(CONTENT)),
+  ("news-post","news","সংবাদ · BMPC",lambda:pages2.news_post(CONTENT))]:
+    css,b=fn(); open(f"{OUT}/{fname}.html","w").write(page(title,css,header(key)+"<main>"+b+"</main>"+FOOTER,True))
 import shutil; shutil.copy(os.path.join(os.path.dirname(os.path.abspath(__file__)),"site.css"), f"{OUT}/site.css")
 print("built")
