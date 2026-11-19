@@ -17,7 +17,7 @@ Facebook and WhatsApp, XML sitemap, breadcrumbs and Article schema for news post
 
 - **Titles & Meta → Global:** separator `|`, site title `BMPC`.
 - **Titles & Meta → Local SEO / Knowledge Graph:** type **Organization**. Name `বাংলাদেশ মুক্তিযোদ্ধা প্রজন্ম কাউন্সিল`,
-  alternate name `BMPC`, logo = the council logo (at least 112×112 px), plus the Facebook, X and Instagram links.
+  alternate name `BMPC`, logo = `design/img/logo-full.jpg` (628×628, the clean logo), plus the Facebook, X and Instagram links.
 - **Sitemap Settings:** on. Include Pages and Posts. Exclude Media attachments.
 - **General → Breadcrumbs:** on.
 - **Posts (news):** schema type **News Article**.
