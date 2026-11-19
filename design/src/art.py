@@ -108,14 +108,14 @@ def hero_svg():
     p=[f'<svg viewBox="0 0 {W} {H}" role="img" aria-labelledby="hero-t"><title id="hero-t">উদীয়মান সূর্যের সামনে জাতীয় স্মৃতিসৌধ; পতাকা হাতে মুক্তিযোদ্ধা, অস্ত্র উঁচিয়ে সহযোদ্ধা ও নারী মুক্তিযোদ্ধা, পেছনে জনতার মিছিল</title>',
        '<defs><clipPath id="hclip"><rect width="640" height="560"/></clipPath><pattern id="paddy" width="16" height="12" patternUnits="userSpaceOnUse"><path d="M3 12 L6 3 M8 12 L8 1 M13 12 L10 4" stroke="var(--green-deep)" stroke-width="1.6" fill="none"/></pattern></defs>',
        '<g clip-path="url(#hclip)">',
-       sunburst(360,330,36,700,"var(--red-deep)",.35),
+       sunburst(360,330,36,700,"var(--burst)",.5),
        '<circle class="sunrise" cx="360" cy="300" r="190" fill="var(--sun)"/>',
-       '<g fill="var(--red)">' + "".join(f'<rect x="150" y="{y}" width="430" height="{h}"/>' for y,h in [(330,5),(352,8),(378,11),(406,15)]) + '</g>',
+       '<g fill="var(--cut)">' + "".join(f'<rect x="150" y="{y}" width="430" height="{h}"/>' for y,h in [(330,5),(352,8),(378,11),(406,15)]) + '</g>',
        birds([(70,90,30),(118,62,22),(40,140,18),(560,120,22)], "var(--ink)"),
-       crowd(392, 15, 10, 630, "var(--red-deep)", 7, 1.0, .55),
+       crowd(392, 15, 10, 630, "var(--crowd-1)", 7, 1.0, .55),
        monument(548,486,1.22),
        crowd(428, 8, -10, 420, "var(--crowd-2)", 11, 1.25, .45),
-       '<path d="M0 478 C120 466 260 488 380 474 S580 466 640 472 L640 560 L0 560Z" fill="var(--green)"/>',
+       '<path d="M0 478 C120 466 260 488 380 474 S580 466 640 472 L640 560 L0 560Z" fill="var(--field-1)"/>',
        '<path d="M0 494 C140 484 280 504 420 494 S580 488 640 492 L640 560 L0 560Z" fill="url(#paddy)"/>',
        '<path d="M0 528 C160 516 340 536 640 522 L640 560 L0 560Z" fill="var(--green-deep)"/>',
        fig_march(0,300,1.0),
@@ -158,7 +158,7 @@ def flag_svg():
 
 def torch_svg():
     return ('<svg viewBox="0 0 360 360" role="img" aria-label="মুক্তিযুদ্ধের চেতনার মশাল">'
-            + sunburst(180,150,28,260,"var(--red-deep)",.45) +
+            + sunburst(180,150,28,260,"var(--burst)",.6) +
             '<circle cx="180" cy="150" r="96" fill="var(--sun)"/>'
             '<path d="M180 30 C214 70 236 96 222 136 C214 160 196 170 180 170 C160 170 140 158 136 134 C130 104 150 92 160 64 C166 92 176 96 184 96 C188 76 186 56 180 30Z" fill="var(--paper)" stroke="var(--ink)" stroke-width="4"/>'
             '<path d="M182 84 C198 106 204 122 196 142 C190 154 170 156 164 142 C158 128 170 116 172 100 C176 112 182 112 184 108Z" fill="var(--red)"/>'

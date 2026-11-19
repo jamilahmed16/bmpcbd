@@ -18,4 +18,5 @@
 
 ## Design direction (to confirm)
 - Bangla-first typography (e.g. Hind Siliguri / Noto Sans Bengali / Noto Serif Bengali / Tiro Bangla).
-- Palette rooted in the national flag: bottle green + red, with a warm neutral; avoid looking like a party or government site.
+- Palette rooted in the national flag: **bottle green is the primary colour** (header, hero, large bands); red is the accent (sun, numerals, highlights); warm newsprint neutral. Avoid looking like a party or government site.
+- Illustration style: 1971 linocut poster, SVG, generated in `design/src/art.py`.
