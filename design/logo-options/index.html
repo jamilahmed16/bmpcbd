@@ -1,0 +1,168 @@
+<title>BMPC Logo Options</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anek+Bangla:wdth,wght@75..100,400..800&family=Galada&family=Hind+Siliguri:wght@400;500;600&display=swap">
+<style>
+/* Layout: two stacked "proof sheets", one per logo, each showing the logo in every place the site uses it */
+:root{
+  --paper:#EFE8DA;--paper-2:#E6DCC7;--field:#F7F2E8;--ink:#1A1514;--soft:#5B524C;
+  --green:#0B5B3E;--green-deep:#073D2A;--red:#C8171E;--sun:#E8362E;--gold:#C9A24A;--gold-hi:#F1D489;
+  --rule:rgba(26,21,20,.16);
+  --f-display:"Anek Bangla","Noto Sans Bengali",sans-serif;--f-script:"Galada","Anek Bangla",cursive;--f-body:"Hind Siliguri","Noto Sans Bengali",system-ui,sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#17100E;--paper-2:#21160F;--field:#1E1512;--ink:#F1E9DB;--soft:#B9AEA2;--rule:rgba(241,233,219,.16);color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#17100E;--paper-2:#21160F;--field:#1E1512;--ink:#F1E9DB;--soft:#B9AEA2;--rule:rgba(241,233,219,.16);color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font:400 16px/1.7 var(--f-body);margin:0}
+.wrap{max-width:1200px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--f-display);line-height:1.15;margin:0;text-wrap:balance}
+.top-intro{background:var(--green-deep);color:#FBF3E6}
+.top-intro .wrap{padding-block:40px 44px;display:grid;gap:12px}
+.top-intro h1{font-size:clamp(32px,5vw,56px);font-weight:800;font-stretch:80%}
+.top-intro p{max-width:48em;opacity:.9}
+.badge-note{display:inline-flex;gap:10px;align-items:center;background:rgba(0,0,0,.25);padding:10px 14px;font-weight:600;font-size:14px;max-width:max-content}
+.badge-note::before{content:"";width:10px;height:10px;border-radius:50%;background:#FFD35C;flex:none}
+.jump{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px}
+.jump a{color:#FBF3E6;border:2px solid #FBF3E6;padding:10px 16px;text-decoration:none;font:700 16px/1 var(--f-display)}
+.jump a:hover{background:#FBF3E6;color:var(--green-deep)}
+
+.opt{padding-block:64px;border-bottom:6px solid var(--ink)}
+.opt:nth-of-type(even){background:var(--paper-2)}
+.opt-head{display:grid;grid-template-columns:auto minmax(0,1fr);gap:28px;align-items:center;margin-bottom:36px}
+.opt-head img{width:clamp(120px,16vw,190px);height:auto;display:block}
+.opt-head .letter{font:800 15px/1 var(--f-body);letter-spacing:.08em;color:var(--red)}
+.opt-head h2{font-size:clamp(30px,4vw,46px);font-weight:800;font-stretch:82%;margin:6px 0 10px}
+.opt-head p{max-width:42em;color:var(--soft)}
+@media (max-width:620px){.opt-head{grid-template-columns:1fr}}
+
+.grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:22px}
+.tile{grid-column:span 12;display:grid;gap:10px;min-width:0}
+.tile.half{grid-column:span 6}.tile.third{grid-column:span 4}
+@media (max-width:900px){.tile.half,.tile.third{grid-column:span 12}}
+.cap{font:600 13px/1.3 var(--f-body);letter-spacing:.05em;color:var(--soft)}
+
+/* mock header */
+.mhead{background:#073D2A;color:#FBF3E6;border-bottom:3px solid #1A1514;display:flex;align-items:center;gap:16px;padding:10px 18px;min-width:0;overflow:hidden}
+.mhead b{font:700 20px/1.15 var(--f-display);white-space:nowrap}
+.mhead nav{margin-left:auto;display:flex;gap:18px;font-size:14px;opacity:.85;white-space:nowrap}
+.mhead .cta{background:#FBF3E6;color:#073D2A;font:700 14px/1 var(--f-display);padding:11px 14px;white-space:nowrap}
+@media (max-width:1100px){.mhead nav{display:none}}
+.mhead.mobile{max-width:390px;padding:8px 14px}
+.mhead.mobile b{font-size:15px;white-space:normal}
+.mhead.mobile .menu{margin-left:auto;border:1.5px solid rgba(251,243,230,.5);padding:6px 10px;font-size:14px}
+
+/* logo treatments */
+.lg-coin{border-radius:50%;flex:none;box-shadow:0 0 0 2px #E7C978,0 4px 14px rgba(0,0,0,.4)}
+.lg-shield{border-radius:10px;flex:none;box-shadow:0 0 0 2px #E7C978,0 4px 14px rgba(0,0,0,.4);object-fit:cover}
+
+/* mock hero corner */
+.mhero{background:#0B5B3E;color:#FBF3E6;position:relative;overflow:hidden;display:grid;grid-template-columns:auto minmax(0,1fr);gap:28px;align-items:center;padding:32px}
+.mhero::before{content:"";position:absolute;inset:0;background:repeating-conic-gradient(from 0deg at 100% 0%,rgba(0,0,0,.16) 0 4deg,transparent 4deg 8deg)}
+.mhero>*{position:relative}
+.mhero h3{font-size:clamp(26px,3.4vw,40px);font-weight:800;font-stretch:78%}
+.mhero p{opacity:.9;margin-top:8px}
+@media (max-width:560px){.mhero{grid-template-columns:1fr}}
+
+/* mock seal on paper */
+.mseal{background:var(--field);border:2px solid var(--ink);padding:28px;position:relative;min-height:220px;box-shadow:8px 8px 0 #0B5B3E}
+.mseal .s{position:absolute;top:-30px;right:24px}
+.mseal h3{font-size:24px;font-weight:800;font-stretch:84%;max-width:12em}
+.mseal p{color:var(--soft);margin-top:10px;max-width:30em}
+
+/* mock footer */
+.mfoot{background:#1A1514;color:#F3E9D8;border-top:6px solid #C8171E;padding:22px;display:flex;gap:16px;align-items:center}
+.mfoot b{font:700 18px/1.25 var(--f-display)}
+.mfoot small{display:block;opacity:.6;font-size:13px}
+
+/* tabs / small sizes */
+.tabs{display:flex;flex-wrap:wrap;gap:16px;align-items:flex-end}
+.tab{display:flex;align-items:center;gap:8px;background:#fff;color:#202124;border:1px solid #dadce0;border-bottom:0;border-radius:10px 10px 0 0;padding:9px 14px;font:13px/1.2 system-ui,sans-serif;min-width:0}
+.sizes{display:flex;flex-wrap:wrap;gap:18px;align-items:flex-end}
+.sizes figure{margin:0;display:grid;justify-items:center;gap:6px;font-size:12px;color:var(--soft)}
+
+/* verdict */
+.verdict{border:2px solid var(--ink);background:var(--field);padding:22px 24px;display:grid;gap:8px}
+.verdict h3{font-size:22px}
+.verdict ul{margin:0;padding-left:20px}
+.warn{border-left:6px solid var(--red);background:var(--field);padding:16px 20px;font-weight:500}
+.warn b{color:var(--red)}
+
+.compare{padding-block:64px}
+.tw{overflow-x:auto;border:2px solid var(--ink)}
+table{border-collapse:collapse;width:100%;min-width:640px;background:var(--field)}
+th,td{text-align:left;padding:12px 16px;border-bottom:1px solid var(--rule);vertical-align:top}
+th{font-family:var(--f-display);font-size:17px}
+td:first-child{font-weight:600}
+.good{color:#167452;font-weight:700}.mid{color:#B7791F;font-weight:700}.bad{color:var(--red);font-weight:700}
+:focus-visible{outline:3px solid var(--sun);outline-offset:3px}
+</style>
+
+<header class="top-intro"><div class="wrap">
+  <span class="badge-note">শুধু দেখার জন্য: সাইটে এখনো কোনো লোগো বদলানো হয়নি</span>
+  <h1>দুটি নতুন লোগো, সাইটে কেমন দেখাবে</h1>
+  <p>প্রতিটি লোগো সাইটের যেখানে যেখানে বসে, সেখানে বসিয়ে দেখানো হলো: হেডার (কম্পিউটার ও মোবাইল), হোম ব্যানারের কোণে, ঘোষণাপত্রের সিল, ফুটার, এবং ব্রাউজার ট্যাবের ছোট আইকন। পছন্দ জানালে তারপর সাইটে লাগানো হবে।</p>
+  <div class="jump"><a href="#coin">বিকল্প ১: স্বর্ণমুদ্রা</a><a href="#shield">বিকল্প ২: ঢাল ও পুষ্পমাল্য</a><a href="#compare">তুলনা</a></div>
+</div></header>
+
+<main>
+<section class="opt" id="coin"><div class="wrap">
+  <div class="opt-head"><img src="img/coin.png" alt="স্বর্ণমুদ্রা নকশার BMPC লোগো" width="600" height="600">
+    <div><span class="letter">বিকল্প ১</span><h2>স্বর্ণমুদ্রা</h2><p>লাল-সবুজ মুদ্রার উপর সোনালি অক্ষর ও তারকা। গোল আকারের কারণে এখনকার নকশার গোল লোগোর জায়গায় সরাসরি বসে যায়; চারপাশে সরু সোনালি রেখা দিয়ে মেলানো হয়েছে।</p></div></div>
+  <div class="grid">
+    <div class="tile"><span class="cap">হেডার · কম্পিউটার</span>
+      <div class="mhead"><img class="lg-coin" src="img/coin.png" alt="" width="68" height="68"><b>বাংলাদেশ মুক্তিযোদ্ধা প্রজন্ম কাউন্সিল</b><nav><span>হোম</span><span>আমাদের সম্পর্কে ▾</span><span>বাণী ▾</span><span>সর্বশেষ সংবাদ</span></nav><span class="cta">সদস্য হোন</span></div></div>
+    <div class="tile half"><span class="cap">হেডার · মোবাইল</span>
+      <div class="mhead mobile"><img class="lg-coin" src="img/coin.png" alt="" width="54" height="54"><b>বাংলাদেশ মুক্তিযোদ্ধা প্রজন্ম কাউন্সিল</b><span class="menu">মেনু</span></div></div>
+    <div class="tile half"><span class="cap">ফুটার</span>
+      <div class="mfoot"><img class="lg-coin" src="img/coin.png" alt="" width="84" height="84"><div><b>বাংলাদেশ মুক্তিযোদ্ধা প্রজন্ম কাউন্সিল</b><small>© ২০২৬ · Developed by Rank On Fire LLC</small></div></div></div>
+    <div class="tile half"><span class="cap">হোম ব্যানার (প্রস্তাব: শিরোনামের পাশে প্রতীক)</span>
+      <div class="mhero"><img class="lg-coin" src="img/coin.png" alt="" width="150" height="150"><div><h3>রক্তে কেনা স্বাধীনতা, প্রজন্মের অঙ্গীকার</h3><p>মুক্তিযুদ্ধের চেতনায় বীর মুক্তিযোদ্ধার সন্তান ও প্রজন্মের ঐক্যবদ্ধ প্ল্যাটফর্ম।</p></div></div></div>
+    <div class="tile half"><span class="cap">ঘোষণাপত্রের সিল</span>
+      <div class="mseal"><img class="s lg-coin" src="img/coin.png" alt="" width="96" height="96"><h3>বাংলাদেশ মুক্তিযোদ্ধা প্রজন্ম কাউন্সিলের ঘোষণাপত্র</h3><p>বাংলাদেশের মহান মুক্তিযুদ্ধ আমাদের জাতির সবচেয়ে গৌরবময় অধ্যায়…</p></div></div>
+    <div class="tile"><span class="cap">ছোট আকারে (ব্রাউজার ট্যাব ও আইকন)</span>
+      <div class="tabs"><span class="tab"><img src="img/coin-32.png" alt="" width="16" height="16">বাংলাদেশ মুক্তিযোদ্ধা প্রজন্ম…</span>
+        <div class="sizes"><figure><img src="img/coin.png" alt="" width="16" height="16">১৬ px</figure><figure><img src="img/coin.png" alt="" width="32" height="32">৩২ px</figure><figure><img src="img/coin.png" alt="" width="48" height="48">৪৮ px</figure><figure><img src="img/coin.png" alt="" width="96" height="96">৯৬ px</figure></div></div></div>
+    <div class="tile"><div class="warn"><b>বানান যাচাই করুন:</b> লোগোর গোল লেখাটি অক্ষর-বিন্যাসে কিছুটা অস্বাভাবিক দেখাচ্ছে (বিশেষ করে ডান দিকের "কাউন্সিল" অংশ)। ছাপার আগে মূল ডিজাইনারকে দিয়ে প্রতিটি অক্ষর মিলিয়ে নিন।</div></div>
+  </div>
+</div></section>
+
+<section class="opt" id="shield"><div class="wrap">
+  <div class="opt-head"><img src="img/shield.jpg" alt="ঢাল ও পুষ্পমাল্য নকশার BMPC লোগো" width="600" height="600" style="border-radius:14px">
+    <div><span class="letter">বিকল্প ২</span><h2>ঢাল ও পুষ্পমাল্য</h2><p>সবুজ ঢাল, সোনালি ফিতা ও জলপাই পাতার মালা। পটভূমি নিজেই সবুজ, তাই সবুজ হেডারে চারকোনা আকারে মিশে যায়; সোনালি রেখা দিয়ে আলাদা করা হয়েছে।</p></div></div>
+  <div class="grid">
+    <div class="tile"><span class="cap">হেডার · কম্পিউটার</span>
+      <div class="mhead"><img class="lg-shield" src="img/shield.jpg" alt="" width="68" height="68"><b>বাংলাদেশ মুক্তিযোদ্ধা প্রজন্ম কাউন্সিল</b><nav><span>হোম</span><span>আমাদের সম্পর্কে ▾</span><span>বাণী ▾</span><span>সর্বশেষ সংবাদ</span></nav><span class="cta">সদস্য হোন</span></div></div>
+    <div class="tile half"><span class="cap">হেডার · মোবাইল</span>
+      <div class="mhead mobile"><img class="lg-shield" src="img/shield.jpg" alt="" width="54" height="54"><b>বাংলাদেশ মুক্তিযোদ্ধা প্রজন্ম কাউন্সিল</b><span class="menu">মেনু</span></div></div>
+    <div class="tile half"><span class="cap">ফুটার</span>
+      <div class="mfoot"><img class="lg-shield" src="img/shield.jpg" alt="" width="84" height="84"><div><b>বাংলাদেশ মুক্তিযোদ্ধা প্রজন্ম কাউন্সিল</b><small>© ২০২৬ · Developed by Rank On Fire LLC</small></div></div></div>
+    <div class="tile half"><span class="cap">হোম ব্যানার (প্রস্তাব: শিরোনামের পাশে প্রতীক)</span>
+      <div class="mhero"><img class="lg-shield" src="img/shield.jpg" alt="" width="150" height="150"><div><h3>রক্তে কেনা স্বাধীনতা, প্রজন্মের অঙ্গীকার</h3><p>মুক্তিযুদ্ধের চেতনায় বীর মুক্তিযোদ্ধার সন্তান ও প্রজন্মের ঐক্যবদ্ধ প্ল্যাটফর্ম।</p></div></div></div>
+    <div class="tile half"><span class="cap">ঘোষণাপত্রের সিল</span>
+      <div class="mseal"><img class="s lg-shield" src="img/shield.jpg" alt="" width="96" height="96"><h3>বাংলাদেশ মুক্তিযোদ্ধা প্রজন্ম কাউন্সিলের ঘোষণাপত্র</h3><p>বাংলাদেশের মহান মুক্তিযুদ্ধ আমাদের জাতির সবচেয়ে গৌরবময় অধ্যায়…</p></div></div>
+    <div class="tile"><span class="cap">ছোট আকারে (ব্রাউজার ট্যাব ও আইকন)</span>
+      <div class="tabs"><span class="tab"><img src="img/shield-32.png" alt="" width="16" height="16">বাংলাদেশ মুক্তিযোদ্ধা প্রজন্ম…</span>
+        <div class="sizes"><figure><img src="img/shield.jpg" alt="" width="16" height="16" style="border-radius:3px">১৬ px</figure><figure><img src="img/shield.jpg" alt="" width="32" height="32" style="border-radius:5px">৩২ px</figure><figure><img src="img/shield.jpg" alt="" width="48" height="48" style="border-radius:7px">৪৮ px</figure><figure><img src="img/shield.jpg" alt="" width="96" height="96" style="border-radius:10px">৯৬ px</figure></div></div></div>
+    <div class="tile"><div class="warn"><b>বানান ভুল:</b> ঢালের উপরের লেখায় "কাউন্সিল" এর জায়গায় "কাউন্মিল" লেখা আছে। এই লোগো ব্যবহার করতে হলে আগে বানান ঠিক করতে হবে।</div></div>
+  </div>
+</div></section>
+
+<section class="compare" id="compare"><div class="wrap">
+  <div style="display:grid;gap:10px;margin-bottom:28px"><span style="font:26px/1 var(--f-script);color:var(--red)">তুলনা</span><h2 style="font-size:clamp(28px,3.6vw,42px);font-weight:800;font-stretch:82%">কোনটি কোথায় ভালো</h2></div>
+  <div class="tw"><table>
+    <thead><tr><th></th><th>বর্তমান (সাদা গোল লোগো)</th><th>বিকল্প ১: স্বর্ণমুদ্রা</th><th>বিকল্প ২: ঢাল</th></tr></thead>
+    <tbody>
+      <tr><td>সবুজ হেডারে চোখে পড়া</td><td class="good">খুব ভালো: সাদা পটভূমি আলাদা হয়ে থাকে</td><td class="mid">ভালো: লাল-সবুজ রঙ হেডারের সাথে কাছাকাছি, সোনালি রেখা সাহায্য করে</td><td class="mid">মাঝারি: সবুজ পটভূমি হেডারে মিশে যায়</td></tr>
+      <tr><td>ছোট আকারে (১৬–৩২ px)</td><td class="mid">মাঝারি</td><td class="mid">মাঝারি: লেখা পড়া যায় না, তবে আকৃতি চেনা যায়</td><td class="bad">দুর্বল: মালা ও ফিতা ঝাপসা হয়ে যায়</td></tr>
+      <tr><td>বড় আকারে (ব্যানার, পোস্টার, সোশ্যাল মিডিয়া)</td><td class="mid">সাধারণ</td><td class="good">চমৎকার: পদকের মতো মর্যাদাপূর্ণ</td><td class="good">চমৎকার: আনুষ্ঠানিক ও জমকালো</td></tr>
+      <tr><td>ছাপা (প্যাড, আইডি কার্ড, ব্যানার)</td><td class="good">সহজ: সমতল রঙ</td><td class="mid">ছবি-ভিত্তিক: এক রঙে ছাপা কঠিন</td><td class="mid">ছবি-ভিত্তিক: এক রঙে ছাপা কঠিন</td></tr>
+      <tr><td>বানান</td><td class="good">ঠিক আছে</td><td class="mid">যাচাই দরকার</td><td class="bad">"কাউন্মিল": সংশোধন দরকার</td></tr>
+    </tbody></table></div>
+  <div class="verdict" style="margin-top:28px"><h3>আমার পরামর্শ</h3>
+    <ul>
+      <li><b>হেডার, ফুটার ও ব্রাউজার আইকনে বর্তমান সাদা গোল লোগোটিই রাখুন</b>। ছোট আকারে এটিই সবচেয়ে পরিষ্কার।</li>
+      <li><b>স্বর্ণমুদ্রা</b> লোগোটি বড় জায়গায় ব্যবহার করুন: হোম ব্যানারের প্রতীক, ঘোষণাপত্রের সিল, ফেসবুক/হোয়াটসঅ্যাপ প্রিভিউ ছবি ও সদস্য সনদ।</li>
+      <li><b>ঢাল</b> লোগোটি বানান ঠিক করার পর অনুষ্ঠানের ব্যানার বা সম্মাননা স্মারকে মানাবে।</li>
+    </ul></div>
+</div></section>
+</main>
