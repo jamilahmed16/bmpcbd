@@ -1,0 +1,180 @@
+<!doctype html><html lang="bn"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>সদস্য আবেদন · BMPC</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anek+Bangla:wdth,wght@75..100,400..800&family=Galada&family=Hind+Siliguri:wght@400;500;600&display=swap"><link rel="stylesheet" href="site.css">
+<style>
+.hero .wrap{padding-block:44px 52px;display:grid;gap:14px}
+.hero h1{font-size:clamp(42px,6vw,80px);font-weight:800;font-stretch:76%;line-height:1.04}
+.hero .lede{font-size:19px;max-width:40em;opacity:.95}
+.draft{display:inline-flex;gap:10px;align-items:center;margin-top:8px;font:600 14px/1.4 var(--f-body);background:rgba(0,0,0,.2);padding:10px 14px;max-width:max-content}
+.draft::before{content:"";width:10px;height:10px;border-radius:50%;background:#FFD35C;flex:none}
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:48px;align-items:start;padding-block:56px 96px}
+@media (max-width:980px){.layout{grid-template-columns:1fr}.aside{order:-1}}
+form{display:grid;gap:28px}
+fieldset{border:2px solid var(--ink);background:var(--field);padding:28px 28px 32px;margin:0;min-width:0;display:grid;gap:20px;box-shadow:8px 8px 0 var(--red)}
+legend{display:flex;align-items:center;gap:12px;padding:0 10px;margin-left:-10px;font:800 26px/1.2 var(--f-display);font-stretch:82%}
+legend b{display:inline-grid;place-items:center;width:42px;height:42px;background:var(--red);color:#fff;font-size:26px}
+.hint{font-size:15px;color:var(--ink-soft);margin-top:-10px}
+.row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 20px}
+.row.three{grid-template-columns:repeat(3,minmax(0,1fr))}
+@media (max-width:640px){.row,.row.three{grid-template-columns:1fr}fieldset{padding:22px 18px 24px;box-shadow:5px 5px 0 var(--red)}}
+.f{display:grid;gap:7px;min-width:0}
+.f.full{grid-column:1/-1}
+label,.lbl{font:600 15.5px/1.3 var(--f-body)}
+.req{color:var(--red);margin-left:3px}
+.opt{font-weight:400;color:var(--ink-soft);font-size:13.5px;margin-left:6px}
+input[type=text],input[type=tel],input[type=email],input[type=date],select,textarea{
+  font:400 16px/1.4 var(--f-body);color:var(--ink);background:var(--paper);border:2px solid var(--ink);border-radius:0;padding:12px 14px;width:100%;min-width:0}
+textarea{min-height:96px;resize:vertical}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--red);box-shadow:0 0 0 3px color-mix(in srgb,var(--red) 30%,transparent)}
+.f.bad input,.f.bad select{border-color:var(--red)}
+.err{display:none;font-size:13.5px;color:var(--red);font-weight:600}
+.f.bad .err{display:block}
+.seg{display:flex;flex-wrap:wrap;gap:8px}
+.seg label{position:relative;font-weight:500}
+.seg input{position:absolute;opacity:0;inset:0;cursor:pointer}
+.seg span{display:inline-block;padding:11px 16px;border:2px solid var(--ink);background:var(--paper)}
+.seg input:checked+span{background:var(--ink);color:var(--paper)}
+.seg input:focus-visible+span{outline:3px solid var(--red);outline-offset:2px}
+.drop-f{position:relative;border:2px dashed var(--ink);background:var(--paper);padding:18px;display:grid;gap:4px;text-align:center;cursor:pointer}
+.drop-f:hover{border-color:var(--red)}
+.drop-f input{position:absolute;inset:0;opacity:0;cursor:pointer}
+.drop-f b{font:700 16px/1.3 var(--f-display)}
+.drop-f small{font-size:13.5px;color:var(--ink-soft)}
+.drop-f.has{border-style:solid;border-color:var(--green);background:color-mix(in srgb,var(--green) 10%,var(--paper))}
+.drop-f .fname{font-size:14px;color:var(--green);font-weight:600;word-break:break-all}
+.check{display:grid;grid-template-columns:24px minmax(0,1fr);gap:12px;align-items:start;font:500 16px/1.6 var(--f-body)}
+.check input{width:22px;height:22px;margin:3px 0 0;accent-color:var(--red)}
+details.policy{border:2px solid var(--ink);background:var(--paper)}
+details.policy summary{cursor:pointer;padding:14px 16px;font:700 17px/1.3 var(--f-display);display:flex;justify-content:space-between;gap:12px}
+details.policy summary::after{content:"+";font-size:22px;line-height:1}
+details.policy[open] summary::after{content:"−"}
+.pol{padding:4px 20px 18px;max-height:380px;overflow:auto;border-top:1px solid var(--rule)}
+.pol h4{font-size:17px;margin:16px 0 6px;color:var(--red)}
+.pol ul{margin:0;padding-left:20px;font-size:15px;line-height:1.75}
+.submit-row{display:flex;flex-wrap:wrap;gap:16px;align-items:center}
+.submit-row .btn{font-size:18px;padding:16px 28px}
+.submit-row p{font-size:14px;color:var(--ink-soft);max-width:30em}
+.aside{display:grid;gap:22px;position:sticky;top:calc(env(safe-area-inset-top,0px) + 92px)}
+@media (max-width:980px){.aside{position:static}}
+.tree{background:#EFE8DA;border:2px solid var(--ink)}
+.tree svg{display:block;width:100%;height:auto}
+.box{border:2px solid var(--ink);padding:20px 22px;background:var(--field)}
+.box h3{font-size:20px;margin-bottom:12px}
+.prog{list-style:none;margin:0;padding:0;display:grid;gap:4px}
+.prog li{display:grid;grid-template-columns:30px minmax(0,1fr);gap:10px;align-items:center;font:500 15px/1.4 var(--f-body);padding:6px 0}
+.prog i{width:26px;height:26px;display:grid;place-items:center;border:2px solid var(--ink);font:700 14px/1 var(--f-display);font-style:normal}
+.prog li.done i{background:var(--green);border-color:var(--green);color:#fff}
+.prog li.done i::before{content:"✓"}
+.prog li.done i span{display:none}
+.prog a{text-decoration:none}.prog a:hover{text-decoration:underline}
+.need{margin:0;padding-left:20px;font-size:15px;line-height:1.8}
+@media (max-width:980px){.aside .tree{display:none}.aside{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:640px){.aside{grid-template-columns:1fr}}
+.done-panel{border:2px solid var(--ink);background:var(--field);padding:40px 32px;display:grid;gap:16px;justify-items:start;box-shadow:8px 8px 0 var(--green)}
+.done-panel h2{font-size:clamp(30px,4vw,44px);font-weight:800;font-stretch:80%;color:var(--green)}
+.done-panel .note{background:var(--paper-2);padding:12px 14px;font-size:15px}
+</style>
+</head><body><header class="top"><div class="wrap">
+<a class="brand" href="index.html" aria-label="বাংলাদেশ মুক্তিযোদ্ধা প্রজন্ম কাউন্সিল, প্রথম পাতা"><svg width="46" height="46" viewBox="0 0 46 46" aria-hidden="true"><rect x="1" y="1" width="44" height="44" fill="#0B5B3E" stroke="#FBF3E6" stroke-width="2"/><circle cx="20" cy="23" r="11" fill="#E8362E"/><path d="M7 38h32" stroke="#FBF3E6" stroke-width="2"/></svg><span><b>মুক্তিযোদ্ধা প্রজন্ম কাউন্সিল</b><small>বাংলাদেশ · BMPC</small></span></a>
+<nav class="nav" aria-label="প্রধান মেনু"><a href="index.html">প্রথম পাতা</a><a href="index.html#about">আমাদের সম্পর্কে</a><a href="objectives.html">লক্ষ্য ও উদ্দেশ্য</a><a href="index.html#days">কার্যক্রম</a><a href="#footer">যোগাযোগ</a></nav>
+<a class="btn btn-paper" href="join.html">সদস্য হোন</a>
+<details class="menu"><summary>মেনু</summary><nav class="drop" aria-label="মোবাইল মেনু"><a href="index.html">প্রথম পাতা</a><a href="index.html#about">আমাদের সম্পর্কে</a><a href="objectives.html">লক্ষ্য ও উদ্দেশ্য</a><a href="index.html#days">কার্যক্রম</a><a href="#footer">যোগাযোগ</a><a href="join.html">সদস্য হোন</a></nav></details>
+</div></header>
+<main>
+<section class="hero"><div class="wrap">
+ <nav class="crumbs" aria-label="অবস্থান"><a href="index.html">প্রথম পাতা</a><span aria-hidden="true">/</span><span>সদস্য হোন</span></nav>
+ <h1>সদস্য আবেদন ফর্ম</h1>
+ <p class="lede">শুধুমাত্র বীর মুক্তিযোদ্ধার সন্তান ও প্রজন্ম এই কাউন্সিলের সদস্য হতে পারবেন। সকল সদস্যকে তাদের প্রকৃত পরিচয়ে আবেদন করতে হবে।</p>
+ <p class="draft">নকশার নমুনা: এই ফর্মটি এখনো কোথাও তথ্য পাঠায় না।</p>
+</div></section>
+<div class="wrap layout">
+ <div>
+ <form id="joinForm" novalidate>
+  <fieldset id="s1"><legend><b>১</b>আবেদনকারীর তথ্য</legend>
+   <div class="row">
+    <div class="f"><label for="name_bn">পূর্ণ নাম (বাংলায়)<span class=req aria-hidden=true>*</span></label><input id="name_bn" name="name_bn" type="text" placeholder="যেমন: মোঃ রফিকুল ইসলাম" required><span class="err">এই তথ্যটি দিন</span></div>
+    <div class="f"><label for="name_en">পূর্ণ নাম (ইংরেজিতে)<span class=req aria-hidden=true>*</span></label><input id="name_en" name="name_en" type="text" placeholder="e.g. Md. Rafiqul Islam" required><span class="err">এই তথ্যটি দিন</span></div>
+    <div class="f"><label for="dob">জন্ম তারিখ<span class=req aria-hidden=true>*</span></label><input id="dob" name="dob" type="date" placeholder="" required><span class="err">এই তথ্যটি দিন</span></div>
+    <div class="f"><span class="lbl" id="g-l">লিঙ্গ<span class="req" aria-hidden="true">*</span></span><div class="seg" role="radiogroup" aria-labelledby="g-l">
+     <label><input type="radio" name="gender" value="m" required><span>পুরুষ</span></label><label><input type="radio" name="gender" value="f"><span>নারী</span></label><label><input type="radio" name="gender" value="o"><span>অন্যান্য</span></label></div><span class="err">একটি বাছাই করুন</span></div>
+    <div class="f"><label for="nid">জাতীয় পরিচয়পত্র / জন্ম নিবন্ধন নম্বর<span class=req aria-hidden=true>*</span></label><input id="nid" name="nid" type="text" placeholder="১০, ১৩ বা ১৭ সংখ্যার নম্বর" required inputmode="numeric"><span class="err">এই তথ্যটি দিন</span></div>
+    <div class="f"><label for="phone">মোবাইল নম্বর<span class=req aria-hidden=true>*</span></label><input id="phone" name="phone" type="tel" placeholder="০১XXXXXXXXX" required inputmode="tel"><span class="err">সঠিক মোবাইল নম্বর দিন</span></div>
+    <div class="f"><label for="email">ইমেইল<span class=opt>(ঐচ্ছিক)</span></label><input id="email" name="email" type="email" placeholder="name@example.com"><span class="err">এই তথ্যটি দিন</span></div>
+    <div class="f"><label for="job">পেশা<span class=opt>(ঐচ্ছিক)</span></label><input id="job" name="job" type="text" placeholder="যেমন: শিক্ষক, ব্যবসায়ী, শিক্ষার্থী"><span class="err">এই তথ্যটি দিন</span></div>
+   </div>
+  </fieldset>
+  <fieldset id="s2"><legend><b>২</b>বীর মুক্তিযোদ্ধার তথ্য</legend>
+   <p class="hint">যে বীর মুক্তিযোদ্ধার প্রজন্ম হিসেবে আবেদন করছেন, তাঁর তথ্য দিন।</p>
+   <div class="row">
+    <div class="f full"><label for="ff_name">বীর মুক্তিযোদ্ধার নাম<span class=req aria-hidden=true>*</span></label><input id="ff_name" name="ff_name" type="text" placeholder="পূর্ণ নাম" required><span class="err">এই তথ্যটি দিন</span></div>
+    <div class="f"><label for="relation">আপনার সম্পর্ক<span class=req aria-hidden=true>*</span></label><select id="relation" name="relation" required><option value="">বাছাই করুন</option><option>সন্তান (পুত্র)</option><option>সন্তান (কন্যা)</option><option>নাতি / নাতনী</option><option>অন্যান্য প্রজন্ম</option></select><span class="err">সম্পর্ক বাছাই করুন</span></div>
+    <div class="f"><span class="lbl" id="st-l">বর্তমান অবস্থা<span class="req" aria-hidden="true">*</span></span><div class="seg" role="radiogroup" aria-labelledby="st-l">
+     <label><input type="radio" name="ff_status" value="alive" required><span>জীবিত</span></label><label><input type="radio" name="ff_status" value="late"><span>প্রয়াত</span></label></div><span class="err">একটি বাছাই করুন</span></div>
+    <div class="f"><label for="gazette">গেজেট নম্বর<span class=req aria-hidden=true>*</span></label><input id="gazette" name="gazette" type="text" placeholder="মুক্তিযোদ্ধা গেজেটের নম্বর" required><span class="err">এই তথ্যটি দিন</span></div>
+    <div class="f"><label for="cert">মুক্তিযোদ্ধা সনদ নম্বর<span class=opt>(ঐচ্ছিক)</span></label><input id="cert" name="cert" type="text" placeholder="যদি থাকে"><span class="err">এই তথ্যটি দিন</span></div>
+    <div class="f"><label for="sector">যুদ্ধকালীন সেক্টর<span class=opt>(ঐচ্ছিক)</span></label><select id="sector" name="sector"><option value="">বাছাই করুন</option><option>অজানা</option><option>সেক্টর ১</option><option>সেক্টর ২</option><option>সেক্টর ৩</option><option>সেক্টর ৪</option><option>সেক্টর ৫</option><option>সেক্টর ৬</option><option>সেক্টর ৭</option><option>সেক্টর ৮</option><option>সেক্টর ৯</option><option>সেক্টর ১০</option><option>সেক্টর ১১</option></select><span class="err">এই তথ্যটি দিন</span></div>
+    <div class="f"><label for="ff_dist">বীর মুক্তিযোদ্ধার নিজ জেলা<span class=req aria-hidden=true>*</span></label><input id="ff_dist" name="ff_dist" type="text" placeholder="যেমন: কুমিল্লা" required><span class="err">এই তথ্যটি দিন</span></div>
+   </div>
+  </fieldset>
+  <fieldset id="s3"><legend><b>৩</b>ঠিকানা</legend>
+   <div class="row three">
+    <div class="f"><label for="division">বিভাগ<span class=req aria-hidden=true>*</span></label><select id="division" name="division" required><option value="">বাছাই করুন</option><option>ঢাকা</option><option>চট্টগ্রাম</option><option>রাজশাহী</option><option>খুলনা</option><option>বরিশাল</option><option>সিলেট</option><option>রংপুর</option><option>ময়মনসিংহ</option></select><span class="err">বিভাগ বাছাই করুন</span></div>
+    <div class="f"><label for="district">জেলা<span class=req aria-hidden=true>*</span></label><input id="district" name="district" type="text" placeholder="জেলার নাম" required><span class="err">এই তথ্যটি দিন</span></div>
+    <div class="f"><label for="upazila">উপজেলা / থানা<span class=req aria-hidden=true>*</span></label><input id="upazila" name="upazila" type="text" placeholder="উপজেলা বা থানা" required><span class="err">এই তথ্যটি দিন</span></div>
+   </div>
+   <div class="f"><label for="address">বর্তমান ঠিকানা<span class=req aria-hidden=true>*</span></label><textarea id="address" name="address" placeholder="বাড়ি নম্বর, রাস্তা, এলাকা" required></textarea><span class="err">এই তথ্যটি দিন</span></div>
+  </fieldset>
+  <fieldset id="s4"><legend><b>৪</b>প্রমাণপত্র</legend>
+   <p class="hint">ছবি (JPG/PNG) অথবা PDF, প্রতিটি ফাইল সর্বোচ্চ ৫ MB। আপনার ব্যক্তিগত তথ্য গোপন রাখা হবে।</p>
+   <div class="row three">
+    <div class="f"><span class="lbl" id="doc_cert-l">মুক্তিযোদ্ধা সনদ / গেজেটের কপি<span class=req aria-hidden=true>*</span></span><label class="drop-f" for="doc_cert"><input id="doc_cert" name="doc_cert" type="file" accept="image/*,.pdf" aria-labelledby="doc_cert-l" required><b>ফাইল বাছাই করুন</b><small>সনদ অথবা গেজেটের পাতা</small><span class="fname"></span></label><span class="err">ফাইলটি যুক্ত করুন</span></div>
+    <div class="f"><span class="lbl" id="doc_nid-l">আবেদনকারীর NID / জন্ম নিবন্ধন<span class=req aria-hidden=true>*</span></span><label class="drop-f" for="doc_nid"><input id="doc_nid" name="doc_nid" type="file" accept="image/*,.pdf" aria-labelledby="doc_nid-l" required><b>ফাইল বাছাই করুন</b><small>উভয় পাশ</small><span class="fname"></span></label><span class="err">ফাইলটি যুক্ত করুন</span></div>
+    <div class="f"><span class="lbl" id="doc_photo-l">আবেদনকারীর ছবি<span class=req aria-hidden=true>*</span></span><label class="drop-f" for="doc_photo"><input id="doc_photo" name="doc_photo" type="file" accept="image/*,.pdf" aria-labelledby="doc_photo-l" required><b>ফাইল বাছাই করুন</b><small>পাসপোর্ট সাইজ</small><span class="fname"></span></label><span class="err">ফাইলটি যুক্ত করুন</span></div>
+   </div>
+   <div class="f"><span class="lbl" id="doc_rel-l">সম্পর্কের প্রমাণ<span class=opt>(ঐচ্ছিক)</span></span><label class="drop-f" for="doc_rel"><input id="doc_rel" name="doc_rel" type="file" accept="image/*,.pdf" aria-labelledby="doc_rel-l"><b>ফাইল বাছাই করুন</b><small>যেমন: ওয়ারিশ সনদ বা জন্ম নিবন্ধনে পিতা/মাতার নাম</small><span class="fname"></span></label><span class="err">ফাইলটি যুক্ত করুন</span></div>
+  </fieldset>
+  <fieldset id="s5"><legend><b>৫</b>অঙ্গীকার</legend>
+   <details class="policy" id="policy"><summary>সদস্য হওয়ার নীতিমালা পড়ুন</summary><div class="pol"><h4>১. সদস্যপদ</h4><ul><li>শুধুমাত্র বীর মুক্তিযোদ্ধার সন্তান ও প্রজন্ম এই গ্রুপের সদস্য হতে পারবেন।</li><li>সকল সদস্যকে তাদের প্রকৃত পরিচয়ে অ্যাকাউন্ট তৈরি করতে হবে।</li><li>অনলাইন ফর্ম পূরণ করে সদস্য হতে হবে।</li><li>সকল সদস্যকে পারস্পরিক শ্রদ্ধা প্রদর্শন করতে হবে। কোনো ব্যক্তিগত আক্রমণ বা অসম্মানজনক মন্তব্য গ্রহণযোগ্য নয়।</li></ul><h4>২. ব্যবহারবিধি</h4><ul><li>সকল সদস্যকে পারস্পরিক সম্মান প্রদর্শন করতে হবে।</li><li>অন্যদের ধর্ম, জাতি, লিঙ্গ বা অন্যান্য ব্যক্তিগত পরিচিতির উপর ভিত্তি করে কোনো বৈষম্যমূলক মন্তব্য করা যাবে না।</li><li>কোনো ব্যক্তিগত আক্রমণ বা মানহানিকর বক্তব্য গ্রহণযোগ্য নয়।</li></ul><h4>৩. বিষয়বস্তু এবং পোস্টিং</h4><ul><li>পোস্ট করার আগে তথ্যের সঠিকতা নিশ্চিত করতে হবে।</li><li>মুক্তিযুদ্ধ সম্পর্কিত তথ্য, ছবি, ভিডিও এবং অন্যান্য উপকরণ শেয়ার করা যাবে।</li><li>কোনো ধরণের উস্কানিমূলক, অপমানজনক বা মিথ্যা তথ্য পোস্ট করা যাবে না।</li><li>কোনোরকম স্প্যামিং বা অপ্রাসঙ্গিক বিজ্ঞাপন পোস্ট করা যাবে না।</li><li>মুক্তিযুদ্ধ সংক্রান্ত ঐতিহাসিক তথ্য এবং দৃষ্টিভঙ্গি শেয়ার করার জন্য এটি একটি প্ল্যাটফর্ম। বিভ্রান্তিমূলক বা ভুল তথ্য শেয়ার করা যাবে না।</li></ul><h4>৪. অনুমোদন</h4><ul><li>গ্রুপে পোস্ট করার আগে একজন অ্যাডমিনের অনুমোদন প্রয়োজন হতে পারে।</li><li>গ্রুপের কোনো সদস্য যদি নিয়ম ভঙ্গ করে, তাহলে তাকে প্রথমে সতর্ক করা হবে এবং পরবর্তীতে প্রয়োজনে বহিষ্কার করা হবে।</li><li>গ্রুপের অনুমোদিত প্রচার ছাড়া অন্য কোনো ধরণের ব্যবসায়িক প্রচারণা বা বিজ্ঞাপন নিষিদ্ধ।</li></ul><h4>৫. গোপনীয়তা</h4><ul><li>সদস্যদের ব্যক্তিগত তথ্য গোপন রাখতে হবে।</li><li>কারও অনুমতি ছাড়া ব্যক্তিগত তথ্য শেয়ার করা যাবে না।</li></ul><h4>৬. দায়িত্ব এবং প্রবিধান</h4><ul><li>এই গ্রুপের অ্যাডমিনদের সিদ্ধান্ত চূড়ান্ত এবং অপরিবর্তনীয় হবে।</li><li>এই নিয়মগুলি সময়ে সময়ে পরিবর্তন বা পরিমার্জন করা হতে পারে।</li><li>কোন সদস্য নিয়ম ভঙ্গ করলে, তাকে সতর্ক করা হবে এবং পুনরায় ঘটলে গ্রুপ থেকে বহিষ্কার করা হবে।</li></ul></div></details>
+   <div class="f"><label class="check"><input type="checkbox" id="agree1" required><span>আমি সদস্য হওয়ার নীতিমালা পড়েছি এবং তা মেনে চলব।</span></label><span class="err">নীতিমালায় সম্মতি দিন</span></div>
+   <div class="f"><label class="check"><input type="checkbox" id="agree2" required><span>আমি নিশ্চিত করছি যে উপরের সকল তথ্য সত্য এবং আমি একজন বীর মুক্তিযোদ্ধার সন্তান বা প্রজন্ম।</span></label><span class="err">তথ্যের সত্যতা নিশ্চিত করুন</span></div>
+   <div class="submit-row"><button class="btn btn-red" type="submit">আবেদন জমা দিন</button><p>জমা দেওয়ার পর অ্যাডমিন তথ্য যাচাই করে আপনার সাথে যোগাযোগ করবেন।</p></div>
+  </fieldset>
+ </form>
+ <div class="done-panel" id="done" hidden tabindex="-1">
+  <span class="script">ধন্যবাদ</span><h2>আপনার আবেদন প্রস্তুত</h2>
+  <p>সব প্রয়োজনীয় তথ্য সঠিকভাবে পূরণ হয়েছে। চালু সাইটে এই ধাপে আবেদনটি অ্যাডমিনের কাছে যাচাইয়ের জন্য যাবে।</p>
+  <p class="note">নকশার নমুনা: কোনো তথ্য কোথাও পাঠানো বা সংরক্ষণ করা হয়নি।</p>
+  <button class="btn btn-red" type="button" id="again">ফর্মে ফিরে যান</button>
+ </div>
+ </div>
+ <aside class="aside" aria-label="আবেদনের সহায়িকা">
+  <div class="tree poster"><svg viewBox="0 0 360 330" role="img" aria-label="বটগাছ: শিকড়ে ১৯৭১, শাখায় প্রজন্ম"><circle cx="282" cy="58" r="46" fill="var(--sun)"/><path d="M70 170 Q64.1 237.0 70.4 304" stroke="var(--ink)" stroke-width="2.0" fill="none"/><path d="M92 184 Q94.1 244.0 91.7 304" stroke="var(--ink)" stroke-width="2.7" fill="none"/><path d="M118 196 Q119.8 250.0 120.4 304" stroke="var(--ink)" stroke-width="2.1" fill="none"/><path d="M240 196 Q241.7 250.0 241.9 304" stroke="var(--ink)" stroke-width="2.8" fill="none"/><path d="M266 186 Q264.2 245.0 268.7 304" stroke="var(--ink)" stroke-width="2.8" fill="none"/><path d="M292 170 Q294.3 237.0 295.8 304" stroke="var(--ink)" stroke-width="2.9" fill="none"/><path d="M310 160 Q310.2 232.0 310.2 304" stroke="var(--ink)" stroke-width="1.8" fill="none"/><path d="M160 304 Q166 240 156 196 L170 170 L186 170 L198 196 Q190 240 200 304Z" fill="var(--ink)"/><path d="M168 190 Q130 170 100 172 M190 190 Q230 168 262 172" stroke="var(--ink)" stroke-width="10" fill="none" stroke-linecap="round"/><circle cx="171.5" cy="68.9" r="22.3" fill="var(--green)"/><circle cx="127.9" cy="70.3" r="23.8" fill="var(--green)"/><circle cx="179.8" cy="71.6" r="22.2" fill="var(--green)"/><circle cx="217.4" cy="73.3" r="22.4" fill="var(--green)"/><circle cx="118.9" cy="81.8" r="26.0" fill="var(--green)"/><circle cx="97.2" cy="87.3" r="23.2" fill="var(--green)"/><circle cx="217.6" cy="90.0" r="25.5" fill="var(--green)"/><circle cx="96.2" cy="90.2" r="30.7" fill="var(--green)"/><circle cx="76.3" cy="95.2" r="27.0" fill="var(--green)"/><circle cx="302.1" cy="100.1" r="25.8" fill="var(--green)"/><circle cx="184.6" cy="104.8" r="30.8" fill="var(--green)"/><circle cx="233.3" cy="106.6" r="26.0" fill="var(--green)"/><circle cx="281.2" cy="108.4" r="31.9" fill="var(--green)"/><circle cx="201.8" cy="109.5" r="30.0" fill="var(--green)"/><circle cx="150.0" cy="112.7" r="22.0" fill="var(--green)"/><circle cx="282.4" cy="113.1" r="27.5" fill="var(--green)"/><circle cx="172.9" cy="114.0" r="32.7" fill="var(--green)"/><circle cx="61.2" cy="116.3" r="23.2" fill="var(--green)"/><circle cx="275.7" cy="120.7" r="26.5" fill="var(--green)"/><circle cx="307.2" cy="123.8" r="32.7" fill="var(--green)"/><circle cx="290.9" cy="125.0" r="25.7" fill="var(--green)"/><circle cx="235.7" cy="125.9" r="25.1" fill="var(--green-deep)"/><circle cx="64.5" cy="127.6" r="27.3" fill="var(--green)"/><circle cx="120.7" cy="128.8" r="28.0" fill="var(--green)"/><circle cx="196.6" cy="132.9" r="25.3" fill="var(--green-deep)"/><circle cx="143.6" cy="134.4" r="26.1" fill="var(--green-deep)"/><circle cx="234.3" cy="138.1" r="30.6" fill="var(--green-deep)"/><circle cx="241.7" cy="140.5" r="28.7" fill="var(--green-deep)"/><circle cx="159.8" cy="142.8" r="22.9" fill="var(--green)"/><circle cx="304.8" cy="142.9" r="22.4" fill="var(--green-deep)"/><circle cx="194.0" cy="146.3" r="32.8" fill="var(--green-deep)"/><circle cx="112.8" cy="155.1" r="22.1" fill="var(--green-deep)"/><circle cx="162.5" cy="160.9" r="30.5" fill="var(--green-deep)"/><circle cx="102.0" cy="162.4" r="30.5" fill="var(--green-deep)"/><circle cx="254.9" cy="166.3" r="25.2" fill="var(--green-deep)"/><circle cx="108.5" cy="170.7" r="28.0" fill="var(--green-deep)"/><circle cx="237.3" cy="175.2" r="24.2" fill="var(--green-deep)"/><circle cx="217.8" cy="177.7" r="29.6" fill="var(--green-deep)"/><circle cx="143.2" cy="178.0" r="29.1" fill="var(--green-deep)"/><circle cx="146.6" cy="178.9" r="27.9" fill="var(--green-deep)"/><g stroke="var(--carve)" stroke-width="2" fill="none" opacity=".5"><path d="M172 296 Q176 250 170 204"/><path d="M186 296 Q184 250 188 206"/></g><path d="M0 300 C100 292 260 306 360 296 L360 330 L0 330Z" fill="var(--green)"/><text x="180" y="322" text-anchor="middle" font-family="Anek Bangla, sans-serif" font-weight="700" font-size="15" fill="var(--paper)">শিকড়ে ১৯৭১ · শাখায় প্রজন্ম</text></svg></div>
+  <div class="box"><h3>আবেদনের অগ্রগতি</h3><ol class="prog" id="prog">
+   <li data-s="s1"><i><span>১</span></i><a href="#s1">আবেদনকারীর তথ্য</a></li><li data-s="s2"><i><span>২</span></i><a href="#s2">বীর মুক্তিযোদ্ধার তথ্য</a></li>
+   <li data-s="s3"><i><span>৩</span></i><a href="#s3">ঠিকানা</a></li><li data-s="s4"><i><span>৪</span></i><a href="#s4">প্রমাণপত্র</a></li><li data-s="s5"><i><span>৫</span></i><a href="#s5">অঙ্গীকার</a></li></ol></div>
+  <div class="box"><h3>যা হাতের কাছে রাখবেন</h3><ul class="need"><li>জাতীয় পরিচয়পত্র বা জন্ম নিবন্ধন</li><li>বীর মুক্তিযোদ্ধার গেজেট নম্বর ও সনদের কপি</li><li>পাসপোর্ট সাইজের ছবি</li><li>সম্পর্কের প্রমাণপত্র (যদি থাকে)</li></ul></div>
+ </aside>
+</div>
+</main><footer id="footer"><div class="wrap"><div class="cols">
+<div><a class="brand" href="index.html"><svg width="46" height="46" viewBox="0 0 46 46" aria-hidden="true"><rect x="1" y="1" width="44" height="44" fill="#0B5B3E" stroke="#FBF3E6" stroke-width="2"/><circle cx="20" cy="23" r="11" fill="#E8362E"/><path d="M7 38h32" stroke="#FBF3E6" stroke-width="2"/></svg><span><b>বাংলাদেশ মুক্তিযোদ্ধা প্রজন্ম কাউন্সিল</b></span></a>
+<p class="about-f">মুক্তিযুদ্ধের চেতনা ধারণকারী অরাজনৈতিক সংগঠন। বীর মুক্তিযোদ্ধার সন্তান ও প্রজন্মের ঐক্যবদ্ধ প্ল্যাটফর্ম।</p></div>
+<div><h4>সংগঠন</h4><ul><li><a href="index.html#about">আমাদের সম্পর্কে</a></li><li><a href="objectives.html">লক্ষ্য ও উদ্দেশ্য</a></li><li><a href="join.html#policy">সদস্য নীতিমালা</a></li></ul></div>
+<div><h4>অংশ নিন</h4><ul><li><a href="join.html">সদস্য হোন</a></li><li><a href="index.html#days">কার্যক্রম</a></li><li><a href="#footer">যোগাযোগ (শীঘ্রই)</a></li></ul></div>
+</div><div class="legal"><span>© ২০২৬ বাংলাদেশ মুক্তিযোদ্ধা প্রজন্ম কাউন্সিল</span><span>bmpc.bd</span></div></div></footer><script>
+const form=document.getElementById('joinForm'), done=document.getElementById('done');
+const fs=[...form.querySelectorAll('fieldset')];
+function okField(f){const els=[...f.querySelectorAll('input,select,textarea')].filter(e=>e.required);
+  if(!els.length) return true;
+  if(els[0].type==='radio'){return !!f.querySelector('input[type=radio]:checked');}
+  return els.every(e=>{ if(e.id==='phone') return /^(০|0)(১|1)[০-৯0-9]{9}$/.test(e.value.trim()); return e.type==='checkbox'?e.checked:e.value.trim()!==''; });}
+function progress(){fs.forEach(s=>{const all=[...s.querySelectorAll('.f')].every(okField);
+  document.querySelector(`#prog li[data-s="${s.id}"]`).classList.toggle('done',all);});}
+form.addEventListener('input',e=>{const f=e.target.closest('.f'); if(f&&f.classList.contains('bad')&&okField(f)) f.classList.remove('bad'); progress();});
+form.addEventListener('change',e=>{if(e.target.type==='file'){const d=e.target.closest('.drop-f');const n=e.target.files[0];
+  d.classList.toggle('has',!!n); d.querySelector('.fname').textContent=n?n.name:''; d.querySelector('b').textContent=n?'ফাইল যুক্ত হয়েছে':'ফাইল বাছাই করুন';} progress();});
+form.addEventListener('submit',e=>{e.preventDefault(); let first=null;
+  form.querySelectorAll('.f').forEach(f=>{const ok=okField(f); f.classList.toggle('bad',!ok); if(!ok&&!first) first=f;});
+  if(first){first.scrollIntoView({behavior:'smooth',block:'center'}); const c=first.querySelector('input,select,textarea'); c&&c.focus({preventScroll:true}); return;}
+  form.hidden=true; done.hidden=false; done.focus(); done.scrollIntoView({behavior:'smooth',block:'start'});});
+document.getElementById('again').addEventListener('click',()=>{done.hidden=true;form.hidden=false;form.scrollIntoView({block:'start'});});
+</script></body></html>
