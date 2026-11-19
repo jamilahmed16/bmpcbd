@@ -9,6 +9,7 @@
 - Novamira — connects Claude Code to the WordPress install
 - Impeccable — design-quality guidance for the front end
 - Claude Code for building and editing
+- Fluent Forms for all forms (join form: `wordpress/fluentforms/`, see SETUP.md there)
 
 ## Content rules
 - Primary language: Bangla (bn-BD). Keep the client's wording; don't rewrite meaning.
