@@ -19,6 +19,15 @@ for f in os.listdir(SRC):
         f = "index.html"
     html = html.replace('<meta charset="utf-8">', '<meta charset="utf-8">' + NOINDEX, 1)
     open(os.path.join(OUT, f), "w", encoding="utf-8").write(html)
+# logo options proof sheet (artifact-style page: add the document skeleton)
+lo_src = os.path.join(SRC, "logo-options")
+if os.path.isdir(lo_src):
+    lo_out = os.path.join(OUT, "logo-options"); shutil.copytree(os.path.join(lo_src, "img"), os.path.join(lo_out, "img"))
+    h = open(os.path.join(lo_src, "index.html"), encoding="utf-8").read()
+    h = ('<!doctype html><html lang="bn"><head><meta charset="utf-8">' + NOINDEX +
+         '<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">'
+         + h.replace('<header class="top-intro">', '</head><body><header class="top-intro">', 1) + '</body></html>')
+    open(os.path.join(lo_out, "index.html"), "w", encoding="utf-8").write(h)
 # cache-busting: add ?v=<content hash> to every local css/image reference
 import hashlib, glob
 def ver(rel):
