@@ -75,7 +75,8 @@ footer .brand .logo{width:92px;height:92px}
 .drop-h{font:600 12.5px/1 var(--f-body);letter-spacing:.06em;opacity:.6;padding:14px 0 4px}
 @media (max-width:1060px){.nav{display:none}.menu{display:block}}
 .drop{max-height:calc(100vh - 80px);overflow:auto}
-@media (max-width:540px){.top .btn{display:none}.brand small{display:none}.brand b{font-size:17px}}
+@media (max-width:540px){.top .btn{display:none}.brand small{display:none}.brand b{font-size:16px;line-height:1.25}}
+@media (min-width:1061px) and (max-width:1240px){.brand b{font-size:18px}.brand small{display:none}}
 
 /* poster hero, shared */
 .hero{background:#0B5B3E;color:var(--on-red);border-bottom:6px solid var(--ink);overflow:hidden;padding-block:0;position:relative}
