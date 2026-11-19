@@ -27,7 +27,7 @@ def header(cur):
             nav+=f'<a href="{href}"{cc}>{t}</a>'; drop+=f'<a href="{href}">{t}</a>'
     drop+='<a href="join.html">সদস্য হোন</a>'
     return f"""<header class="top"><div class="wrap">
-<a class="brand" href="index.html" aria-label="বাংলাদেশ মুক্তিযোদ্ধা প্রজন্ম কাউন্সিল, হোম">{LOGO}<span><b>বাংলাদেশ মুক্তিযোদ্ধা প্রজন্ম কাউন্সিল</b><small>BMPC</small></span></a>
+<a class="brand" href="index.html" aria-label="বাংলাদেশ মুক্তিযোদ্ধা প্রজন্ম কাউন্সিল, হোম">{LOGO}<span><b>বাংলাদেশ মুক্তিযোদ্ধা প্রজন্ম কাউন্সিল</b></span></a>
 <nav class="nav" aria-label="প্রধান মেনু">{nav}</nav>
 <a class="btn btn-paper" href="join.html">সদস্য হোন</a>
 <details class="menu"><summary>মেনু</summary><nav class="drop" aria-label="মোবাইল মেনু">{drop}</nav></details>
