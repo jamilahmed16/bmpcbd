@@ -15,7 +15,7 @@ for f in os.listdir(SRC):
                 '<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">'
                 + html.replace("<header", "</head><body><header", 1) + "</body></html>")
         f = "index.html"
-    html = html.replace("<head>", "<head>" + NOINDEX, 1)
+    html = html.replace('<meta charset="utf-8">', '<meta charset="utf-8">' + NOINDEX, 1)
     open(os.path.join(OUT, f), "w", encoding="utf-8").write(html)
 open(os.path.join(OUT, ".nojekyll"), "w").close()
 print("exported", len([x for x in os.listdir(OUT) if x.endswith(".html")]), "pages to", OUT)
