@@ -10,6 +10,7 @@
 - Impeccable — design-quality guidance for the front end
 - Claude Code for building and editing
 - Fluent Forms for all forms (join form: `wordpress/fluentforms/`, see SETUP.md there)
+- Divi child theme: `wordpress/divi/` (build with `python3 wordpress/divi/build_theme.py`, launch steps in INSTALL.md). Design source of truth is `design/src/`.
 
 ## Content rules
 - Primary language: Bangla (bn-BD). Keep the client's wording; don't rewrite meaning.

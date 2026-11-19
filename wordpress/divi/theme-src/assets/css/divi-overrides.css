@@ -1,0 +1,35 @@
+/* ---------- Divi integration ---------- */
+#page-container{padding-top:0!important;overflow:visible}
+#main-content,#et-main-area{background:transparent}
+.bmpc-sec.et_pb_section,.bmpc-sec.et_pb_fullwidth_section{padding:0!important;background:transparent!important}
+.bmpc-code.et_pb_fullwidth_code,.bmpc-code .et_pb_code_inner{padding:0;margin:0}
+:where(body.bmpc) h1,:where(body.bmpc) h2,:where(body.bmpc) h3,:where(body.bmpc) h4,:where(body.bmpc) h5,:where(body.bmpc) h6{padding-bottom:0;color:inherit;font-weight:inherit}
+:where(body.bmpc) p{padding-bottom:0}
+:where(body.bmpc) ul,:where(body.bmpc) ol{padding-bottom:0;line-height:inherit}
+:where(body.bmpc) a{color:inherit}
+body.bmpc{font-size:17px;line-height:1.75;color:var(--ink);font-family:var(--f-body)}
+body.bmpc #main-content .container{padding-top:48px}
+body.bmpc .et_pb_section:not(.bmpc-sec) h1,body.bmpc .et_pb_section:not(.bmpc-sec) h2{font-family:var(--f-display)}
+
+/* header menu from WordPress (Appearance → Menus → Primary Menu) */
+.nav .bmpc-menu{display:flex;gap:22px;list-style:none;margin:0;padding:0;align-items:center}
+.nav .bmpc-menu>li{position:relative;list-style:none;padding:0}
+.nav .bmpc-menu>li>a{display:inline-flex;gap:6px;align-items:center;text-decoration:none;opacity:.86;padding-block:8px;border-bottom:2px solid transparent;font:500 15px/1 var(--f-body)}
+.nav .bmpc-menu>li.menu-item-has-children>a::after{content:"▾";font-size:11px;opacity:.8}
+.nav .bmpc-menu>li>a:hover,.nav .bmpc-menu>li:focus-within>a,.nav .bmpc-menu>li.current-menu-item>a,.nav .bmpc-menu>li.current-menu-ancestor>a,.nav .bmpc-menu>li.current_page_parent>a{opacity:1;border-bottom-color:var(--on-red)}
+.nav .sub-menu{position:absolute;top:100%;left:-14px;min-width:220px;background:var(--green-deep);border:2px solid #1A1514;box-shadow:6px 6px 0 #1A1514;padding:8px 0;margin:0;list-style:none;display:none;z-index:30}
+.nav li:hover>.sub-menu,.nav li:focus-within>.sub-menu{display:grid}
+.nav .sub-menu li{list-style:none;padding:0}
+.nav .sub-menu a{display:block;padding:10px 16px;text-decoration:none;white-space:nowrap}
+.nav .sub-menu a:hover,.nav .sub-menu a:focus-visible{background:rgba(251,243,230,.12)}
+.drop .bmpc-mmenu,.drop .bmpc-menu{list-style:none;margin:0;padding:0;display:grid}
+.drop li{list-style:none;padding:0}
+.drop li a,.drop .drop-join{display:block;padding:12px 0;border-bottom:1px solid rgba(251,243,230,.15);text-decoration:none}
+.drop .sub-menu{list-style:none;margin:0;padding:0 0 0 16px}
+.drop .menu-item-has-children>a{font:600 12.5px/1 var(--f-body);letter-spacing:.06em;opacity:.6;padding:14px 0 4px;border:0}
+.bmpc-pager{padding-bottom:64px}
+.bmpc-pager .nav-links{display:flex;gap:8px;flex-wrap:wrap}
+.bmpc-pager .page-numbers{border:2px solid var(--ink);padding:8px 14px;text-decoration:none;font-weight:600}
+.bmpc-pager .page-numbers.current{background:var(--green);border-color:var(--green);color:#fff}
+/* Fluent Forms on the join page */
+.bmpc-page-join .layout .fluentform{min-width:0}

@@ -43,7 +43,7 @@
   var SEL = ['.sec-head', '.goals li', '.plan', '.lcard', '.nstory', '.day', '.acts span', '.steps li', '.join .wrap > div',
              '.about .big', '.about p.body', '.pill', '.rule', '.pledge', '.closing', '.slogan q', '.card', '.long-list li',
              '.mission li', '.intro figure', '.intro p.big', '.who', '.letter p', '.letter blockquote', '.sign', '.feat a.story',
-             '.ngrid a.story', '.post figure', '.event', '.gallery figure', 'fieldset', '.aside .box', '.cta .wrap > *', '.ribbon div'].join(',');
+             '.ngrid a.story', '.post figure', '.event', '.gallery figure', 'fieldset', '.aside .box', '.cta .wrap > *', '.ribbon .wrap>div'].join(',');
   var armed = false;
   function arm() {
     if (armed) return; armed = true;
@@ -54,7 +54,7 @@
         var sibs = el.parentElement ? [].slice.call(el.parentElement.children).filter(function (c) { return c.classList.contains('rv'); }) : [];
         el.style.transitionDelay = Math.min(sibs.indexOf(el), 6) * 70 + 'ms';
         el.classList.add('rv-in');
-        if (el.matches('.ribbon div')) count(el.querySelector('b'));
+        if (el.matches('.ribbon .wrap>div')) count(el.querySelector('b'));
       });
     }, { rootMargin: '0px 0px -8% 0px', threshold: 0.12 });
     document.querySelectorAll(SEL).forEach(function (el) {

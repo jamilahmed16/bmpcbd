@@ -88,12 +88,12 @@ footer .brand .logo{width:92px;height:92px}
 /* ink ribbon */
 .ribbon{background:#1A1514;color:#F3E9D8}
 .ribbon .wrap{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));padding-block:22px}
-.ribbon div{padding:6px 20px;border-left:1px solid rgba(243,233,216,.2)}
-.ribbon div:first-child{border-left:0;padding-left:0}
+.ribbon .wrap>div{padding:6px 20px;border-left:1px solid rgba(243,233,216,.2)}
+.ribbon .wrap>div:first-child{border-left:0;padding-left:0}
 .ribbon b{display:block;font:800 30px/1.1 var(--f-display);font-stretch:80%}
 .ribbon b.r{color:var(--sun)}
 .ribbon span{font-size:14px;opacity:.75}
-@media (max-width:760px){.ribbon .wrap{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:16px}.ribbon div:nth-child(3){border-left:0;padding-left:0}}
+@media (max-width:760px){.ribbon .wrap{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:16px}.ribbon .wrap>div:nth-child(3){border-left:0;padding-left:0}}
 
 /* footer */
 footer{background:#1A1514;color:#F3E9D8;padding-block:56px 30px;border-top:6px solid var(--red)}
