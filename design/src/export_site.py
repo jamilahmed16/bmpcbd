@@ -19,6 +19,17 @@ for f in os.listdir(SRC):
         f = "index.html"
     html = html.replace('<meta charset="utf-8">', '<meta charset="utf-8">' + NOINDEX, 1)
     open(os.path.join(OUT, f), "w", encoding="utf-8").write(html)
+# cache-busting: add ?v=<content hash> to every local css/image reference
+import hashlib, glob
+def ver(rel):
+    fp = os.path.join(OUT, rel)
+    return hashlib.md5(open(fp, "rb").read()).hexdigest()[:8] if os.path.exists(fp) else None
+for fp in glob.glob(os.path.join(OUT, "*.html")):
+    h = open(fp, encoding="utf-8").read()
+    def bust(m):
+        v = ver(m.group(2)); return m.group(1) + m.group(2) + (f"?v={v}" if v else "") + m.group(3)
+    h = re.sub(r'((?:href|src)=")((?:site\.css|img/[^"?]+))(")', bust, h)
+    open(fp, "w", encoding="utf-8").write(h)
 open(os.path.join(OUT, ".nojekyll"), "w").close()
 open(os.path.join(OUT, "robots.txt"), "w").write("User-agent: *\nDisallow: /\n")  # preview only; the live site has its own
 print("exported", len([x for x in os.listdir(OUT) if x.endswith(".html")]), "pages to", OUT)
