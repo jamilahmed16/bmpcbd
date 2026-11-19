@@ -51,6 +51,8 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .btn-paper:hover{background:transparent;color:var(--on-red)}
 .btn-red{background:var(--red);border-color:var(--red);color:#fff}
 .btn-red:hover{background:var(--red-deep);border-color:var(--red-deep)}
+.btn-green{background:var(--green);border-color:var(--green);color:#fff}
+.btn-green:hover{background:var(--green-deep);border-color:var(--green-deep)}
 .btn-ghost:hover{background:var(--on-red);color:var(--green-deep)}
 .menu{display:none;position:static}
 .menu summary{list-style:none;cursor:pointer;padding:9px 12px;border:1.5px solid rgba(251,243,230,.5);font:600 15px/1 var(--f-body)}

@@ -1,7 +1,7 @@
 [
  {
   "id": "1",
-  "title": "সদস্য আবেদন ফর্ম (ফাইল আপলোড সহ)",
+  "title": "সদস্য আবেদন ফর্ম",
   "status": "published",
   "type": "form",
   "has_payment": "0",
@@ -311,7 +311,7 @@
           "label": "মোবাইল নম্বর",
           "admin_field_label": "",
           "label_placement": "",
-          "help_message": "",
+          "help_message": "১১ সংখ্যার মোবাইল নম্বর, যেমন 01712345678",
           "validation_rules": {
            "required": {
             "value": true,
@@ -1133,281 +1133,7 @@
       "class": "bmpc-step"
      },
      "settings": {
-      "label": "৪. প্রমাণপত্র",
-      "description": "ছবি (JPG/PNG) অথবা PDF, প্রতিটি ফাইল সর্বোচ্চ ৫ MB। আপনার ব্যক্তিগত তথ্য গোপন রাখা হবে।",
-      "align": "left",
-      "conditional_logics": []
-     },
-     "editor_options": {
-      "title": "Section Break",
-      "icon_class": "ff-edit-section-break",
-      "template": "sectionBreak"
-     },
-     "uniqElKey": "el_bmpc031"
-    },
-    {
-     "index": 11,
-     "element": "container",
-     "attributes": {},
-     "settings": {
-      "container_class": "",
-      "conditional_logics": [],
-      "container_width": ""
-     },
-     "columns": [
-      {
-       "width": 50.0,
-       "fields": [
-        {
-         "index": 7,
-         "element": "input_file",
-         "attributes": {
-          "type": "file",
-          "name": "doc_cert",
-          "value": "",
-          "id": "",
-          "class": ""
-         },
-         "settings": {
-          "container_class": "",
-          "label": "মুক্তিযোদ্ধা সনদ / গেজেটের কপি",
-          "admin_field_label": "",
-          "label_placement": "",
-          "help_message": "সনদ অথবা গেজেটের পাতা",
-          "validation_rules": {
-           "required": {
-            "value": true,
-            "message": "ফাইলটি যুক্ত করুন"
-           },
-           "max_file_size": {
-            "value": 5,
-            "_valueFrom": "MB",
-            "message": "ফাইলের আকার সর্বোচ্চ ৫ MB হতে পারবে"
-           },
-           "max_file_count": {
-            "value": 2,
-            "message": "সর্বোচ্চ ২টি ফাইল যুক্ত করা যাবে"
-           },
-           "allowed_file_types": {
-            "value": [
-             "jpg|jpeg|gif|png|bmp",
-             "pdf"
-            ],
-            "message": "শুধু ছবি (JPG/PNG) অথবা PDF ফাইল দিন"
-           }
-          },
-          "conditional_logics": [],
-          "btn_text": "ফাইল বাছাই করুন",
-          "upload_file_location": "default",
-          "file_location_type": "follow_global_settings"
-         },
-         "editor_options": {
-          "title": "File Upload",
-          "icon_class": "ff-edit-files",
-          "template": "inputFile"
-         },
-         "uniqElKey": "el_bmpc032"
-        }
-       ]
-      },
-      {
-       "width": 50.0,
-       "fields": [
-        {
-         "index": 7,
-         "element": "input_file",
-         "attributes": {
-          "type": "file",
-          "name": "doc_nid",
-          "value": "",
-          "id": "",
-          "class": ""
-         },
-         "settings": {
-          "container_class": "",
-          "label": "আবেদনকারীর NID / জন্ম নিবন্ধন",
-          "admin_field_label": "",
-          "label_placement": "",
-          "help_message": "উভয় পাশ",
-          "validation_rules": {
-           "required": {
-            "value": true,
-            "message": "ফাইলটি যুক্ত করুন"
-           },
-           "max_file_size": {
-            "value": 5,
-            "_valueFrom": "MB",
-            "message": "ফাইলের আকার সর্বোচ্চ ৫ MB হতে পারবে"
-           },
-           "max_file_count": {
-            "value": 2,
-            "message": "সর্বোচ্চ ২টি ফাইল যুক্ত করা যাবে"
-           },
-           "allowed_file_types": {
-            "value": [
-             "jpg|jpeg|gif|png|bmp",
-             "pdf"
-            ],
-            "message": "শুধু ছবি (JPG/PNG) অথবা PDF ফাইল দিন"
-           }
-          },
-          "conditional_logics": [],
-          "btn_text": "ফাইল বাছাই করুন",
-          "upload_file_location": "default",
-          "file_location_type": "follow_global_settings"
-         },
-         "editor_options": {
-          "title": "File Upload",
-          "icon_class": "ff-edit-files",
-          "template": "inputFile"
-         },
-         "uniqElKey": "el_bmpc033"
-        }
-       ]
-      }
-     ],
-     "editor_options": {
-      "title": "Two Column Container",
-      "icon_class": "ff-edit-column-2"
-     },
-     "uniqElKey": "el_bmpc034"
-    },
-    {
-     "index": 11,
-     "element": "container",
-     "attributes": {},
-     "settings": {
-      "container_class": "",
-      "conditional_logics": [],
-      "container_width": ""
-     },
-     "columns": [
-      {
-       "width": 50.0,
-       "fields": [
-        {
-         "index": 7,
-         "element": "input_file",
-         "attributes": {
-          "type": "file",
-          "name": "doc_photo",
-          "value": "",
-          "id": "",
-          "class": ""
-         },
-         "settings": {
-          "container_class": "",
-          "label": "আবেদনকারীর ছবি",
-          "admin_field_label": "",
-          "label_placement": "",
-          "help_message": "পাসপোর্ট সাইজ",
-          "validation_rules": {
-           "required": {
-            "value": true,
-            "message": "ফাইলটি যুক্ত করুন"
-           },
-           "max_file_size": {
-            "value": 5,
-            "_valueFrom": "MB",
-            "message": "ফাইলের আকার সর্বোচ্চ ৫ MB হতে পারবে"
-           },
-           "max_file_count": {
-            "value": 2,
-            "message": "সর্বোচ্চ ২টি ফাইল যুক্ত করা যাবে"
-           },
-           "allowed_file_types": {
-            "value": [
-             "jpg|jpeg|gif|png|bmp",
-             "pdf"
-            ],
-            "message": "শুধু ছবি (JPG/PNG) অথবা PDF ফাইল দিন"
-           }
-          },
-          "conditional_logics": [],
-          "btn_text": "ফাইল বাছাই করুন",
-          "upload_file_location": "default",
-          "file_location_type": "follow_global_settings"
-         },
-         "editor_options": {
-          "title": "File Upload",
-          "icon_class": "ff-edit-files",
-          "template": "inputFile"
-         },
-         "uniqElKey": "el_bmpc035"
-        }
-       ]
-      },
-      {
-       "width": 50.0,
-       "fields": [
-        {
-         "index": 7,
-         "element": "input_file",
-         "attributes": {
-          "type": "file",
-          "name": "doc_rel",
-          "value": "",
-          "id": "",
-          "class": ""
-         },
-         "settings": {
-          "container_class": "",
-          "label": "সম্পর্কের প্রমাণ (ঐচ্ছিক)",
-          "admin_field_label": "",
-          "label_placement": "",
-          "help_message": "যেমন: ওয়ারিশ সনদ বা জন্ম নিবন্ধন",
-          "validation_rules": {
-           "required": {
-            "value": false,
-            "message": "এই তথ্যটি দিন"
-           },
-           "max_file_size": {
-            "value": 5,
-            "_valueFrom": "MB",
-            "message": "ফাইলের আকার সর্বোচ্চ ৫ MB হতে পারবে"
-           },
-           "max_file_count": {
-            "value": 2,
-            "message": "সর্বোচ্চ ২টি ফাইল যুক্ত করা যাবে"
-           },
-           "allowed_file_types": {
-            "value": [
-             "jpg|jpeg|gif|png|bmp",
-             "pdf"
-            ],
-            "message": "শুধু ছবি (JPG/PNG) অথবা PDF ফাইল দিন"
-           }
-          },
-          "conditional_logics": [],
-          "btn_text": "ফাইল বাছাই করুন",
-          "upload_file_location": "default",
-          "file_location_type": "follow_global_settings"
-         },
-         "editor_options": {
-          "title": "File Upload",
-          "icon_class": "ff-edit-files",
-          "template": "inputFile"
-         },
-         "uniqElKey": "el_bmpc036"
-        }
-       ]
-      }
-     ],
-     "editor_options": {
-      "title": "Two Column Container",
-      "icon_class": "ff-edit-column-2"
-     },
-     "uniqElKey": "el_bmpc037"
-    },
-    {
-     "index": 8,
-     "element": "section_break",
-     "attributes": {
-      "id": "",
-      "class": "bmpc-step"
-     },
-     "settings": {
-      "label": "৫. অঙ্গীকার",
+      "label": "৪. অঙ্গীকার",
       "description": "",
       "align": "left",
       "conditional_logics": []
@@ -1417,7 +1143,7 @@
       "icon_class": "ff-edit-section-break",
       "template": "sectionBreak"
      },
-     "uniqElKey": "el_bmpc038"
+     "uniqElKey": "el_bmpc031"
     },
     {
      "index": 9,
@@ -1433,7 +1159,7 @@
       "icon_class": "ff-edit-html",
       "template": "customHTML"
      },
-     "uniqElKey": "el_bmpc039"
+     "uniqElKey": "el_bmpc032"
     },
     {
      "index": 10,
@@ -1462,7 +1188,7 @@
       "icon_class": "ff-edit-terms-condition",
       "template": "termsCheckbox"
      },
-     "uniqElKey": "el_bmpc040"
+     "uniqElKey": "el_bmpc033"
     },
     {
      "index": 10,
@@ -1491,7 +1217,7 @@
       "icon_class": "ff-edit-terms-condition",
       "template": "termsCheckbox"
      },
-     "uniqElKey": "el_bmpc041"
+     "uniqElKey": "el_bmpc034"
     }
    ],
    "submitButton": {
@@ -1523,7 +1249,7 @@
   "metas": [
    {
     "meta_key": "formSettings",
-    "value": "{\"confirmation\": {\"redirectTo\": \"samePage\", \"messageToShow\": \"<h3>ধন্যবাদ, আপনার আবেদন জমা হয়েছে।</h3><p>অ্যাডমিন আপনার তথ্য যাচাই করে মোবাইল নম্বরে যোগাযোগ করবেন। যাচাই সম্পন্ন হলে আপনাকে সদস্য হিসেবে অন্তর্ভুক্ত করা হবে।</p>\", \"customPage\": null, \"samePageFormBehavior\": \"hide_form\", \"customUrl\": null}, \"restrictions\": {\"limitNumberOfEntries\": {\"enabled\": false, \"numberOfEntries\": null, \"period\": \"total\", \"limitReachedMsg\": \"\"}, \"scheduleForm\": {\"enabled\": false, \"start\": null, \"end\": null, \"pendingMsg\": \"\", \"expiredMsg\": \"\"}, \"requireLogin\": {\"enabled\": false, \"requireLoginMsg\": \"\"}, \"denyEmptySubmission\": {\"enabled\": true, \"message\": \"ফর্মটি খালি জমা দেওয়া যাবে না।\"}}, \"layout\": {\"labelPlacement\": \"top\", \"helpMessagePlacement\": \"with_label\", \"errorMessagePlacement\": \"inline\", \"cssClassName\": \"bmpc-form\", \"asteriskPlacement\": \"asterisk-right\"}}"
+    "value": "{\"confirmation\": {\"redirectTo\": \"samePage\", \"messageToShow\": \"<h3>ধন্যবাদ, আপনার আবেদন জমা হয়েছে।</h3><p>অ্যাডমিন আপনার তথ্য যাচাই করে মোবাইল নম্বরে যোগাযোগ করবেন। যাচাইয়ের সময় আপনার জাতীয় পরিচয়পত্র/জন্ম নিবন্ধন, বীর মুক্তিযোদ্ধার গেজেট ও সনদের কপি এবং ছবি প্রস্তুত রাখুন। যাচাই সম্পন্ন হলে আপনাকে সদস্য হিসেবে অন্তর্ভুক্ত করা হবে।</p>\", \"customPage\": null, \"samePageFormBehavior\": \"hide_form\", \"customUrl\": null}, \"restrictions\": {\"limitNumberOfEntries\": {\"enabled\": false, \"numberOfEntries\": null, \"period\": \"total\", \"limitReachedMsg\": \"\"}, \"scheduleForm\": {\"enabled\": false, \"start\": null, \"end\": null, \"pendingMsg\": \"\", \"expiredMsg\": \"\"}, \"requireLogin\": {\"enabled\": false, \"requireLoginMsg\": \"\"}, \"denyEmptySubmission\": {\"enabled\": true, \"message\": \"ফর্মটি খালি জমা দেওয়া যাবে না।\"}}, \"layout\": {\"labelPlacement\": \"top\", \"helpMessagePlacement\": \"with_label\", \"errorMessagePlacement\": \"inline\", \"cssClassName\": \"bmpc-form\", \"asteriskPlacement\": \"asterisk-right\"}}"
    },
    {
     "meta_key": "template_name",

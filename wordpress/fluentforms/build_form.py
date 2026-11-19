@@ -1,6 +1,7 @@
 """Builds Fluent Forms import files for the BMPC membership application.
 Run from repo root: python3 wordpress/fluentforms/build_form.py
-Outputs bmpc-join-form-pro.json (with file uploads) and bmpc-join-form-free.json (no uploads)."""
+Outputs bmpc-join-form.json for free Fluent Forms (no file uploads; documents are checked during verification).
+set WITH_UPLOADS=True to rebuild a Pro version with upload fields."""
 import json, os, re, itertools
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(os.path.dirname(HERE))
@@ -84,7 +85,7 @@ def fields(with_uploads):
         cols([text("name_bn", "পূর্ণ নাম (বাংলায়)", "যেমন: মোঃ রফিকুল ইসলাম")], [text("name_en", "পূর্ণ নাম (ইংরেজিতে)", "e.g. Md. Rafiqul Islam")]),
         cols([date("dob", "জন্ম তারিখ")], [radio("gender", "লিঙ্গ", ["পুরুষ", "নারী", "অন্যান্য"])]),
         cols([text("nid", "জাতীয় পরিচয়পত্র / জন্ম নিবন্ধন নম্বর", "১০, ১৩ বা ১৭ সংখ্যার নম্বর")],
-             [text("phone", "মোবাইল নম্বর", "01XXXXXXXXX", typ="tel", msg="সঠিক মোবাইল নম্বর দিন")]),
+             [text("phone", "মোবাইল নম্বর", "01XXXXXXXXX", typ="tel", msg="সঠিক মোবাইল নম্বর দিন", help_="১১ সংখ্যার মোবাইল নম্বর, যেমন 01712345678")]),
         cols([email("email", "ইমেইল (ঐচ্ছিক)", "name@example.com")], [text("job", "পেশা (ঐচ্ছিক)", "যেমন: শিক্ষক, ব্যবসায়ী, শিক্ষার্থী", required=False)]),
         section("২. বীর মুক্তিযোদ্ধার তথ্য", "যে বীর মুক্তিযোদ্ধার প্রজন্ম হিসেবে আবেদন করছেন, তাঁর তথ্য দিন।"),
         text("ff_name", "বীর মুক্তিযোদ্ধার নাম", "পূর্ণ নাম"),
@@ -113,7 +114,7 @@ SUBMIT = {"uniqElKey": "el_bmpc_submit", "element": "button", "attributes": {"ty
                        "button_size": "lg", "color": "#ffffff", "button_ui": {"type": "default", "text": "আবেদন জমা দিন", "img_url": ""}},
           "editor_options": {"title": "Submit Button"}}
 CONFIRM = ('<h3>ধন্যবাদ, আপনার আবেদন জমা হয়েছে।</h3><p>অ্যাডমিন আপনার তথ্য যাচাই করে মোবাইল নম্বরে যোগাযোগ করবেন। '
-           'যাচাই সম্পন্ন হলে আপনাকে সদস্য হিসেবে অন্তর্ভুক্ত করা হবে।</p>')
+           'যাচাইয়ের সময় আপনার জাতীয় পরিচয়পত্র/জন্ম নিবন্ধন, বীর মুক্তিযোদ্ধার গেজেট ও সনদের কপি এবং ছবি প্রস্তুত রাখুন। যাচাই সম্পন্ন হলে আপনাকে সদস্য হিসেবে অন্তর্ভুক্ত করা হবে।</p>')
 SETTINGS = {"confirmation": {"redirectTo": "samePage", "messageToShow": CONFIRM, "customPage": None, "samePageFormBehavior": "hide_form", "customUrl": None},
             "restrictions": {"limitNumberOfEntries": {"enabled": False, "numberOfEntries": None, "period": "total", "limitReachedMsg": ""},
                              "scheduleForm": {"enabled": False, "start": None, "end": None, "pendingMsg": "", "expiredMsg": ""},
@@ -122,13 +123,14 @@ SETTINGS = {"confirmation": {"redirectTo": "samePage", "messageToShow": CONFIRM,
             "layout": {"labelPlacement": "top", "helpMessagePlacement": "with_label", "errorMessagePlacement": "inline",
                        "cssClassName": "bmpc-form", "asteriskPlacement": "asterisk-right"}}
 
-for variant, uploads in (("pro", True), ("free", False)):
+WITH_UPLOADS = False
+for variant, uploads in ((("pro", True),) if WITH_UPLOADS else (("free", False),)):
     _k = itertools.count(1)
     form = {"id": "1", "title": "সদস্য আবেদন ফর্ম" + (" (ফাইল আপলোড সহ)" if uploads else ""), "status": "published",
             "type": "form", "has_payment": "0", "appearance_settings": None, "conditions": None,
             "form_fields": {"fields": fields(uploads), "submitButton": SUBMIT},
             "metas": [{"meta_key": "formSettings", "value": json.dumps(SETTINGS, ensure_ascii=False)},
                       {"meta_key": "template_name", "value": "blank_form"}]}
-    path = os.path.join(HERE, f"bmpc-join-form-{variant}.json")
+    path = os.path.join(HERE, "bmpc-join-form.json" if variant == "free" else "bmpc-join-form-pro.json")
     with open(path, "w", encoding="utf-8") as fh: json.dump([form], fh, ensure_ascii=False, indent=1)
     print("wrote", os.path.relpath(path, ROOT))

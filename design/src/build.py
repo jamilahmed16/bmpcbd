@@ -336,8 +336,9 @@ details.policy[open] summary::after{content:"−"}
 .prog li.done i::before{content:"✓"}
 .prog li.done i span{display:none}
 .prog a{text-decoration:none}.prog a:hover{text-decoration:underline}
+.boxnote{font-size:14.5px;color:var(--ink-soft);margin-bottom:8px}
 .need{margin:0;padding-left:20px;font-size:15px;line-height:1.8}
-@media (max-width:980px){.aside .tree{display:none}.aside{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:980px){.aside .tree{display:none}}
 @media (max-width:640px){.aside{grid-template-columns:1fr}}
 .done-panel{border:2px solid var(--ink);background:var(--field);padding:40px 32px;display:grid;gap:16px;justify-items:start;box-shadow:8px 8px 0 var(--green)}
 .done-panel h2{font-size:clamp(30px,4vw,44px);font-weight:800;font-stretch:80%;color:var(--green)}
@@ -404,20 +405,11 @@ JOIN = header("join") + f'''
    </div>
    {fld("address","বর্তমান ঠিকানা","textarea",ph="বাড়ি নম্বর, রাস্তা, এলাকা")}
   </fieldset>
-  <fieldset id="s4"><legend><b>৪</b>প্রমাণপত্র</legend>
-   <p class="hint">ছবি (JPG/PNG) অথবা PDF, প্রতিটি ফাইল সর্বোচ্চ ৫ MB। আপনার ব্যক্তিগত তথ্য গোপন রাখা হবে।</p>
-   <div class="row three">
-    {upload("doc_cert","মুক্তিযোদ্ধা সনদ / গেজেটের কপি","সনদ অথবা গেজেটের পাতা")}
-    {upload("doc_nid","আবেদনকারীর NID / জন্ম নিবন্ধন","উভয় পাশ")}
-    {upload("doc_photo","আবেদনকারীর ছবি","পাসপোর্ট সাইজ",)}
-   </div>
-   {upload("doc_rel","সম্পর্কের প্রমাণ","যেমন: ওয়ারিশ সনদ বা জন্ম নিবন্ধনে পিতা/মাতার নাম",req=False)}
-  </fieldset>
-  <fieldset id="s5"><legend><b>৫</b>অঙ্গীকার</legend>
+  <fieldset id="s4"><legend><b>৪</b>অঙ্গীকার</legend>
    <details class="policy" id="policy"><summary>সদস্য হওয়ার নীতিমালা পড়ুন</summary><div class="pol">{pol_html}</div></details>
    <div class="f"><label class="check"><input type="checkbox" id="agree1" required><span>আমি সদস্য হওয়ার নীতিমালা পড়েছি এবং তা মেনে চলব।</span></label><span class="err">নীতিমালায় সম্মতি দিন</span></div>
    <div class="f"><label class="check"><input type="checkbox" id="agree2" required><span>আমি নিশ্চিত করছি যে উপরের সকল তথ্য সত্য এবং আমি একজন বীর মুক্তিযোদ্ধার সন্তান বা প্রজন্ম।</span></label><span class="err">তথ্যের সত্যতা নিশ্চিত করুন</span></div>
-   <div class="submit-row"><button class="btn btn-red" type="submit">আবেদন জমা দিন</button><p>জমা দেওয়ার পর অ্যাডমিন তথ্য যাচাই করে আপনার সাথে যোগাযোগ করবেন।</p></div>
+   <div class="submit-row"><button class="btn btn-green" type="submit">আবেদন জমা দিন</button><p>জমা দেওয়ার পর অ্যাডমিন তথ্য যাচাই করে আপনার মোবাইল নম্বরে যোগাযোগ করবেন।</p></div>
   </fieldset>
  </form>
  <div class="done-panel" id="done" hidden tabindex="-1">
@@ -429,10 +421,7 @@ JOIN = header("join") + f'''
  </div>
  <aside class="aside" aria-label="আবেদনের সহায়িকা">
   <div class="tree poster">{art.banyan_svg()}</div>
-  <div class="box"><h3>আবেদনের অগ্রগতি</h3><ol class="prog" id="prog">
-   <li data-s="s1"><i><span>১</span></i><a href="#s1">আবেদনকারীর তথ্য</a></li><li data-s="s2"><i><span>২</span></i><a href="#s2">বীর মুক্তিযোদ্ধার তথ্য</a></li>
-   <li data-s="s3"><i><span>৩</span></i><a href="#s3">ঠিকানা</a></li><li data-s="s4"><i><span>৪</span></i><a href="#s4">প্রমাণপত্র</a></li><li data-s="s5"><i><span>৫</span></i><a href="#s5">অঙ্গীকার</a></li></ol></div>
-  <div class="box"><h3>যা হাতের কাছে রাখবেন</h3><ul class="need"><li>জাতীয় পরিচয়পত্র বা জন্ম নিবন্ধন</li><li>বীর মুক্তিযোদ্ধার গেজেট নম্বর ও সনদের কপি</li><li>পাসপোর্ট সাইজের ছবি</li><li>সম্পর্কের প্রমাণপত্র (যদি থাকে)</li></ul></div>
+  <div class="box"><h3>যাচাইয়ের সময় যা লাগবে</h3><p class="boxnote">আবেদন জমার পর অ্যাডমিন যোগাযোগ করে নিচের কাগজপত্রের কপি দেখতে চাইবেন:</p><ul class="need"><li>জাতীয় পরিচয়পত্র বা জন্ম নিবন্ধন</li><li>বীর মুক্তিযোদ্ধার গেজেট ও সনদের কপি</li><li>পাসপোর্ট সাইজের ছবি</li><li>সম্পর্কের প্রমাণপত্র (যদি থাকে)</li></ul></div>
  </aside>
 </div>
 </main>''' + FOOTER
@@ -443,8 +432,7 @@ function okField(f){const els=[...f.querySelectorAll('input,select,textarea')].f
   if(!els.length) return true;
   if(els[0].type==='radio'){return !!f.querySelector('input[type=radio]:checked');}
   return els.every(e=>{ if(e.id==='phone') return /^(০|0)(১|1)[০-৯0-9]{9}$/.test(e.value.trim()); return e.type==='checkbox'?e.checked:e.value.trim()!==''; });}
-function progress(){fs.forEach(s=>{const all=[...s.querySelectorAll('.f')].every(okField);
-  document.querySelector(`#prog li[data-s="${s.id}"]`).classList.toggle('done',all);});}
+function progress(){}
 form.addEventListener('input',e=>{const f=e.target.closest('.f'); if(f&&f.classList.contains('bad')&&okField(f)) f.classList.remove('bad'); progress();});
 form.addEventListener('change',e=>{if(e.target.type==='file'){const d=e.target.closest('.drop-f');const n=e.target.files[0];
   d.classList.toggle('has',!!n); d.querySelector('.fname').textContent=n?n.name:''; d.querySelector('b').textContent=n?'ফাইল যুক্ত হয়েছে':'ফাইল বাছাই করুন';} progress();});
