@@ -57,6 +57,14 @@ version is kept under that page's Revisions.
 
 On the same screen, paste the **Facebook / X / Instagram** links for the footer icons and click **Save social links**.
 
+## 5b. Divi 5: convert the new pages
+bmpc.bd runs **Divi 5**. The setup writes the pages in Divi's classic module format, which Divi 5 runs in compatibility mode
+(they display correctly, but Divi may show an orange notice in the admin bar). To convert them to native Divi 5:
+
+1. Divi → **Divi 5 Migrator**. Step 1 should now list the new pages under "Modules Ready to be Converted".
+2. Click **Migrate to Divi 5**. The migrator keeps a backup of each page's old content and can roll back.
+3. Open the home page and one inner page to check, then purge the cache.
+
 ## 6. Check Divi settings
 - **Divi → Theme Builder:** there must be **no custom Global Header or Footer** assigned. The theme draws its own.
   If one exists, remove it from the Default Website Template.

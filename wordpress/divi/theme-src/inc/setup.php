@@ -108,6 +108,9 @@ function bmpc_run_setup( $opt ) {
 		$log[] = $home ? array( 'ok', 'Front page set to হোম, posts page set to সর্বশেষ সংবাদ.' ) : array( 'warn', 'হোম page not found; front page not changed.' );
 	}
 	if ( $opt['menu'] ) { $log[] = bmpc_build_menu( $opt['overwrite'] ); }
+	if ( $opt['pages'] && ( defined( 'ET_BUILDER_5_VERSION' ) || ( function_exists( 'et_get_theme_version' ) && version_compare( et_get_theme_version(), '5.0', '>=' ) ) || version_compare( wp_get_theme( 'Divi' )->get( 'Version' ), '5.0', '>=' ) ) ) {
+		$log[] = array( 'warn', 'Divi 5 detected: open <a href="' . esc_url( admin_url( 'admin.php?page=et_d5_migrator' ) ) . '">Divi → Divi 5 Migrator</a> and click Migrate to convert the new pages to Divi 5 format (the pages already work before that).' );
+	}
 	if ( ! get_option( 'permalink_structure' ) ) {
 		$log[] = array( 'warn', 'Permalinks are “Plain”. Set Settings → Permalinks → “Post name” for clean URLs like /about/.' );
 	}
