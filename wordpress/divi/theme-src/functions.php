@@ -120,7 +120,7 @@ add_shortcode( 'bmpc_latest_news', function () {
 
 /** Social links (set in Appearance → BMPC Setup). */
 function bmpc_social() {
-	return wp_parse_args( get_option( 'bmpc_social', array() ), array( 'facebook' => '', 'x' => '', 'instagram' => '' ) );
+	return wp_parse_args( get_option( 'bmpc_social', array() ), array( 'facebook' => '', 'x' => '', 'instagram' => '', 'youtube' => 'https://www.youtube.com/channel/UC3pXvRvIoVYgEGwdkNx3Gfw' ) );
 }
 
 /** Keep the WordPress admin bar from covering the sticky header. */

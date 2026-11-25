@@ -6,6 +6,7 @@ $social = bmpc_social();
 $icons  = array(
 	'facebook'  => array( 'Facebook', '<path fill="currentColor" d="M14 8h3V4h-3c-2.8 0-4 1.7-4 4.2V10H7v4h3v8h4v-8h3l1-4h-4V8.6c0-.4.3-.6.6-.6z"/>' ),
 	'x'         => array( 'X', '<path fill="currentColor" d="M17.7 3h3.1l-6.8 7.8L22 21h-6.3l-4.9-6.4L5.2 21H2.1l7.3-8.3L1.8 3h6.4l4.4 5.9zm-1.1 16.2h1.7L7.5 4.7H5.7z"/>' ),
+	'youtube'   => array( 'YouTube', '<path fill="currentColor" d="M23 7.2a3 3 0 0 0-2.1-2.1C19 4.6 12 4.6 12 4.6s-7 0-8.9.5A3 3 0 0 0 1 7.2 31 31 0 0 0 .5 12a31 31 0 0 0 .5 4.8 3 3 0 0 0 2.1 2.1c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 0 0 2.1-2.1 31 31 0 0 0 .5-4.8 31 31 0 0 0-.5-4.8zM9.7 15V9l5.8 3z"/>' ),
 	'instagram' => array( 'Instagram', '<path fill="currentColor" d="M12 7.3A4.7 4.7 0 1 0 12 16.7 4.7 4.7 0 0 0 12 7.3zm0 7.7a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm4.9-8.9a1.1 1.1 0 1 1 0 2.2 1.1 1.1 0 0 1 0-2.2zM12 2.5c-2.6 0-2.9 0-3.9.1C4.6 2.7 2.7 4.6 2.6 8.1c-.1 1-.1 1.3-.1 3.9s0 2.9.1 3.9c.1 3.5 2 5.4 5.5 5.5 1 .1 1.3.1 3.9.1s2.9 0 3.9-.1c3.5-.1 5.4-2 5.5-5.5.1-1 .1-1.3.1-3.9s0-2.9-.1-3.9c-.1-3.5-2-5.4-5.5-5.5-1-.1-1.3-.1-3.9-.1zm0 1.7c2.5 0 2.8 0 3.8.1 2.5.1 3.7 1.3 3.8 3.8.1 1 .1 1.3.1 3.8s0 2.8-.1 3.8c-.1 2.5-1.3 3.7-3.8 3.8-1 .1-1.3.1-3.8.1s-2.8 0-3.8-.1c-2.5-.1-3.7-1.3-3.8-3.8-.1-1-.1-1.3-.1-3.8s0-2.8.1-3.8C4.5 5.6 5.7 4.4 8.2 4.3c1-.1 1.3-.1 3.8-.1z"/>' ),
 );
 $cols = array(
@@ -27,7 +28,7 @@ $cols = array(
 		<?php foreach ( $links as $slug => $label ) : ?><li><a href="<?php echo esc_url( bmpc_page_url( $slug ) ); ?>"><?php echo esc_html( $label ); ?></a></li><?php endforeach; ?>
 	</ul></div>
 	<?php endforeach; ?>
-</div><div class="legal"><span>© <?php echo esc_html( bmpc_bn_num( wp_date( 'Y' ) ) ); ?> বাংলাদেশ মুক্তিযোদ্ধা প্রজন্ম কাউন্সিল</span><span>Developed by Rank On Fire LLC</span></div></div></footer>
+</div><?php echo '<div class="emergency" aria-label="জরুরি হটলাইন"><b>জরুরি নম্বর</b><span><strong>৯৯৯</strong> জাতীয় জরুরি সেবা (পুলিশ, ফায়ার সার্ভিস, অ্যাম্বুলেন্স)</span><span><strong>৩৩৩</strong> সরকারি তথ্য ও সেবা</span><span><strong>১০২</strong> ফায়ার সার্ভিস</span><span><strong>১০৯ / ১০৯২১</strong> নারী ও শিশু নির্যাতন প্রতিরোধ</span><span><strong>১৬২৬৩</strong> স্বাস্থ্য বাতায়ন</span><span><strong>১৬৪৩০</strong> আইনগত সহায়তা</span></div>'; ?><div class="legal"><span>© <?php echo esc_html( bmpc_bn_num( wp_date( 'Y' ) ) ); ?> বাংলাদেশ মুক্তিযোদ্ধা প্রজন্ম কাউন্সিল</span><span>Developed by Rank On Fire LLC</span></div></div></footer>
 </div><!-- #et-main-area -->
 </div><!-- #page-container -->
 <?php wp_footer(); ?>

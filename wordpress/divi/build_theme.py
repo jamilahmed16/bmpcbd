@@ -144,7 +144,8 @@ ALTS = {"logo.png": seo.ORG_NAME + " লোগো", "logo-full.jpg": seo.ORG_NAM
         "chairman.jpg": "রহিমুল ফারুক বাবু, চেয়ারম্যান", "secretary.jpg": "মোঃ আল আমিন, মহাসচিব",
         "welcome-banner.jpg": "মুক্তিযোদ্ধা প্রজন্মের একমাত্র অরাজনৈতিক সংগঠনে আপনাকে স্বাগতম",
         "news-press-club.jpg": "জাতীয় প্রেসক্লাবের সামনে কাউন্সিলের মানববন্ধন ও প্রতিবাদ সমাবেশ",
-        "og-default.jpg": seo.ORG_NAME}
+        "news-press-club-2.jpg": "জাতীয় প্রেসক্লাবের সামনে মানববন্ধনে কাউন্সিলের সদস্যরা", "news-press-club-3.jpg": "মানববন্ধন ও প্রতিবাদ সমাবেশে বক্তব্য",
+        "news-press-club-poster.jpg": "মানববন্ধন ও প্রতিবাদ সমাবেশের পোস্টার", "og-default.jpg": seo.ORG_NAME}
 images = [{"file": f, "alt": ALTS.get(f, "")} for f in sorted(os.listdir(os.path.join(DESIGN, "img"))) if not f.startswith("icon-")]
 people = [seo.PEOPLE["chairman.html"], seo.PEOPLE["secretary.html"]]
 json.dump({"pages": pages_out, "posts": posts, "images": images,

@@ -200,8 +200,8 @@ def news_items(content):
         meta,b=fm(f"{d}/{f}"); stem=f[:-3]
         meta.update(stem=stem, slug=f"news-{stem}.html", image_file=os.path.basename(meta.get("image","og-default.jpg")))
         meta["alt"]=meta.get("alt") or meta["title"]
-        blocks=paras(b); meta["body"]=[p for p in blocks if not p.startswith("![")]
-        meta["gallery"]=re.findall(r"!\[(.*?)\]\((.*?)\)",b)
+        blocks=paras(b); meta["body"]=[re.sub(r"\*\*(.+?)\*\*", r"<strong>\1</strong>", p) for p in blocks if not p.startswith("![")]
+        meta["summary"]=meta.get("summary",""); meta["gallery"]=re.findall(r"!\[(.*?)\]\((.*?)\)",b)
         out.append(meta)
     return out
 def card(n, big=False):
@@ -264,6 +264,8 @@ POST_CSS=COMMON_CSS+'''
 .event b{font:700 18px/1.3 var(--f-display)}
 
 .post .body p{font-size:18.5px;line-height:1.95}
+.post .body p+p{margin-top:1.1em}
+.post .body strong{color:var(--green);font-weight:600}
 .back{font:700 16px/1 var(--f-display);color:var(--green)}
 '''
 def news_post(n):

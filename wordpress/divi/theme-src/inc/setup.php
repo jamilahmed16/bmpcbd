@@ -41,6 +41,7 @@ function bmpc_setup_screen() {
 			'facebook'  => esc_url_raw( wp_unslash( $_POST['facebook'] ?? '' ) ),
 			'x'         => esc_url_raw( wp_unslash( $_POST['x'] ?? '' ) ),
 			'instagram' => esc_url_raw( wp_unslash( $_POST['instagram'] ?? '' ) ),
+			'youtube'   => esc_url_raw( wp_unslash( $_POST['youtube'] ?? '' ) ),
 		) );
 		$log[] = array( 'ok', 'Social links saved.' );
 	}
@@ -75,6 +76,7 @@ function bmpc_setup_screen() {
 			<table class="form-table" role="presentation"><tbody>
 				<tr><th><label for="facebook">Facebook</label></th><td><input class="regular-text" id="facebook" name="facebook" value="<?php echo esc_attr( $s['facebook'] ); ?>" placeholder="https://facebook.com/…"></td></tr>
 				<tr><th><label for="x">X (Twitter)</label></th><td><input class="regular-text" id="x" name="x" value="<?php echo esc_attr( $s['x'] ); ?>" placeholder="https://x.com/…"></td></tr>
+				<tr><th><label for="youtube">YouTube</label></th><td><input class="regular-text" id="youtube" name="youtube" value="<?php echo esc_attr( $s['youtube'] ); ?>" placeholder="https://youtube.com/…"></td></tr>
 				<tr><th><label for="instagram">Instagram</label></th><td><input class="regular-text" id="instagram" name="instagram" value="<?php echo esc_attr( $s['instagram'] ); ?>" placeholder="https://instagram.com/…"></td></tr>
 			</tbody></table>
 			<p><button class="button" name="bmpc_social_save" value="1">Save social links</button></p>
@@ -121,12 +123,16 @@ function bmpc_run_setup( $opt ) {
 /** Copy theme images into the Media Library once. */
 function bmpc_import_images( $images ) {
 	require_once ABSPATH . 'wp-admin/includes/image.php';
-	$map = get_option( 'bmpc_media', array() ); $log = array(); $n = 0;
+	$map = get_option( 'bmpc_media', array() ); $hashes = get_option( 'bmpc_media_hash', array() ); $log = array(); $n = 0;
 	foreach ( $images as $img ) {
 		$file = $img['file'];
-		if ( ! empty( $map[ $file ] ) && get_post( $map[ $file ] ) ) { continue; }
 		$src = BMPC_DIR . '/assets/img/' . $file;
 		if ( ! file_exists( $src ) ) { continue; }
+		$hash = md5_file( $src );
+		if ( ! empty( $map[ $file ] ) && get_post( $map[ $file ] ) ) {
+			$cur = get_attached_file( $map[ $file ] );
+			if ( $cur && file_exists( $cur ) && md5_file( $cur ) === $hash ) { $hashes[ $file ] = $hash; continue; }
+		}
 		$up = wp_upload_bits( 'bmpc-' . $file, null, file_get_contents( $src ) );
 		if ( ! empty( $up['error'] ) ) { $log[] = array( 'warn', 'Image ' . esc_html( $file ) . ': ' . esc_html( $up['error'] ) ); continue; }
 		$type = wp_check_filetype( $up['file'] );
@@ -134,10 +140,11 @@ function bmpc_import_images( $images ) {
 		if ( is_wp_error( $id ) || ! $id ) { continue; }
 		wp_update_attachment_metadata( $id, wp_generate_attachment_metadata( $id, $up['file'] ) );
 		if ( $img['alt'] ) { update_post_meta( $id, '_wp_attachment_image_alt', $img['alt'] ); }
-		$map[ $file ] = $id; $n++;
+		$map[ $file ] = $id; $hashes[ $file ] = $hash; $n++;
 	}
 	update_option( 'bmpc_media', $map );
-	$log[] = array( 'ok', $n ? "$n images added to the Media Library." : 'Images already in the Media Library.' );
+	update_option( 'bmpc_media_hash', $hashes );
+	$log[] = array( 'ok', $n ? "$n images added or updated in the Media Library (tick “Overwrite” so existing pages switch to them)." : 'Images already in the Media Library.' );
 	if ( ! empty( $map['logo.png'] ) && ! has_site_icon() ) {
 		update_option( 'site_icon', (int) $map['logo.png'] );
 		$log[] = array( 'ok', 'Site icon set to the BMPC logo.' );
