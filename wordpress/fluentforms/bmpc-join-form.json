@@ -473,7 +473,7 @@
       "class": "bmpc-step"
      },
      "settings": {
-      "label": "খ. মুক্তিযোদ্ধা পিতা বা মাতার তথ্য",
+      "label": "খ. বীর মুক্তিযোদ্ধা পিতা বা মাতার তথ্য",
       "description": "",
       "align": "left",
       "conditional_logics": []
@@ -523,13 +523,13 @@
           "layout_class": "ff_list_inline",
           "advanced_options": [
            {
-            "label": "মুক্তিযোদ্ধা পিতা",
-            "value": "মুক্তিযোদ্ধা পিতা",
+            "label": "বীর মুক্তিযোদ্ধা পিতা",
+            "value": "বীর মুক্তিযোদ্ধা পিতা",
             "calc_value": ""
            },
            {
-            "label": "মুক্তিযোদ্ধা মাতা",
-            "value": "মুক্তিযোদ্ধা মাতা",
+            "label": "বীর মুক্তিযোদ্ধা মাতা",
+            "value": "বীর মুক্তিযোদ্ধা মাতা",
             "calc_value": ""
            }
           ],
@@ -560,7 +560,7 @@
          },
          "settings": {
           "container_class": "",
-          "label": "মুক্তিযোদ্ধার বর্তমান অবস্থা",
+          "label": "বীর মুক্তিযোদ্ধার বর্তমান অবস্থা",
           "admin_field_label": "",
           "label_placement": "",
           "help_message": "",
@@ -632,7 +632,7 @@
          },
          "settings": {
           "container_class": "",
-          "label": "মুক্তিযোদ্ধার পূর্ণ নাম",
+          "label": "বীর মুক্তিযোদ্ধার পূর্ণ নাম",
           "admin_field_label": "",
           "label_placement": "",
           "help_message": "",
@@ -673,7 +673,7 @@
          },
          "settings": {
           "container_class": "",
-          "label": "মুক্তিযোদ্ধা সনদ নম্বর / গেজেট নম্বর",
+          "label": "বীর মুক্তিযোদ্ধা সনদ নম্বর / গেজেট নম্বর",
           "admin_field_label": "",
           "label_placement": "",
           "help_message": "মূল সনদ বা গেজেট অনুযায়ী নির্ভুল নম্বর",
