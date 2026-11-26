@@ -42,7 +42,7 @@ def textarea(name, label, ph=""):
             "settings": BASE(label, req()), "editor_options": {"title": "Text Area", "icon_class": "ff-edit-textarea", "template": "inputTextarea"}, "uniqElKey": key()}
 def upload(name, label, help_, required=True):
     r = req("ফাইলটি যুক্ত করুন") if required else opt()
-    r.update({"max_file_size": {"value": 10 * 1024 * 1024, "_valueFrom": "MB", "message": "ফাইলের আকার সর্বোচ্চ ১০ MB হতে পারবে"},
+    r.update({"max_file_size": {"value": 2 * 1024 * 1024, "_valueFrom": "MB", "message": "ফাইলটি ২ MB-এর বেশি। ছবির স্ক্রিনশট নিয়ে বা ছোট করে আবার দিন।"},
               "max_file_count": {"value": 2, "message": "সর্বোচ্চ ২টি ফাইল যুক্ত করা যাবে"},
               "allowed_file_types": {"value": ["jpg|jpeg|gif|png|bmp", "pdf"], "message": "শুধু ছবি (JPG/PNG) অথবা PDF ফাইল দিন"}})
     return {"index": 7, "element": "input_file", "attributes": {"type": "file", "name": name, "value": "", "id": "", "class": ""},
@@ -107,7 +107,7 @@ def fields(with_uploads=True):
         radio("location", "বর্তমান অবস্থান", [HOME, ABROAD], default=HOME),
     ]
     if with_uploads:
-        f.append(image_upload("photo", "পাসপোর্ট সাইজ ছবি", "পরিচয়পত্র ও সদস্য তালিকার জন্য। JPG বা PNG, সর্বোচ্চ ১০ MB।", required=False))
+        f.append(image_upload("photo", "পাসপোর্ট সাইজ ছবি", "পরিচয়পত্র ও সদস্য তালিকার জন্য। JPG বা PNG, সর্বোচ্চ ২ MB।", required=False))
     f += [
         section("খ. বীর মুক্তিযোদ্ধা পিতা বা মাতার তথ্য"),
         cols([radio("relation", "সম্পর্ক", ["বীর মুক্তিযোদ্ধা পিতা", "বীর মুক্তিযোদ্ধা মাতা"])],
@@ -116,14 +116,14 @@ def fields(with_uploads=True):
              [text("gazette", "বীর মুক্তিযোদ্ধা সনদ নম্বর / গেজেট নম্বর", "সনদ বা গেজেটের নম্বর", help_="মূল সনদ বা গেজেট অনুযায়ী নির্ভুল নম্বর")]),
     ]
     if with_uploads:
-        f.append(upload("doc_cert", "বীর মুক্তিযোদ্ধা সনদ / গেজেট / পরিচয়পত্রের কপি", "PDF বা JPG, প্রতিটি ফাইল সর্বোচ্চ ১০ MB।"))
+        f.append(upload("doc_cert", "বীর মুক্তিযোদ্ধা সনদ / গেজেট / পরিচয়পত্রের কপি", "PDF বা JPG, প্রতিটি ফাইল সর্বোচ্চ ২ MB।"))
     f += [
         section("গ. জাতীয় পরিচয় ও যোগাযোগের তথ্য"),
         cols([radio("id_type", "পরিচয়পত্রের ধরন", ["জাতীয় পরিচয়পত্র (NID)", "পাসপোর্ট", "জন্ম নিবন্ধন"])],
              [text("nid", "পরিচয়পত্রের নম্বর", "নম্বরটি লিখুন", help_="প্রবাসে থাকলে এবং NID না থাকলে পাসপোর্ট বা জন্ম নিবন্ধন নম্বর দিন")]),
     ]
     if with_uploads:
-        f.append(upload("doc_nid", "NID / পাসপোর্টের কপি", "পরিচয় নিশ্চিত করার জন্য। PDF বা JPG, সর্বোচ্চ ১০ MB।"))
+        f.append(upload("doc_nid", "NID / পাসপোর্টের কপি", "পরিচয় নিশ্চিত করার জন্য। PDF বা JPG, সর্বোচ্চ ২ MB।"))
     f += [
         cols([text("phone", "মোবাইল / হোয়াটসঅ্যাপ নম্বর", "+8801XXXXXXXXX", typ="tel", msg="কান্ট্রি কোডসহ সঠিক নম্বর দিন",
                    help_="কান্ট্রি কোডসহ লিখুন (যেমন: +880…), প্রবাসে থাকলে সে দেশের কোড দিন")],

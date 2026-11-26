@@ -480,16 +480,16 @@
       "label": "পাসপোর্ট সাইজ ছবি",
       "admin_field_label": "",
       "label_placement": "",
-      "help_message": "পরিচয়পত্র ও সদস্য তালিকার জন্য। JPG বা PNG, সর্বোচ্চ ১০ MB।",
+      "help_message": "পরিচয়পত্র ও সদস্য তালিকার জন্য। JPG বা PNG, সর্বোচ্চ ২ MB।",
       "validation_rules": {
        "required": {
         "value": false,
         "message": "এই তথ্যটি দিন"
        },
        "max_file_size": {
-        "value": 10485760,
+        "value": 2097152,
         "_valueFrom": "MB",
-        "message": "ফাইলের আকার সর্বোচ্চ ১০ MB হতে পারবে"
+        "message": "ফাইলটি ২ MB-এর বেশি। ছবির স্ক্রিনশট নিয়ে বা ছোট করে আবার দিন।"
        },
        "max_file_count": {
         "value": 1,
@@ -769,16 +769,16 @@
       "label": "বীর মুক্তিযোদ্ধা সনদ / গেজেট / পরিচয়পত্রের কপি",
       "admin_field_label": "",
       "label_placement": "",
-      "help_message": "PDF বা JPG, প্রতিটি ফাইল সর্বোচ্চ ১০ MB।",
+      "help_message": "PDF বা JPG, প্রতিটি ফাইল সর্বোচ্চ ২ MB।",
       "validation_rules": {
        "required": {
         "value": true,
         "message": "ফাইলটি যুক্ত করুন"
        },
        "max_file_size": {
-        "value": 10485760,
+        "value": 2097152,
         "_valueFrom": "MB",
-        "message": "ফাইলের আকার সর্বোচ্চ ১০ MB হতে পারবে"
+        "message": "ফাইলটি ২ MB-এর বেশি। ছবির স্ক্রিনশট নিয়ে বা ছোট করে আবার দিন।"
        },
        "max_file_count": {
         "value": 2,
@@ -954,16 +954,16 @@
       "label": "NID / পাসপোর্টের কপি",
       "admin_field_label": "",
       "label_placement": "",
-      "help_message": "পরিচয় নিশ্চিত করার জন্য। PDF বা JPG, সর্বোচ্চ ১০ MB।",
+      "help_message": "পরিচয় নিশ্চিত করার জন্য। PDF বা JPG, সর্বোচ্চ ২ MB।",
       "validation_rules": {
        "required": {
         "value": true,
         "message": "ফাইলটি যুক্ত করুন"
        },
        "max_file_size": {
-        "value": 10485760,
+        "value": 2097152,
         "_valueFrom": "MB",
-        "message": "ফাইলের আকার সর্বোচ্চ ১০ MB হতে পারবে"
+        "message": "ফাইলটি ২ MB-এর বেশি। ছবির স্ক্রিনশট নিয়ে বা ছোট করে আবার দিন।"
        },
        "max_file_count": {
         "value": 2,
