@@ -21,7 +21,7 @@ COMMON_CSS='''
 .cta{background:#167452;color:#FBF3E6}
 .cta .wrap{display:flex;flex-wrap:wrap;gap:24px;align-items:center;justify-content:space-between;padding-block:48px}
 .cta h2{font-size:clamp(28px,3.4vw,40px);font-weight:800;font-stretch:80%}
-.cta p{opacity:.85;margin-top:6px}
+.cta p{margin-top:6px}
 .meta{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font:500 14.5px/1.3 var(--f-body);color:var(--ink-soft)}
 .chip-cat{font:700 13px/1 var(--f-body);background:var(--red);color:#fff;padding:7px 10px}
 .note-draft{display:inline-flex;gap:10px;align-items:center;font:600 14px/1.4 var(--f-body);background:var(--paper-2);border:1px dashed var(--ink-soft);padding:10px 14px;color:var(--ink-soft)}
@@ -180,8 +180,8 @@ def message(content, fname, other):
     oph="img/"+os.path.basename(om["photo"])
     body=phero(f'<span>বাণী</span><span aria-hidden="true">/</span><span>{meta["title"]}</span>', meta["title"])+f'''
 <section class="msg"><div class="wrap">
- <aside class="who"><figure><img src="{photo}" alt="{meta["name"]}, {meta["role"]}" width="480" height="600"></figure>
-  <div class="card"><b>{meta["name"]}</b><p class="role">{meta["role"]}</p><span>বাংলাদেশ মুক্তিযোদ্ধা প্রজন্ম কাউন্সিল (BMPC)</span><span>কেন্দ্রীয় কাউন্সিল</span></div></aside>
+ <div class="who"><figure><img src="{photo}" alt="{meta["name"]}, {meta["role"]}" width="480" height="600"></figure>
+  <div class="card"><b>{meta["name"]}</b><p class="role">{meta["role"]}</p><span>বাংলাদেশ মুক্তিযোদ্ধা প্রজন্ম কাউন্সিল (BMPC)</span><span>কেন্দ্রীয় কাউন্সিল</span></div></div>
  <article class="letter"><p class="salute">{sal}</p><p class="greet">{greet}</p>{out}
   <div class="sign">{"<span>ধন্যবাদান্তে,</span>" if "secretary" in fname else ""}<span class="sig">{meta["name"]}</span><b>{meta["role"]}</b><span>বাংলাদেশ মুক্তিযোদ্ধা প্রজন্ম কাউন্সিল (BMPC)</span><span>কেন্দ্রীয় কাউন্সিল</span></div>
  </article>

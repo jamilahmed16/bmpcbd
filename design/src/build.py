@@ -384,7 +384,7 @@ details.policy[open] summary::after{content:"−"}
 .tree{background:#EFE8DA;border:2px solid var(--ink)}
 .tree svg{display:block;width:100%;height:auto}
 .box{border:2px solid var(--ink);padding:20px 22px;background:var(--field)}
-.box h3{font-size:20px;margin-bottom:12px}
+.box h2{font-size:20px;margin-bottom:12px}
 .prog{list-style:none;margin:0;padding:0;display:grid;gap:4px}
 .prog li{display:grid;grid-template-columns:30px minmax(0,1fr);gap:10px;align-items:center;font:500 15px/1.4 var(--f-body);padding:6px 0}
 .prog i{width:26px;height:26px;display:grid;place-items:center;border:2px solid var(--ink);font:700 14px/1 var(--f-display);font-style:normal}
@@ -500,7 +500,7 @@ JOIN = header("join") + f'''
  </div>
  <aside class="aside" aria-label="আবেদনের সহায়িকা">
   <div class="tree poster">{art.banyan_svg()}</div>
-  <div class="box"><h3>শুরু করার আগে হাতের কাছে রাখুন</h3><p class="boxnote">ফর্মে এই কাগজগুলোর ছবি বা PDF যুক্ত করতে হবে, প্রতিটি সর্বোচ্চ ৫ MB:</p><ul class="need"><li>আপনার পাসপোর্ট সাইজ ছবি</li><li>মুক্তিযোদ্ধা সনদ, গেজেট বা পরিচয়পত্রের কপি</li><li>আপনার NID বা পাসপোর্টের কপি</li></ul></div>
+  <div class="box"><h2>শুরু করার আগে হাতের কাছে রাখুন</h2><p class="boxnote">ফর্মে এই কাগজগুলোর ছবি বা PDF যুক্ত করতে হবে, প্রতিটি সর্বোচ্চ ৫ MB:</p><ul class="need"><li>আপনার পাসপোর্ট সাইজ ছবি</li><li>মুক্তিযোদ্ধা সনদ, গেজেট বা পরিচয়পত্রের কপি</li><li>আপনার NID বা পাসপোর্টের কপি</li></ul></div>
  </aside>
 </div>
 </main>''' + FOOTER
