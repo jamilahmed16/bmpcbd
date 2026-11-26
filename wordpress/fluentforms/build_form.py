@@ -107,7 +107,7 @@ def fields(with_uploads=True):
         radio("location", "বর্তমান অবস্থান", [HOME, ABROAD], default=HOME),
     ]
     if with_uploads:
-        f.append(image_upload("photo", "পাসপোর্ট সাইজ ছবি", "পরিচয়পত্র ও সদস্য তালিকার জন্য। JPG বা PNG, সর্বোচ্চ ২ MB।", required=False))
+        f.append(image_upload("photo", "পাসপোর্ট সাইজ ছবি", "পরিচয়পত্র ও সদস্য তালিকার জন্য। JPG বা PNG, সর্বোচ্চ ২ MB।"))
     f += [
         section("খ. বীর মুক্তিযোদ্ধা পিতা বা মাতার তথ্য"),
         cols([radio("relation", "সম্পর্ক", ["বীর মুক্তিযোদ্ধা পিতা", "বীর মুক্তিযোদ্ধা মাতা"])],
@@ -123,11 +123,11 @@ def fields(with_uploads=True):
              [text("nid", "পরিচয়পত্রের নম্বর", "নম্বরটি লিখুন", help_="প্রবাসে থাকলে এবং NID না থাকলে পাসপোর্ট বা জন্ম নিবন্ধন নম্বর দিন")]),
     ]
     if with_uploads:
-        f.append(upload("doc_nid", "NID / পাসপোর্টের কপি", "পরিচয় নিশ্চিত করার জন্য। PDF বা JPG, সর্বোচ্চ ২ MB।"))
+        f.append(upload("doc_nid", "NID / পাসপোর্টের কপি", "পরিচয় নিশ্চিত করার জন্য। PDF বা JPG, সর্বোচ্চ ২ MB।", required=False))
     f += [
         cols([text("phone", "মোবাইল / হোয়াটসঅ্যাপ নম্বর", "+8801XXXXXXXXX", typ="tel", msg="কান্ট্রি কোডসহ সঠিক নম্বর দিন",
                    help_="কান্ট্রি কোডসহ লিখুন (যেমন: +880…), প্রবাসে থাকলে সে দেশের কোড দিন")],
-             [email("email", "ইমেইল অ্যাড্রেস", "name@example.com", required=True, help_="আপডেট ও কনফার্মেশন পাঠানোর জন্য")]),
+             [email("email", "ইমেইল অ্যাড্রেস", "name@example.com", required=False, help_="আপডেট ও কনফার্মেশন পাঠানোর জন্য")]),
         section("ঘ. ঠিকানা"),
         html('<p class="bmpc-sub">স্থায়ী ঠিকানা (বাংলাদেশ)</p>'),
         cols([select("division", "বিভাগ", DIVS)], [text("district", "জেলা", "জেলার নাম")], [text("upazila", "উপজেলা / থানা", "উপজেলা বা থানা")]),

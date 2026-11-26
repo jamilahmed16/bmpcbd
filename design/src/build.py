@@ -444,7 +444,7 @@ JOIN = header("join") + f'''
     {fld("workplace","কর্মস্থল / প্রতিষ্ঠান",req=False,ph="প্রতিষ্ঠানের নাম",full=True)}
     {seg("location","বর্তমান অবস্থান",["বাংলাদেশে","প্রবাসে (দেশের বাইরে)"],full=True,default="বাংলাদেশে")}
    </div>
-   {upload("photo","পাসপোর্ট সাইজ ছবি","পরিচয়পত্র ও সদস্য তালিকার জন্য। JPG বা PNG, সর্বোচ্চ ২ MB।",req=False)}
+   {upload("photo","পাসপোর্ট সাইজ ছবি","পরিচয়পত্র ও সদস্য তালিকার জন্য। JPG বা PNG, সর্বোচ্চ ২ MB।")}
   </fieldset>
   <fieldset id="s2"><legend><b>খ</b>বীর মুক্তিযোদ্ধা পিতা বা মাতার তথ্য</legend>
    <div class="row">
@@ -460,10 +460,10 @@ JOIN = header("join") + f'''
     {seg("id_type","পরিচয়পত্রের ধরন",["জাতীয় পরিচয়পত্র (NID)","পাসপোর্ট","জন্ম নিবন্ধন"])}
     {fld("nid","পরিচয়পত্রের নম্বর",ph="নম্বরটি লিখুন",hint="প্রবাসে থাকলে এবং NID না থাকলে পাসপোর্ট বা জন্ম নিবন্ধন নম্বর দিন")}
    </div>
-   {upload("doc_nid","NID / পাসপোর্টের কপি","পরিচয় নিশ্চিত করার জন্য। PDF বা JPG, সর্বোচ্চ ২ MB।")}
+   {upload("doc_nid","NID / পাসপোর্টের কপি","পরিচয় নিশ্চিত করার জন্য। PDF বা JPG, সর্বোচ্চ ২ MB।",req=False)}
    <div class="row">
     {fld("phone","মোবাইল / হোয়াটসঅ্যাপ নম্বর","tel",ph="+8801XXXXXXXXX",extra=' inputmode="tel"',err="কান্ট্রি কোডসহ সঠিক নম্বর দিন",hint="কান্ট্রি কোডসহ লিখুন (যেমন: +880…), প্রবাসে থাকলে সে দেশের কোড দিন")}
-    {fld("email","ইমেইল অ্যাড্রেস","email",ph="name@example.com",hint="আপডেট ও কনফার্মেশন পাঠানোর জন্য")}
+    {fld("email","ইমেইল অ্যাড্রেস","email",req=False,ph="name@example.com",hint="আপডেট ও কনফার্মেশন পাঠানোর জন্য")}
    </div>
   </fieldset>
   <fieldset id="s4"><legend><b>ঘ</b>ঠিকানা</legend>

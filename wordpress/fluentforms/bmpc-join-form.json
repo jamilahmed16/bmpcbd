@@ -913,8 +913,8 @@
           "help_message": "আপডেট ও কনফার্মেশন পাঠানোর জন্য",
           "validation_rules": {
            "required": {
-            "value": true,
-            "message": "ইমেইল দিন"
+            "value": false,
+            "message": "এই তথ্যটি দিন"
            },
            "email": {
             "value": true,
