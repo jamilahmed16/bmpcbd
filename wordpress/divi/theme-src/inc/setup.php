@@ -32,8 +32,15 @@ function bmpc_setup_screen() {
 			'seo'       => ! empty( $_POST['seo'] ),
 			'overwrite' => ! empty( $_POST['overwrite'] ),
 		);
-		$log = bmpc_run_setup( $opt );
+		@set_time_limit( 600 );
+		wp_raise_memory_limit( 'admin' );
+		try {
+			$log = bmpc_run_setup( $opt );
+		} catch ( \Throwable $e ) {
+			$log = array( array( 'warn', 'Setup stopped with an error: ' . esc_html( $e->getMessage() ) . ' (' . esc_html( basename( $e->getFile() ) ) . ':' . (int) $e->getLine() . ')' ) );
+		}
 		update_option( 'bmpc_setup_done', time() );
+		update_option( 'bmpc_setup_last_log', $log );
 		delete_transient( 'bmpc_setup_notice' );
 	}
 	if ( isset( $_POST['bmpc_social_save'] ) && check_admin_referer( 'bmpc_social' ) ) {
@@ -138,7 +145,9 @@ function bmpc_import_images( $images ) {
 		$type = wp_check_filetype( $up['file'] );
 		$id   = wp_insert_attachment( array( 'post_mime_type' => $type['type'], 'post_title' => $img['alt'] ? $img['alt'] : $file, 'post_status' => 'inherit' ), $up['file'] );
 		if ( is_wp_error( $id ) || ! $id ) { continue; }
+		add_filter( 'intermediate_image_sizes_advanced', 'bmpc_limit_sizes' );
 		wp_update_attachment_metadata( $id, wp_generate_attachment_metadata( $id, $up['file'] ) );
+		remove_filter( 'intermediate_image_sizes_advanced', 'bmpc_limit_sizes' );
 		if ( $img['alt'] ) { update_post_meta( $id, '_wp_attachment_image_alt', $img['alt'] ); }
 		$map[ $file ] = $id; $hashes[ $file ] = $hash; $n++;
 	}
@@ -150,6 +159,11 @@ function bmpc_import_images( $images ) {
 		$log[] = array( 'ok', 'Site icon set to the BMPC logo.' );
 	}
 	return $log;
+}
+
+/** Only the sizes the theme uses, so the import stays fast on shared hosting. */
+function bmpc_limit_sizes( $sizes ) {
+	return array_intersect_key( $sizes, array_flip( array( 'thumbnail', 'medium', 'medium_large', 'large' ) ) );
 }
 
 /** Replace {{IMG:…}}, {{URL:…}}, {{POST:…}} and {{FLUENTFORM}} placeholders. */
