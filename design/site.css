@@ -50,7 +50,11 @@ footer .brand .logo{width:92px;height:92px}
 .nav{align-items:center}
 .nav>a,.dd-btn{text-decoration:none;opacity:.86;padding-block:8px;border-bottom:2px solid transparent;font:inherit;color:inherit;background:none;border-top:0;border-left:0;border-right:0;cursor:pointer;display:inline-flex;gap:6px;align-items:center}
 .nav>a:hover,.nav>a[aria-current="page"],.dd-btn:hover,.dd-btn[aria-current="page"],.dd:focus-within .dd-btn{opacity:1;border-bottom-color:var(--on-red)}
-.dd-btn span{font-size:11px;opacity:.8}
+.dd-btn{padding-inline:0}
+/* Drawn chevron (not a text glyph): same stroke in the design and the WordPress menu */
+.chev,.nav .bmpc-menu>li.menu-item-has-children>a::after{content:"";width:6px;height:6px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:translateY(-2px) rotate(45deg);opacity:.75;transition:transform .2s ease-out}
+.dd:hover .chev,.dd:focus-within .chev,.nav .bmpc-menu>li.menu-item-has-children:hover>a::after,.nav .bmpc-menu>li.menu-item-has-children:focus-within>a::after{transform:translateY(1px) rotate(225deg)}
+@media (prefers-reduced-motion:reduce){.chev,.nav .bmpc-menu>li>a::after{transition:none}}
 .dd{position:relative}
 .dd-menu{position:absolute;top:100%;left:-14px;min-width:220px;background:var(--green-deep);border:2px solid #1A1514;box-shadow:6px 6px 0 #1A1514;padding:8px 0;display:none;z-index:30}
 .dd:hover .dd-menu,.dd:focus-within .dd-menu{display:grid}
@@ -98,7 +102,7 @@ footer .brand .logo{width:92px;height:92px}
 /* footer */
 footer{background:#1A1514;color:#F3E9D8;padding-block:56px 30px;border-top:6px solid var(--red)}
 footer .cols{display:grid;grid-template-columns:minmax(0,2fr) repeat(2,minmax(0,1fr));gap:40px}
-footer h4{font:700 16px/1 var(--f-display);margin:0 0 14px;color:var(--sun)}
+footer h2.fh{font:700 16px/1 var(--f-display);margin:0 0 14px;color:#ED4A42}
 footer ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
 footer a{text-decoration:none;opacity:.85}footer a:hover{opacity:1;text-decoration:underline}
 footer .about-f{font-size:15px;opacity:.75;max-width:30em;margin-top:14px}
@@ -106,7 +110,7 @@ footer .social{display:flex;gap:10px;margin-top:18px}
 footer .social a{width:40px;height:40px;display:grid;place-items:center;border:1px solid rgba(243,233,216,.25);opacity:.85}
 footer .social a:hover{background:#0B5B3E;opacity:1;text-decoration:none}
 footer .emergency{margin-top:36px;padding:16px 18px;border:1px solid rgba(243,233,216,.18);display:flex;flex-wrap:wrap;gap:8px 22px;align-items:baseline;font-size:14px}
-footer .emergency b{font:700 15px/1 var(--f-display);color:var(--sun);margin-right:4px}
+footer .emergency b{font:700 15px/1 var(--f-display);color:#ED4A42;margin-right:4px}
 footer .emergency span{opacity:.85}
 footer .emergency strong{font:800 17px/1 var(--f-display);color:#F3E9D8;margin-right:4px}
 footer .legal{margin-top:44px;padding-top:20px;border-top:1px solid rgba(243,233,216,.14);font-size:14px;opacity:.6;display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between}
@@ -122,7 +126,7 @@ footer .legal{margin-top:44px;padding-top:20px;border-top:1px solid rgba(243,233
 @media (min-width:1600px){.wrap{max-width:1360px}body{font-size:18px}}
 @media (min-width:2200px){.wrap{max-width:1560px}body{font-size:19px}}
 /* tap targets on touch screens */
-@media (pointer:coarse){.footer a,footer li a{display:inline-block;padding-block:6px}.crumbs a{padding-block:6px}}
+@media (pointer:coarse){.footer a,footer li a{display:inline-block;padding-block:6px}.crumbs a{display:inline-block;padding:6px 2px;margin-inline:-2px;min-width:24px;text-align:center}}
 
 /* ---------- scroll motion (see motion.js) ---------- */
 .scroll-bar{position:fixed;left:0;right:0;top:env(safe-area-inset-top,0px);height:4px;background:linear-gradient(90deg,#E8362E,#FFD35C);transform:scaleX(0);transform-origin:0 50%;z-index:40;pointer-events:none}

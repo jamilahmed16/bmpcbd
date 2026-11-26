@@ -63,11 +63,11 @@ def about(content):
 '''
     body=phero('<span>আমাদের সম্পর্কে</span>','আমাদের সম্পর্কে','মুক্তিযুদ্ধের চেতনা ধারণকারী, বীর মুক্তিযোদ্ধার সন্তান ও প্রজন্মের অরাজনৈতিক সংগঠন।', art.torch_svg())+f'''
 <section class="intro"><div class="wrap">
- <div><span class="script">পরিচিতি</span><p class="big" style="margin-top:12px">{about_txt.replace("অরাজনৈতিক","<strong>অরাজনৈতিক</strong>",1)}</p></div>
+ <div><p class="big">{about_txt.replace("অরাজনৈতিক","<strong>অরাজনৈতিক</strong>",1)}</p></div>
  <figure><img src="img/welcome-banner.jpg" alt="বাংলাদেশ মুক্তিযোদ্ধা প্রজন্ম কাউন্সিল (BMPC): মুক্তিযোদ্ধা প্রজন্মের একমাত্র অরাজনৈতিক সংগঠনে আপনাকে স্বাগতম" width="960" height="354" loading="lazy"><figcaption>মুক্তিযোদ্ধা প্রজন্মের একমাত্র অরাজনৈতিক সংগঠন: বাংলাদেশ মুক্তিযোদ্ধা প্রজন্ম কাউন্সিল (BMPC)</figcaption></figure>
 </div></section>
 <section class="rules" id="policy"><div class="wrap">
- <div class="sec-head"><span class="script">সদস্য নীতিমালা</span><h2>গ্রুপের সদস্য হওয়ার নীতিমালা</h2></div>
+ <div class="sec-head"><h2>গ্রুপের সদস্য হওয়ার নীতিমালা</h2></div>
  <div class="rule-grid">{cards}</div>
 </div></section>'''+cta("নীতিমালা মেনে সদস্য হোন")
     return css, body
@@ -110,7 +110,7 @@ def manifesto(content):
  <p class="pre">{pre}</p>{arts}
  <p class="closing">{closing}</p>
 </div></div></section>
-<section class="slogan"><div class="wrap"><span class="script" style="color:#FFC9C4">আমাদের মূলমন্ত্র</span><q>{slogan}</q></div></section>'''+cta()
+<section class="slogan"><div class="wrap"><q>{slogan}</q></div></section>'''+cta()
     return css, body
 
 # ---------- CONSTITUTION
@@ -125,7 +125,7 @@ def constitution(content):
 '''
     body=phero('<a href="about.html">আমাদের সম্পর্কে</a><span aria-hidden="true">/</span><span>গঠনতন্ত্র</span>','গঠনতন্ত্র','বাংলাদেশ মুক্তিযোদ্ধা প্রজন্ম কাউন্সিলের সাংগঠনিক কাঠামো, সদস্যপদ ও পরিচালনার নিয়মাবলী।')+'''
 <section class="wait"><div class="wrap"><div class="card">
- <span class="script">শীঘ্রই</span><h2>গঠনতন্ত্রের পূর্ণ লেখা শীঘ্রই যুক্ত হবে</h2>
+ <h2>গঠনতন্ত্রের পূর্ণ লেখা শীঘ্রই যুক্ত হবে</h2>
  <p>কেন্দ্রীয় কাউন্সিল কর্তৃক অনুমোদিত গঠনতন্ত্র এখানে ধারা অনুযায়ী প্রকাশ করা হবে। ততক্ষণ সংগঠনের ঘোষণাপত্র এবং লক্ষ্য ও উদ্দেশ্য পড়ুন।</p>
  <div class="links"><a class="btn btn-green" href="manifesto.html">ঘোষণাপত্র পড়ুন</a><a class="btn btn-line" href="objectives.html">লক্ষ্য ও উদ্দেশ্য</a></div>
  <p class="note-draft">নকশার নমুনা: গঠনতন্ত্রের লেখা পেলে প্রতিটি ধারা সূচিপত্রসহ এই পাতায় সাজানো হবে।</p>
@@ -155,6 +155,7 @@ MSG_CSS=COMMON_CSS+'''
 @media (max-width:420px){.who{grid-template-columns:120px minmax(0,1fr)}.who b{font-size:22px}}
 .other{background:var(--paper-2);border-top:1px solid var(--rule)}
 .other .wrap{padding-block:48px;display:flex;flex-wrap:wrap;gap:20px;align-items:center;justify-content:space-between}
+.other-h{font:800 clamp(24px,2.6vw,30px)/1.2 var(--f-display);font-stretch:82%;margin:0}
 .other a.card2{display:grid;grid-template-columns:72px minmax(0,1fr) auto;gap:16px;align-items:center;text-decoration:none;border:2px solid var(--ink);background:var(--field);padding:12px 18px 12px 12px;min-width:0;max-width:520px;width:100%}
 .other a.card2:hover{box-shadow:6px 6px 0 var(--green)}
 .other img{width:72px;height:72px;object-fit:cover;object-position:top}
@@ -185,7 +186,7 @@ def message(content, fname, other):
   <div class="sign">{"<span>ধন্যবাদান্তে,</span>" if "secretary" in fname else ""}<span class="sig">{meta["name"]}</span><b>{meta["role"]}</b><span>বাংলাদেশ মুক্তিযোদ্ধা প্রজন্ম কাউন্সিল (BMPC)</span><span>কেন্দ্রীয় কাউন্সিল</span></div>
  </article>
 </div></section>
-<section class="other"><div class="wrap"><div><span class="script">আরও পড়ুন</span></div>
+<section class="other"><div class="wrap"><div><h2 class="other-h">আরও পড়ুন</h2></div>
  <a class="card2" href="{other[1]}"><img src="{oph}" alt=""><span><small>{om["title"]}</small><strong>{om["name"]}</strong></span><span class="arr" aria-hidden="true">→</span></a></div></section>'''+cta("ঐক্যবদ্ধ হওয়ার আহ্বানে সাড়া দিন")
     return MSG_CSS, body
 
@@ -245,7 +246,7 @@ NEWS_CSS=COMMON_CSS+'''
 def news_list(content):
     it=news_items(content); first, rest = it[0], it[1:]
     grid = ('<section class="grid-sec"><div class="wrap"><h2 class="sr">আরও সংবাদ</h2><div class="ngrid">' + "".join(card(n) for n in rest) + '</div></div></section>') if rest else \
-           '<section class="empty"><div class="wrap"><div class="box"><div><b>আরও সংবাদ শীঘ্রই</b><p>নতুন পোস্ট প্রকাশ হলে এখানে তালিকা আকারে দেখা যাবে।</p></div><a class="btn btn-green" href="join.html">সদস্য হোন</a></div></div></section>'
+           '<section class="empty"><div class="wrap"><div class="box"><div><b>সংগঠনের পাশে থাকুন</b><p>কাউন্সিলের নতুন কর্মসূচি ও সংবাদ এই পাতায় প্রকাশিত হয়।</p></div><a class="btn btn-green" href="join.html">সদস্য হোন</a></div></div></section>'
     body=phero('<span>সর্বশেষ সংবাদ</span>','সর্বশেষ সংবাদ','কাউন্সিলের কর্মসূচি, মানববন্ধন, দিবস পালন ও সাংগঠনিক কার্যক্রমের খবর।')+ \
         f'<section class="feat"><div class="wrap">{card(first, True)}</div></section>' + grid
     return NEWS_CSS, body

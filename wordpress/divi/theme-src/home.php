@@ -23,7 +23,7 @@ $paged = max( 1, (int) get_query_var( 'paged' ) );
 	<?php if ( $i > 1 || $paged > 1 ) : ?></div></div></section><?php endif; ?>
 	<div class="wrap bmpc-pager"><?php the_posts_pagination( array( 'prev_text' => '← আগের', 'next_text' => 'পরের →' ) ); ?></div>
 	<?php if ( 1 === $i && 1 === $paged ) : ?>
-	<section class="empty"><div class="wrap"><div class="box"><div><b>আরও সংবাদ শীঘ্রই</b><p>নতুন পোস্ট প্রকাশ হলে এখানে তালিকা আকারে দেখা যাবে।</p></div><a class="btn btn-green" href="<?php echo esc_url( bmpc_page_url( 'join' ) ); ?>">সদস্য হোন</a></div></div></section>
+	<section class="empty"><div class="wrap"><div class="box"><div><b>সংগঠনের পাশে থাকুন</b><p>কাউন্সিলের নতুন কর্মসূচি ও সংবাদ এই পাতায় প্রকাশিত হয়।</p></div><a class="btn btn-green" href="<?php echo esc_url( bmpc_page_url( 'join' ) ); ?>">সদস্য হোন</a></div></div></section>
 	<?php endif; ?>
 <?php else : ?>
 	<section class="empty" style="padding-top:64px"><div class="wrap"><div class="box"><div><b>এখনো কোনো সংবাদ নেই</b><p>প্রথম সংবাদ প্রকাশ হলে এখানে দেখা যাবে।</p></div></div></div></section>

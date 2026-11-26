@@ -5,7 +5,11 @@
 .bmpc-code.et_pb_fullwidth_code,.bmpc-code .et_pb_code_inner{padding:0;margin:0}
 :where(body.bmpc) h1,:where(body.bmpc) h2,:where(body.bmpc) h3,:where(body.bmpc) h4,:where(body.bmpc) h5,:where(body.bmpc) h6{padding-bottom:0;color:inherit;font-weight:inherit}
 :where(body.bmpc) p{padding-bottom:0}
-:where(body.bmpc) ul,:where(body.bmpc) ol{padding-bottom:0;line-height:inherit}
+/* Divi's ".entry-content ul, .et-l--body ul" (0,1,1) adds 23px bottom padding and a 26px line-height to every list.
+   body.bmpc ul (0,1,2) beats it, and still loses to the design's own ".page .x ul" rules (0,2,1). */
+body.bmpc ul,body.bmpc ol{padding-bottom:0;line-height:inherit}
+/* Divi's "p:not(.has-background):last-of-type" strips bottom padding from boxed closing paragraphs. */
+body.bmpc-page-manifesto p.closing{padding-bottom:26px}
 :where(body.bmpc) a{color:inherit}
 body.bmpc{font-size:17px;line-height:1.75;color:var(--ink);font-family:var(--f-body)}
 body.bmpc #main-content .container{padding-top:48px}
@@ -15,7 +19,6 @@ body.bmpc .et_pb_section:not(.bmpc-sec) h1,body.bmpc .et_pb_section:not(.bmpc-se
 .nav .bmpc-menu{display:flex;gap:22px;list-style:none;margin:0;padding:0;align-items:center}
 .nav .bmpc-menu>li{position:relative;list-style:none;padding:0}
 .nav .bmpc-menu>li>a{display:inline-flex;gap:6px;align-items:center;text-decoration:none;opacity:.86;padding-block:8px;border-bottom:2px solid transparent;font:500 15px/1 var(--f-body)}
-.nav .bmpc-menu>li.menu-item-has-children>a::after{content:"▾";font-size:11px;opacity:.8}
 .nav .bmpc-menu>li>a:hover,.nav .bmpc-menu>li:focus-within>a,.nav .bmpc-menu>li.current-menu-item>a,.nav .bmpc-menu>li.current-menu-ancestor>a,.nav .bmpc-menu>li.current_page_parent>a{opacity:1;border-bottom-color:var(--on-red)}
 .nav .sub-menu{position:absolute;top:100%;left:-14px;min-width:220px;background:var(--green-deep);border:2px solid #1A1514;box-shadow:6px 6px 0 #1A1514;padding:8px 0;margin:0;list-style:none;display:none;z-index:30}
 .nav li:hover>.sub-menu,.nav li:focus-within>.sub-menu{display:grid}

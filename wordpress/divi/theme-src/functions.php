@@ -4,7 +4,7 @@
  */
 if ( ! defined( 'ABSPATH' ) ) { exit; }
 
-define( 'BMPC_VER', '1.1.3' );
+define( 'BMPC_VER', '1.1.5' );
 define( 'BMPC_DIR', get_stylesheet_directory() );
 define( 'BMPC_URI', get_stylesheet_directory_uri() );
 
@@ -24,17 +24,31 @@ function bmpc_data() {
 /** Styles and scripts. */
 add_action( 'wp_enqueue_scripts', function () {
 	wp_enqueue_style( 'divi-parent', get_template_directory_uri() . '/style.css', array(), null );
-	wp_enqueue_style( 'bmpc-fonts', 'https://fonts.googleapis.com/css2?family=Anek+Bangla:wdth,wght@75..100,400..800&family=Galada&family=Hind+Siliguri:wght@400;500;600&display=swap', array(), null );
+	// Fonts are self-hosted in assets/fonts (declared at the top of bmpc.css); Divi's Open Sans is never used.
+	wp_dequeue_style( 'et-divi-open-sans' );
 	$css = BMPC_DIR . '/assets/css/bmpc.css';
-	wp_enqueue_style( 'bmpc', BMPC_URI . '/assets/css/bmpc.css', array( 'divi-parent', 'bmpc-fonts' ), BMPC_VER . '.' . filemtime( $css ) );
+	wp_enqueue_style( 'bmpc', BMPC_URI . '/assets/css/bmpc.css', array( 'divi-parent' ), BMPC_VER . '.' . filemtime( $css ) );
 	wp_enqueue_script( 'bmpc-motion', BMPC_URI . '/assets/js/motion.js', array(), BMPC_VER . '.' . filemtime( BMPC_DIR . '/assets/js/motion.js' ), true );
 	wp_enqueue_script( 'bmpc', BMPC_URI . '/assets/js/bmpc.js', array(), BMPC_VER . '.' . filemtime( BMPC_DIR . '/assets/js/bmpc.js' ), true );
 }, 20 );
 
 add_action( 'wp_head', function () {
-	echo '<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>' . "\n";
+	// The headline and body fonts for Bangla text: start downloading them before the CSS is parsed.
+	foreach ( array( 'anek-bangla-bengali', 'hind-siliguri-400-bengali' ) as $font ) {
+		echo '<link rel="preload" href="' . esc_url( BMPC_URI . '/assets/fonts/' . $font . '.woff2' ) . '" as="font" type="font/woff2" crossorigin>' . "\n";
+	}
 	echo '<meta name="theme-color" content="#073D2A">' . "\n";
 }, 1 );
+
+/** Divi prints a second viewport tag with user-scalable=0, which blocks pinch-zoom (WCAG 1.4.4). header.php has the right one. */
+add_action( 'init', function () {
+	remove_action( 'wp_head', 'et_add_viewport_meta' );
+} );
+
+/** Divi page templates have no <main>; header.php/footer.php add it, except where home.php/single.php already do. */
+function bmpc_wraps_main() {
+	return ! is_home() && ! is_singular( 'post' );
+}
 
 /** Body classes used to scope each page's styles. */
 add_filter( 'body_class', function ( $classes ) {

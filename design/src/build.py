@@ -21,7 +21,7 @@ def header(cur):
         cc=' aria-current="page"' if k==g else ''
         if sub:
             items="".join(f'<a href="{h}">{x}</a>' for h,x in sub)
-            nav+=f'<div class="dd"><button type="button" class="dd-btn"{cc} aria-haspopup="true">{t}<span aria-hidden="true">▾</span></button><div class="dd-menu">{items}</div></div>'
+            nav+=f'<div class="dd"><button type="button" class="dd-btn"{cc} aria-haspopup="true">{t}<span class="chev" aria-hidden="true"></span></button><div class="dd-menu">{items}</div></div>'
             drop+=f'<span class="drop-h">{t}</span>'+"".join(f'<a class="sub" href="{h}">{x}</a>' for h,x in sub)
         else:
             nav+=f'<a href="{href}"{cc}>{t}</a>'; drop+=f'<a href="{href}">{t}</a>'
@@ -43,8 +43,8 @@ SOCIAL = ('<div class="social" aria-label="সামাজিক যোগায
 FOOTER = f'''<footer id="footer"><div class="wrap"><div class="cols">
 <div><a class="brand" href="index.html">{LOGO}<span><b>বাংলাদেশ মুক্তিযোদ্ধা প্রজন্ম কাউন্সিল</b></span></a>
 <p class="about-f">মুক্তিযুদ্ধের চেতনা ধারণকারী অরাজনৈতিক সংগঠন। বীর মুক্তিযোদ্ধার সন্তান ও প্রজন্মের ঐক্যবদ্ধ প্ল্যাটফর্ম।</p>{SOCIAL}</div>
-<div><h4>সংগঠন</h4><ul><li><a href="about.html">আমাদের সম্পর্কে</a></li><li><a href="manifesto.html">ঘোষণাপত্র</a></li><li><a href="constitution.html">গঠনতন্ত্র</a></li><li><a href="objectives.html">লক্ষ্য ও উদ্দেশ্য</a></li></ul></div>
-<div><h4>অংশ নিন</h4><ul><li><a href="join.html">সদস্য হোন</a></li><li><a href="chairman.html">চেয়ারম্যানের বাণী</a></li><li><a href="secretary.html">মহাসচিবের বাণী</a></li><li><a href="news.html">সর্বশেষ সংবাদ</a></li></ul></div>
+<div><h2 class="fh">সংগঠন</h2><ul><li><a href="about.html">আমাদের সম্পর্কে</a></li><li><a href="manifesto.html">ঘোষণাপত্র</a></li><li><a href="constitution.html">গঠনতন্ত্র</a></li><li><a href="objectives.html">লক্ষ্য ও উদ্দেশ্য</a></li></ul></div>
+<div><h2 class="fh">অংশ নিন</h2><ul><li><a href="join.html">সদস্য হোন</a></li><li><a href="chairman.html">চেয়ারম্যানের বাণী</a></li><li><a href="secretary.html">মহাসচিবের বাণী</a></li><li><a href="news.html">সর্বশেষ সংবাদ</a></li></ul></div>
 </div><div class="emergency" aria-label="জরুরি হটলাইন"><b>জরুরি নম্বর</b><span><strong>৯৯৯</strong> জাতীয় জরুরি সেবা (পুলিশ, ফায়ার সার্ভিস, অ্যাম্বুলেন্স)</span><span><strong>৩৩৩</strong> সরকারি তথ্য ও সেবা</span><span><strong>১০২</strong> ফায়ার সার্ভিস</span><span><strong>১০৯ / ১০৯২১</strong> নারী ও শিশু নির্যাতন প্রতিরোধ</span><span><strong>১৬২৬৩</strong> স্বাস্থ্য বাতায়ন</span><span><strong>১৬৪৩০</strong> আইনগত সহায়তা</span></div><div class="legal"><span>© ২০২৬ বাংলাদেশ মুক্তিযোদ্ধা প্রজন্ম কাউন্সিল</span><span>Developed by Rank On Fire LLC</span></div></div></footer>'''
 
 def page(title, css, body, full, script="", fname=None, news=None):
@@ -173,24 +173,24 @@ HOME = header("home") + f'''
 <section class="about" id="about"><div class="wrap">
  <div><div class="big" aria-hidden="true">১৯<span>৭১</span></div>
   <span class="tag">যে ইতিহাস আমাদের পিতা ও পিতামহরা লিখেছেন, তা পৌঁছে দিতে হবে পরের প্রজন্মের হাতে।</span></div>
- <div><div class="sec-head" style="margin-bottom:24px"><span class="script">আমাদের সম্পর্কে</span><h2>মুক্তিযুদ্ধের চেতনা ধারণকারী অরাজনৈতিক সংগঠন</h2></div>
+ <div><div class="sec-head" style="margin-bottom:24px"><h2>মুক্তিযুদ্ধের চেতনা ধারণকারী অরাজনৈতিক সংগঠন</h2></div>
   <p class="body">আমাদের সংগঠন <strong>অরাজনৈতিক</strong> এবং মুক্তিযুদ্ধের চেতনা ধারণ করে। এখানে আমরা বাংলাদেশের মহান মুক্তিযুদ্ধের ইতিহাস, গৌরবগাঁথা এবং মুক্তিযোদ্ধাদের অবদান সম্পর্কে আলোচনা করে থাকি। নতুন প্রজন্মকে মুক্তিযুদ্ধের <strong>সত্যিকার ইতিহাস</strong> জানানো এবং দেশপ্রেমে উদ্বুদ্ধ করা আমাদের মূল লক্ষ্য।</p>
   <div class="pill-row"><a class="pill" href="about.html" style="text-decoration:none;background:var(--green);color:#fff;border-color:var(--green)">বিস্তারিত পরিচিতি →</a><span class="pill">ঐক্য ও সংহতি</span><span class="pill">সঠিক ইতিহাস</span><span class="pill">মুক্তিযোদ্ধা পরিবারের কল্যাণ</span><span class="pill">দুর্নীতিমুক্ত সমাজ</span></div></div>
 </div></section>
 <section class="goals" id="goals"><div class="wrap">
- <div class="sec-head"><span class="script">লক্ষ্য ও উদ্দেশ্য</span><h2>আটটি অঙ্গীকার</h2></div>
+ <div class="sec-head"><h2>আটটি অঙ্গীকার</h2></div>
  <ol>{goal_li}</ol>
  <div class="foot"><p class="closing">{closing}</p><a class="btn btn-paper" href="objectives.html">সব উদ্দেশ্য দেখুন</a></div>
 </div></section>
 <section class="leaders"><div class="wrap">
- <div class="sec-head"><span class="script">নেতৃত্বের বাণী</span><h2>শেকড় সন্ধানী এক আন্দোলন</h2></div>
+ <div class="sec-head"><h2>শেকড় সন্ধানী এক আন্দোলন</h2></div>
  <div class="lgrid">
   <a class="lcard" href="chairman.html"><img src="img/chairman.jpg" alt="রহিমুল ফারুক বাবু" width="375" height="666"><div><q>আমাদের এই ওয়েবসাইটটি হবে আমাদের মিলনকেন্দ্র—যেখানে আমরা ইতিহাসের সঠিক চর্চা করব, আমাদের সামাজিক দায়বদ্ধতা পালন করব এবং একে অপরের পাশে দাঁড়াব।</q><b>রহিমুল ফারুক বাবু</b><span>চেয়ারম্যান, কেন্দ্রীয় কাউন্সিল</span><em>চেয়ারম্যানের বাণী পড়ুন →</em></div></a>
   <a class="lcard" href="secretary.html"><img src="img/secretary.jpg" alt="মোঃ আল আমিন" width="480" height="458"><div><q>মহাসচিব হিসেবে আমার অঙ্গীকার হলো—সংগঠনের প্রতিটি স্তরে প্রশাসনিক স্বচ্ছতা বজায় রাখা।</q><b>মোঃ আল আমিন</b><span>মহাসচিব, কেন্দ্রীয় কাউন্সিল</span><em>মহাসচিবের বাণী পড়ুন →</em></div></a>
  </div>
 </div></section>
 <section class="plans"><div class="wrap">
- <div class="sec-head"><span class="script">কর্মপরিকল্পনা</span><h2>আজকের কাজ, আগামীর বাংলাদেশ</h2></div>
+ <div class="sec-head"><h2>আজকের কাজ, আগামীর বাংলাদেশ</h2></div>
  <div class="grid">
   <article class="plan"><span class="count">৬</span><h3>স্বল্পমেয়াদী উদ্দেশ্য</h3><ul>
    <li>সকল বীর মুক্তিযোদ্ধা, সন্তান ও প্রজন্মকে ডাটাবেজে অন্তর্ভুক্ত করে প্রত্যয়ন পত্র ও আইডি কার্ড প্রদান</li>
@@ -205,11 +205,11 @@ HOME = header("home") + f'''
  </div>
 </div></section>
 <section class="hnews"><div class="wrap">
- <div class="sec-head row-head"><div><span class="script">সর্বশেষ সংবাদ</span><h2>মাঠের কর্মসূচি</h2></div><a class="btn btn-green" href="news.html">সব সংবাদ</a></div>
+ <div class="sec-head row-head"><div><h2>মাঠের কর্মসূচি</h2></div><a class="btn btn-green" href="news.html">সব সংবাদ</a></div>
  {pages2.home_news(os.path.dirname(sys.argv[2]))}
 </div></section>
 <section class="days" id="days"><div class="wrap">
- <div class="sec-head"><span class="script">কার্যক্রম</span><h2>যে দিনগুলো আমরা প্রতি বছর পালন করি</h2></div>
+ <div class="sec-head"><h2>যে দিনগুলো আমরা প্রতি বছর পালন করি</h2></div>
  <div class="day-row">
   <article class="day poster">{art.minar_svg()}<p class="date">২১ ফেব্রুয়ারি<small>শহীদ দিবস ও আন্তর্জাতিক মাতৃভাষা দিবস</small></p></article>
   <article class="day poster">{art.sunrise_svg()}<p class="date">২৬ মার্চ<small>স্বাধীনতা দিবস ও সংগঠনের প্রতিষ্ঠা বার্ষিকী</small></p></article>
@@ -218,7 +218,7 @@ HOME = header("home") + f'''
  <div class="acts"><strong>সারা বছর:</strong><span>বিতর্ক ও কুইজ</span><span>স্বেচ্ছায় রক্তদান</span><span>ত্রাণ বিতরণ</span><span>দুর্নীতি ও মাদকবিরোধী মানববন্ধন</span><span>ঈদ পুনর্মিলনী</span><span>বিনামূল্যে তথ্য সেবা</span></div>
 </div></section>
 <section class="join" id="join"><div class="wrap">
- <div><span class="script">সদস্যপদ</span><h2>আপনি কি বীর মুক্তিযোদ্ধার সন্তান বা প্রজন্ম?</h2>
+ <div><h2>আপনি কি বীর মুক্তিযোদ্ধার সন্তান বা প্রজন্ম?</h2>
   <p class="lead">শুধুমাত্র বীর মুক্তিযোদ্ধার সন্তান ও প্রজন্ম এই কাউন্সিলের সদস্য হতে পারবেন। আসুন, একসাথে ইতিহাসের দায়িত্ব নিই।</p>
   <a class="btn btn-paper" href="join.html">অনলাইন ফর্ম পূরণ করুন</a></div>
  <ol class="steps"><li><b>১</b><span>প্রকৃত পরিচয়ে অ্যাকাউন্ট তৈরি করুন</span></li><li><b>২</b><span>অনলাইন সদস্য ফর্ম পূরণ করুন</span></li><li><b>৩</b><span>সদস্য নীতিমালা ও পারস্পরিক শ্রদ্ধা মেনে চলুন</span></li></ol>
@@ -288,15 +288,15 @@ OBJ = header("objectives") + f'''
  <div class="hero-art poster">{art.torch_svg()}</div>
 </div></section>
 <section class="mission" id="mission"><div class="wrap">
- <div class="sec-head"><span class="script">আমাদের লক্ষ্য</span><h2>আটটি মূল লক্ষ্য</h2></div>
+ <div class="sec-head"><h2>আটটি মূল লক্ষ্য</h2></div>
  <ol>{mission_li}</ol>
 </div></section>
 <section class="short" id="short"><div class="wrap">
- <div class="sec-head"><span class="script">স্বল্পমেয়াদী উদ্দেশ্য</span><h2>এখনই যে কাজগুলো শুরু</h2><p class="intro">এ সংগঠনের উদ্দেশ্য বিস্তৃতভাবে বর্ণিত হয়েছে। সংক্ষেপে এ সংগঠনের কয়েকটি মৌলিক লক্ষ্য ও উদ্দেশ্য নিচে বর্ণিত হলো:</p></div>
+ <div class="sec-head"><h2>স্বল্পমেয়াদী উদ্দেশ্য</h2><p class="intro">এ সংগঠনের উদ্দেশ্য বিস্তৃতভাবে বর্ণিত হয়েছে। সংক্ষেপে এ সংগঠনের কয়েকটি মৌলিক লক্ষ্য ও উদ্দেশ্য নিচে বর্ণিত হলো:</p></div>
  <div class="cards">{short_cards}</div>
 </div></section>
 <section class="long" id="long"><div class="wrap">
- <div class="sec-head"><span class="script">দীর্ঘমেয়াদী উদ্দেশ্য</span><h2>প্রজন্ম ধরে যে কাজ চলবে</h2></div>
+ <div class="sec-head"><h2>দীর্ঘমেয়াদী উদ্দেশ্য</h2></div>
  <div class="chips" role="group" aria-label="বিষয় অনুযায়ী দেখুন">{chips}</div>
  <p class="count-line" id="count" aria-live="polite">২৩টি উদ্দেশ্য দেখানো হচ্ছে</p>
  <ol class="long-list">{long_li}</ol>
@@ -364,6 +364,9 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--red);box
 .drop-f small{font-size:13.5px;color:var(--ink-soft)}
 .drop-f.has{border-style:solid;border-color:var(--green);background:color-mix(in srgb,var(--green) 10%,var(--paper))}
 .drop-f .fname{font-size:14px;color:var(--green);font-weight:600;word-break:break-all}
+.fhint{font-size:14px;line-height:1.5;color:var(--ink-soft)}
+.sub{font:700 17px/1.3 var(--f-display);color:var(--green);margin:6px 0 -6px}
+[data-when][hidden]{display:none}
 .check{display:grid;grid-template-columns:24px minmax(0,1fr);gap:12px;align-items:start;font:500 16px/1.6 var(--f-body)}
 .check input{width:22px;height:22px;margin:3px 0 0;accent-color:var(--red)}
 details.policy{border:2px solid var(--ink);background:var(--paper)}
@@ -397,7 +400,7 @@ details.policy[open] summary::after{content:"−"}
 .done-panel h2{font-size:clamp(30px,4vw,44px);font-weight:800;font-stretch:80%;color:var(--green)}
 .done-panel .note{background:var(--paper-2);padding:12px 14px;font-size:15px}
 '''
-def fld(id, label, typ="text", req=True, ph="", full=False, opt=None, err="এই তথ্যটি দিন", extra=""):
+def fld(id, label, typ="text", req=True, ph="", full=False, opt=None, err="এই তথ্যটি দিন", extra="", hint=""):
     r = ' required' if req else ''
     lab = f'<label for="{id}">{label}{"<span class=req aria-hidden=true>*</span>" if req else "<span class=opt>(ঐচ্ছিক)</span>"}</label>'
     if typ=="select":
@@ -407,12 +410,18 @@ def fld(id, label, typ="text", req=True, ph="", full=False, opt=None, err="এ�
         ctl=f'<textarea id="{id}" name="{id}" placeholder="{ph}"{r}></textarea>'
     else:
         ctl=f'<input id="{id}" name="{id}" type="{typ}" autocomplete="{ {"name_bn":"name","name_en":"name","phone":"tel","email":"email","address":"street-address","dob":"bday","job":"organization-title"}.get(id,"off") }" placeholder="{ph}"{r}{extra}>'
-    return f'<div class="f{" full" if full else ""}">{lab}{ctl}<span class="err">{err}</span></div>'
+    h = f'<span class="fhint">{hint}</span>' if hint else ''
+    return f'<div class="f{" full" if full else ""}">{lab}{ctl}{h}<span class="err">{err}</span></div>'
 def upload(id,label,hint,req=True):
     return (f'<div class="f"><span class="lbl" id="{id}-l">{label}{"<span class=req aria-hidden=true>*</span>" if req else "<span class=opt>(ঐচ্ছিক)</span>"}</span>'
             f'<label class="drop-f" for="{id}"><input id="{id}" name="{id}" type="file" accept="image/*,.pdf" aria-labelledby="{id}-l"{" required" if req else ""}>'
             f'<b>ফাইল বাছাই করুন</b><small>{hint}</small><span class="fname"></span></label><span class="err">ফাইলটি যুক্ত করুন</span></div>')
-SECTORS=["অজানা"]+[f"সেক্টর {bn(i)}" for i in range(1,12)]
+BLOOD=["এ+ (A+)","এ− (A−)","বি+ (B+)","বি− (B−)","এবি+ (AB+)","এবি− (AB−)","ও+ (O+)","ও− (O−)"]
+def seg(name,label,items,req=True,full=False,default=None):
+    star = "<span class=req aria-hidden=true>*</span>" if req else "<span class=opt>(ঐচ্ছিক)</span>"
+    opts = "".join(f'<label><input type="radio" name="{name}" value="{x}"{" required" if req and i==0 else ""}{" checked" if x==default else ""}><span>{x}</span></label>' for i,x in enumerate(items))
+    return (f'<div class="f{" full" if full else ""}"><span class="lbl" id="{name}-l">{label}{star}</span>'
+            f'<div class="seg" role="radiogroup" aria-labelledby="{name}-l">{opts}</div><span class="err">একটি বাছাই করুন</span></div>')
 JOIN = header("join") + f'''
 <main>
 <section class="hero"><div class="wrap">
@@ -424,49 +433,66 @@ JOIN = header("join") + f'''
 <div class="wrap layout">
  <div>
  <form id="joinForm" novalidate>
-  <fieldset id="s1"><legend><b>১</b>আবেদনকারীর তথ্য</legend>
+  <fieldset id="s1"><legend><b>ক</b>ব্যক্তিগত তথ্য</legend>
    <div class="row">
-    {fld("name_bn","পূর্ণ নাম (বাংলায়)",ph="যেমন: মোঃ রফিকুল ইসলাম")}
-    {fld("name_en","পূর্ণ নাম (ইংরেজিতে)",ph="e.g. Md. Rafiqul Islam")}
+    {fld("name_bn","পূর্ণ নাম (বাংলায়)",ph="যেমন: মোঃ রফিকুল ইসলাম",hint="এনআইডি বা পাসপোর্ট অনুযায়ী")}
+    {fld("name_en","পূর্ণ নাম (ইংরেজিতে)",ph="e.g. Md. Rafiqul Islam",hint="এনআইডি বা পাসপোর্ট অনুযায়ী")}
     {fld("dob","জন্ম তারিখ","date")}
-    <div class="f"><span class="lbl" id="g-l">লিঙ্গ<span class="req" aria-hidden="true">*</span></span><div class="seg" role="radiogroup" aria-labelledby="g-l">
-     <label><input type="radio" name="gender" value="m" required><span>পুরুষ</span></label><label><input type="radio" name="gender" value="f"><span>নারী</span></label><label><input type="radio" name="gender" value="o"><span>অন্যান্য</span></label></div><span class="err">একটি বাছাই করুন</span></div>
-    {fld("nid","জাতীয় পরিচয়পত্র / জন্ম নিবন্ধন নম্বর",ph="১০, ১৩ বা ১৭ সংখ্যার নম্বর",extra=' inputmode="numeric"')}
-    {fld("phone","মোবাইল নম্বর","tel",ph="০১XXXXXXXXX",extra=' inputmode="tel"',err="সঠিক মোবাইল নম্বর দিন")}
-    {fld("email","ইমেইল","email",req=False,ph="name@example.com")}
-    {fld("job","পেশা",req=False,ph="যেমন: শিক্ষক, ব্যবসায়ী, শিক্ষার্থী")}
+    {fld("job","পেশা ও পদবি",ph="যেমন: শিক্ষক, সহকারী প্রধান শিক্ষক")}
+    {seg("gender","লিঙ্গ",["পুরুষ","নারী","অন্যান্য"],req=False)}
+    {fld("blood","রক্তের গ্রুপ","select",req=False,opt=BLOOD)}
+    {fld("workplace","কর্মস্থল / প্রতিষ্ঠান",req=False,ph="প্রতিষ্ঠানের নাম",full=True)}
+    {seg("location","বর্তমান অবস্থান",["বাংলাদেশে","প্রবাসে (দেশের বাইরে)"],full=True,default="বাংলাদেশে")}
    </div>
+   {upload("photo","পাসপোর্ট সাইজ ছবি","পরিচয়পত্র ও সদস্য তালিকার জন্য। JPG বা PNG, সর্বোচ্চ ৫ MB।")}
   </fieldset>
-  <fieldset id="s2"><legend><b>২</b>বীর মুক্তিযোদ্ধার তথ্য</legend>
-   <p class="hint">যে বীর মুক্তিযোদ্ধার প্রজন্ম হিসেবে আবেদন করছেন, তাঁর তথ্য দিন।</p>
+  <fieldset id="s2"><legend><b>খ</b>মুক্তিযোদ্ধা পিতা বা মাতার তথ্য</legend>
    <div class="row">
-    {fld("ff_name","বীর মুক্তিযোদ্ধার নাম",ph="পূর্ণ নাম",full=True)}
-    {fld("relation","আপনার সম্পর্ক","select",opt=["সন্তান (পুত্র)","সন্তান (কন্যা)","নাতি / নাতনী","অন্যান্য প্রজন্ম"],err="সম্পর্ক বাছাই করুন")}
-    <div class="f"><span class="lbl" id="st-l">বর্তমান অবস্থা<span class="req" aria-hidden="true">*</span></span><div class="seg" role="radiogroup" aria-labelledby="st-l">
-     <label><input type="radio" name="ff_status" value="alive" required><span>জীবিত</span></label><label><input type="radio" name="ff_status" value="late"><span>প্রয়াত</span></label></div><span class="err">একটি বাছাই করুন</span></div>
-    {fld("gazette","গেজেট নম্বর",ph="মুক্তিযোদ্ধা গেজেটের নম্বর")}
-    {fld("cert","মুক্তিযোদ্ধা সনদ নম্বর",req=False,ph="যদি থাকে")}
-    {fld("sector","যুদ্ধকালীন সেক্টর","select",req=False,opt=SECTORS)}
-    {fld("ff_dist","বীর মুক্তিযোদ্ধার নিজ জেলা",ph="যেমন: কুমিল্লা")}
+    {seg("relation","সম্পর্ক",["মুক্তিযোদ্ধা পিতা","মুক্তিযোদ্ধা মাতা"])}
+    {seg("ff_status","মুক্তিযোদ্ধার বর্তমান অবস্থা",["জীবিত","প্রয়াত"])}
+    {fld("ff_name","মুক্তিযোদ্ধার পূর্ণ নাম",ph="পূর্ণ নাম")}
+    {fld("gazette","মুক্তিযোদ্ধা সনদ নম্বর / গেজেট নম্বর",ph="সনদ বা গেজেটের নম্বর",hint="মূল সনদ বা গেজেট অনুযায়ী নির্ভুল নম্বর")}
+   </div>
+   {upload("doc_cert","মুক্তিযোদ্ধা সনদ / গেজেট / পরিচয়পত্রের কপি","PDF বা JPG, প্রতিটি ফাইল সর্বোচ্চ ৫ MB।")}
+  </fieldset>
+  <fieldset id="s3"><legend><b>গ</b>জাতীয় পরিচয় ও যোগাযোগের তথ্য</legend>
+   <div class="row">
+    {seg("id_type","পরিচয়পত্রের ধরন",["জাতীয় পরিচয়পত্র (NID)","পাসপোর্ট","জন্ম নিবন্ধন"])}
+    {fld("nid","পরিচয়পত্রের নম্বর",ph="নম্বরটি লিখুন",hint="প্রবাসে থাকলে এবং NID না থাকলে পাসপোর্ট বা জন্ম নিবন্ধন নম্বর দিন")}
+   </div>
+   {upload("doc_nid","NID / পাসপোর্টের কপি","পরিচয় নিশ্চিত করার জন্য। PDF বা JPG, সর্বোচ্চ ৫ MB।")}
+   <div class="row">
+    {fld("phone","মোবাইল / হোয়াটসঅ্যাপ নম্বর","tel",ph="+8801XXXXXXXXX",extra=' inputmode="tel"',err="কান্ট্রি কোডসহ সঠিক নম্বর দিন",hint="কান্ট্রি কোডসহ লিখুন (যেমন: +880…), প্রবাসে থাকলে সে দেশের কোড দিন")}
+    {fld("email","ইমেইল অ্যাড্রেস","email",ph="name@example.com",hint="আপডেট ও কনফার্মেশন পাঠানোর জন্য")}
    </div>
   </fieldset>
-  <fieldset id="s3"><legend><b>৩</b>ঠিকানা</legend>
+  <fieldset id="s4"><legend><b>ঘ</b>ঠিকানা</legend>
+   <p class="sub">স্থায়ী ঠিকানা (বাংলাদেশ)</p>
    <div class="row three">
     {fld("division","বিভাগ","select",opt=DIVS,err="বিভাগ বাছাই করুন")}
     {fld("district","জেলা",ph="জেলার নাম")}
     {fld("upazila","উপজেলা / থানা",ph="উপজেলা বা থানা")}
    </div>
-   {fld("address","বর্তমান ঠিকানা","textarea",ph="বাড়ি নম্বর, রাস্তা, এলাকা")}
+   <div class="row">
+    {fld("village","গ্রাম / মহল্লা",ph="গ্রাম বা মহল্লার নাম")}
+    {fld("postcode","পোস্ট কোড",ph="যেমন: ৩৫০০")}
+   </div>
+   <p class="sub">বর্তমান ঠিকানা</p>
+   <div data-when="বাংলাদেশে">{fld("address","বাড়ি, রাস্তা ও এলাকা","textarea",ph="উপজেলা ও জেলাসহ লিখুন")}</div>
+   <div class="row" data-when="প্রবাসে (দেশের বাইরে)" hidden>
+    {fld("abroad_city","শহর",ph="শহরের নাম")}
+    {fld("abroad_country","দেশ",ph="দেশের নাম")}
+   </div>
   </fieldset>
-  <fieldset id="s4"><legend><b>৪</b>অঙ্গীকার</legend>
-   <details class="policy" id="policy"><summary>সদস্য হওয়ার নীতিমালা পড়ুন</summary><div class="pol">{pol_html}</div></details>
-   <div class="f"><label class="check"><input type="checkbox" id="agree1" required><span>আমি সদস্য হওয়ার নীতিমালা পড়েছি এবং তা মেনে চলব।</span></label><span class="err">নীতিমালায় সম্মতি দিন</span></div>
-   <div class="f"><label class="check"><input type="checkbox" id="agree2" required><span>আমি নিশ্চিত করছি যে উপরের সকল তথ্য সত্য এবং আমি একজন বীর মুক্তিযোদ্ধার সন্তান বা প্রজন্ম।</span></label><span class="err">তথ্যের সত্যতা নিশ্চিত করুন</span></div>
-   <div class="submit-row"><button class="btn btn-green" type="submit">আবেদন জমা দিন</button><p>জমা দেওয়ার পর অ্যাডমিন তথ্য যাচাই করে আপনার মোবাইল নম্বরে যোগাযোগ করবেন।</p></div>
+  <fieldset id="s5"><legend><b>ঙ</b>ঘোষণা ও সম্মতি</legend>
+   <div class="f"><label class="check"><input type="checkbox" id="agree1" required><span>আমি এই মর্মে ঘোষণা করছি যে, প্রদত্ত সকল তথ্য সঠিক ও সত্য। তথ্য মিথ্যা প্রমাণিত হলে আমার সদস্যপদ বাতিল বলে গণ্য হবে।</span></label><span class="err">ঘোষণায় সম্মতি দিন</span></div>
+   <details class="policy" id="policy"><summary>সংগঠনের নিয়মাবলি পড়ুন</summary><div class="pol">{pol_html}</div></details>
+   <div class="f"><label class="check"><input type="checkbox" id="agree2" required><span>আমি সংগঠনের নিয়মাবলি ও গোপনীয়তা নীতিমালায় সম্মতি দিচ্ছি।</span></label><span class="err">নিয়মাবলিতে সম্মতি দিন</span></div>
+   <div class="submit-row"><button class="btn btn-green" type="submit">আবেদন জমা দিন</button><p>জমা দেওয়ার পর অ্যাডমিন তথ্য যাচাই করে আপনার মোবাইল বা হোয়াটসঅ্যাপ নম্বরে যোগাযোগ করবেন।</p></div>
   </fieldset>
  </form>
  <div class="done-panel" id="done" hidden tabindex="-1">
-  <span class="script">ধন্যবাদ</span><h2>আপনার আবেদন প্রস্তুত</h2>
+  <h2>আপনার আবেদন প্রস্তুত</h2>
   <p>সব প্রয়োজনীয় তথ্য সঠিকভাবে পূরণ হয়েছে। চালু সাইটে এই ধাপে আবেদনটি অ্যাডমিনের কাছে যাচাইয়ের জন্য যাবে।</p>
   <p class="note">নকশার নমুনা: কোনো তথ্য কোথাও পাঠানো বা সংরক্ষণ করা হয়নি।</p>
   <button class="btn btn-red" type="button" id="again">ফর্মে ফিরে যান</button>
@@ -474,20 +500,21 @@ JOIN = header("join") + f'''
  </div>
  <aside class="aside" aria-label="আবেদনের সহায়িকা">
   <div class="tree poster">{art.banyan_svg()}</div>
-  <div class="box"><h3>যাচাইয়ের সময় যা লাগবে</h3><p class="boxnote">আবেদন জমার পর অ্যাডমিন যোগাযোগ করে নিচের কাগজপত্রের কপি দেখতে চাইবেন:</p><ul class="need"><li>জাতীয় পরিচয়পত্র বা জন্ম নিবন্ধন</li><li>বীর মুক্তিযোদ্ধার গেজেট ও সনদের কপি</li><li>পাসপোর্ট সাইজের ছবি</li><li>সম্পর্কের প্রমাণপত্র (যদি থাকে)</li></ul></div>
+  <div class="box"><h3>শুরু করার আগে হাতের কাছে রাখুন</h3><p class="boxnote">ফর্মে এই কাগজগুলোর ছবি বা PDF যুক্ত করতে হবে, প্রতিটি সর্বোচ্চ ৫ MB:</p><ul class="need"><li>আপনার পাসপোর্ট সাইজ ছবি</li><li>মুক্তিযোদ্ধা সনদ, গেজেট বা পরিচয়পত্রের কপি</li><li>আপনার NID বা পাসপোর্টের কপি</li></ul></div>
  </aside>
 </div>
 </main>''' + FOOTER
 JOIN_JS = r'''
 const form=document.getElementById('joinForm'), done=document.getElementById('done');
 const fs=[...form.querySelectorAll('fieldset')];
-function okField(f){const els=[...f.querySelectorAll('input,select,textarea')].filter(e=>e.required);
+function okField(f){if(f.closest('[hidden]')) return true; const els=[...f.querySelectorAll('input,select,textarea')].filter(e=>e.required);
   if(!els.length) return true;
   if(els[0].type==='radio'){return !!f.querySelector('input[type=radio]:checked');}
-  return els.every(e=>{ if(e.id==='phone') return /^(০|0)(১|1)[০-৯0-9]{9}$/.test(e.value.trim()); return e.type==='checkbox'?e.checked:e.value.trim()!==''; });}
+  return els.every(e=>{ if(e.id==='phone') return /^\+?[০-৯0-9][০-৯0-9 -]{7,16}$/.test(e.value.trim()); return e.type==='checkbox'?e.checked:e.value.trim()!==''; });}
 function progress(){}
 form.addEventListener('input',e=>{const f=e.target.closest('.f'); if(f&&f.classList.contains('bad')&&okField(f)) f.classList.remove('bad'); progress();});
-form.addEventListener('change',e=>{if(e.target.type==='file'){const d=e.target.closest('.drop-f');const n=e.target.files[0];
+form.addEventListener('change',e=>{if(e.target.name==='location'){form.querySelectorAll('[data-when]').forEach(w=>{w.hidden=w.dataset.when!==e.target.value;});}
+  if(e.target.type==='file'){const d=e.target.closest('.drop-f');const n=e.target.files[0];
   d.classList.toggle('has',!!n); d.querySelector('.fname').textContent=n?n.name:''; d.querySelector('b').textContent=n?'ফাইল যুক্ত হয়েছে':'ফাইল বাছাই করুন';} progress();});
 form.addEventListener('submit',e=>{e.preventDefault(); let first=null;
   form.querySelectorAll('.f').forEach(f=>{const ok=okField(f); f.classList.toggle('bad',!ok); if(!ok&&!first) first=f;});

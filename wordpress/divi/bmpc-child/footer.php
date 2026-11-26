@@ -1,7 +1,7 @@
 <?php
 /** BMPC footer (replaces Divi's footer). */
 if ( ! defined( 'ABSPATH' ) ) { exit; }
-$logo   = bmpc_media_url( 'logo.png' );
+$logo   = BMPC_URI . '/assets/img/logo-192.webp';
 $social = bmpc_social();
 $icons  = array(
 	'facebook'  => array( 'Facebook', '<path fill="currentColor" d="M14 8h3V4h-3c-2.8 0-4 1.7-4 4.2V10H7v4h3v8h4v-8h3l1-4h-4V8.6c0-.4.3-.6.6-.6z"/>' ),
@@ -14,6 +14,7 @@ $cols = array(
 	'অংশ নিন' => array( 'join' => 'সদস্য হোন', 'chairman-message' => 'চেয়ারম্যানের বাণী', 'secretary-general-message' => 'মহাসচিবের বাণী', 'news' => 'সর্বশেষ সংবাদ' ),
 );
 ?>
+<?php if ( bmpc_wraps_main() ) { echo '</main>'; } ?>
 <footer id="footer"><div class="wrap"><div class="cols">
 	<div><a class="brand" href="<?php echo esc_url( home_url( '/' ) ); ?>"><img class="logo" src="<?php echo esc_url( $logo ); ?>" width="68" height="68" alt=""><span><b>বাংলাদেশ মুক্তিযোদ্ধা প্রজন্ম কাউন্সিল</b></span></a>
 	<p class="about-f">মুক্তিযুদ্ধের চেতনা ধারণকারী অরাজনৈতিক সংগঠন। বীর মুক্তিযোদ্ধার সন্তান ও প্রজন্মের ঐক্যবদ্ধ প্ল্যাটফর্ম।</p>
@@ -24,7 +25,7 @@ $cols = array(
 		<a href="<?php echo esc_url( get_bloginfo( 'rss2_url' ) ); ?>" aria-label="সংবাদ (RSS)"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M5 17a2 2 0 1 1 0 4 2 2 0 0 1 0-4zM3 10v3a8 8 0 0 1 8 8h3A11 11 0 0 0 3 10zm0-6v3a14 14 0 0 1 14 14h3A17 17 0 0 0 3 4z"/></svg></a>
 	</div></div>
 	<?php foreach ( $cols as $head => $links ) : ?>
-	<div><h4><?php echo esc_html( $head ); ?></h4><ul>
+	<div><h2 class="fh"><?php echo esc_html( $head ); ?></h2><ul>
 		<?php foreach ( $links as $slug => $label ) : ?><li><a href="<?php echo esc_url( bmpc_page_url( $slug ) ); ?>"><?php echo esc_html( $label ); ?></a></li><?php endforeach; ?>
 	</ul></div>
 	<?php endforeach; ?>

@@ -17,7 +17,7 @@
       "class": "bmpc-step"
      },
      "settings": {
-      "label": "১. আবেদনকারীর তথ্য",
+      "label": "ক. ব্যক্তিগত তথ্য",
       "description": "",
       "align": "left",
       "conditional_logics": []
@@ -58,7 +58,7 @@
           "label": "পূর্ণ নাম (বাংলায়)",
           "admin_field_label": "",
           "label_placement": "",
-          "help_message": "",
+          "help_message": "এনআইডি বা পাসপোর্ট অনুযায়ী",
           "validation_rules": {
            "required": {
             "value": true,
@@ -99,7 +99,7 @@
           "label": "পূর্ণ নাম (ইংরেজিতে)",
           "admin_field_label": "",
           "label_placement": "",
-          "help_message": "",
+          "help_message": "এনআইডি বা পাসপোর্ট অনুযায়ী",
           "validation_rules": {
            "required": {
             "value": true,
@@ -181,6 +181,64 @@
        "width": 50.0,
        "fields": [
         {
+         "index": 1,
+         "element": "input_text",
+         "attributes": {
+          "type": "text",
+          "name": "job",
+          "value": "",
+          "class": "",
+          "placeholder": "যেমন: শিক্ষক, সহকারী প্রধান শিক্ষক",
+          "maxlength": ""
+         },
+         "settings": {
+          "container_class": "",
+          "label": "পেশা ও পদবি",
+          "admin_field_label": "",
+          "label_placement": "",
+          "help_message": "",
+          "validation_rules": {
+           "required": {
+            "value": true,
+            "message": "এই তথ্যটি দিন"
+           }
+          },
+          "conditional_logics": [],
+          "prefix_label": "",
+          "suffix_label": "",
+          "is_unique": "no",
+          "unique_validation_message": ""
+         },
+         "editor_options": {
+          "title": "Simple Text",
+          "icon_class": "ff-edit-text",
+          "template": "inputText"
+         },
+         "uniqElKey": "el_bmpc006"
+        }
+       ]
+      }
+     ],
+     "editor_options": {
+      "title": "Two Column Container",
+      "icon_class": "ff-edit-column-2"
+     },
+     "uniqElKey": "el_bmpc007"
+    },
+    {
+     "index": 11,
+     "element": "container",
+     "attributes": {},
+     "settings": {
+      "container_class": "",
+      "conditional_logics": [],
+      "container_width": ""
+     },
+     "columns": [
+      {
+       "width": 50.0,
+       "fields": [
+        {
          "index": 5,
          "element": "input_radio",
          "attributes": {
@@ -196,8 +254,8 @@
           "help_message": "",
           "validation_rules": {
            "required": {
-            "value": true,
-            "message": "একটি বাছাই করুন"
+            "value": false,
+            "message": "এই তথ্যটি দিন"
            }
           },
           "conditional_logics": [],
@@ -230,64 +288,6 @@
           "element": "input-radio",
           "template": "inputCheckable"
          },
-         "uniqElKey": "el_bmpc006"
-        }
-       ]
-      }
-     ],
-     "editor_options": {
-      "title": "Two Column Container",
-      "icon_class": "ff-edit-column-2"
-     },
-     "uniqElKey": "el_bmpc007"
-    },
-    {
-     "index": 11,
-     "element": "container",
-     "attributes": {},
-     "settings": {
-      "container_class": "",
-      "conditional_logics": [],
-      "container_width": ""
-     },
-     "columns": [
-      {
-       "width": 50.0,
-       "fields": [
-        {
-         "index": 1,
-         "element": "input_text",
-         "attributes": {
-          "type": "text",
-          "name": "nid",
-          "value": "",
-          "class": "",
-          "placeholder": "১০, ১৩ বা ১৭ সংখ্যার নম্বর",
-          "maxlength": ""
-         },
-         "settings": {
-          "container_class": "",
-          "label": "জাতীয় পরিচয়পত্র / জন্ম নিবন্ধন নম্বর",
-          "admin_field_label": "",
-          "label_placement": "",
-          "help_message": "",
-          "validation_rules": {
-           "required": {
-            "value": true,
-            "message": "এই তথ্যটি দিন"
-           }
-          },
-          "conditional_logics": [],
-          "prefix_label": "",
-          "suffix_label": "",
-          "is_unique": "no",
-          "unique_validation_message": ""
-         },
-         "editor_options": {
-          "title": "Simple Text",
-          "icon_class": "ff-edit-text",
-          "template": "inputText"
-         },
          "uniqElKey": "el_bmpc008"
         }
        ]
@@ -296,262 +296,67 @@
        "width": 50.0,
        "fields": [
         {
-         "index": 1,
-         "element": "input_text",
-         "attributes": {
-          "type": "tel",
-          "name": "phone",
-          "value": "",
-          "class": "",
-          "placeholder": "01XXXXXXXXX",
-          "maxlength": ""
-         },
-         "settings": {
-          "container_class": "",
-          "label": "মোবাইল নম্বর",
-          "admin_field_label": "",
-          "label_placement": "",
-          "help_message": "১১ সংখ্যার মোবাইল নম্বর, যেমন 01712345678",
-          "validation_rules": {
-           "required": {
-            "value": true,
-            "message": "সঠিক মোবাইল নম্বর দিন"
-           }
-          },
-          "conditional_logics": [],
-          "prefix_label": "",
-          "suffix_label": "",
-          "is_unique": "no",
-          "unique_validation_message": ""
-         },
-         "editor_options": {
-          "title": "Simple Text",
-          "icon_class": "ff-edit-text",
-          "template": "inputText"
-         },
-         "uniqElKey": "el_bmpc009"
-        }
-       ]
-      }
-     ],
-     "editor_options": {
-      "title": "Two Column Container",
-      "icon_class": "ff-edit-column-2"
-     },
-     "uniqElKey": "el_bmpc010"
-    },
-    {
-     "index": 11,
-     "element": "container",
-     "attributes": {},
-     "settings": {
-      "container_class": "",
-      "conditional_logics": [],
-      "container_width": ""
-     },
-     "columns": [
-      {
-       "width": 50.0,
-       "fields": [
-        {
-         "index": 2,
-         "element": "input_email",
-         "attributes": {
-          "type": "email",
-          "name": "email",
-          "value": "",
-          "id": "",
-          "class": "",
-          "placeholder": "name@example.com"
-         },
-         "settings": {
-          "container_class": "",
-          "label": "ইমেইল (ঐচ্ছিক)",
-          "admin_field_label": "",
-          "label_placement": "",
-          "help_message": "",
-          "validation_rules": {
-           "required": {
-            "value": false,
-            "message": "এই তথ্যটি দিন"
-           },
-           "email": {
-            "value": true,
-            "message": "সঠিক ইমেইল দিন"
-           }
-          },
-          "conditional_logics": [],
-          "is_unique": "no",
-          "unique_validation_message": ""
-         },
-         "editor_options": {
-          "title": "Email Address",
-          "icon_class": "ff-edit-email",
-          "template": "inputText"
-         },
-         "uniqElKey": "el_bmpc011"
-        }
-       ]
-      },
-      {
-       "width": 50.0,
-       "fields": [
-        {
-         "index": 1,
-         "element": "input_text",
-         "attributes": {
-          "type": "text",
-          "name": "job",
-          "value": "",
-          "class": "",
-          "placeholder": "যেমন: শিক্ষক, ব্যবসায়ী, শিক্ষার্থী",
-          "maxlength": ""
-         },
-         "settings": {
-          "container_class": "",
-          "label": "পেশা (ঐচ্ছিক)",
-          "admin_field_label": "",
-          "label_placement": "",
-          "help_message": "",
-          "validation_rules": {
-           "required": {
-            "value": false,
-            "message": "এই তথ্যটি দিন"
-           }
-          },
-          "conditional_logics": [],
-          "prefix_label": "",
-          "suffix_label": "",
-          "is_unique": "no",
-          "unique_validation_message": ""
-         },
-         "editor_options": {
-          "title": "Simple Text",
-          "icon_class": "ff-edit-text",
-          "template": "inputText"
-         },
-         "uniqElKey": "el_bmpc012"
-        }
-       ]
-      }
-     ],
-     "editor_options": {
-      "title": "Two Column Container",
-      "icon_class": "ff-edit-column-2"
-     },
-     "uniqElKey": "el_bmpc013"
-    },
-    {
-     "index": 8,
-     "element": "section_break",
-     "attributes": {
-      "id": "",
-      "class": "bmpc-step"
-     },
-     "settings": {
-      "label": "২. বীর মুক্তিযোদ্ধার তথ্য",
-      "description": "যে বীর মুক্তিযোদ্ধার প্রজন্ম হিসেবে আবেদন করছেন, তাঁর তথ্য দিন।",
-      "align": "left",
-      "conditional_logics": []
-     },
-     "editor_options": {
-      "title": "Section Break",
-      "icon_class": "ff-edit-section-break",
-      "template": "sectionBreak"
-     },
-     "uniqElKey": "el_bmpc014"
-    },
-    {
-     "index": 1,
-     "element": "input_text",
-     "attributes": {
-      "type": "text",
-      "name": "ff_name",
-      "value": "",
-      "class": "",
-      "placeholder": "পূর্ণ নাম",
-      "maxlength": ""
-     },
-     "settings": {
-      "container_class": "",
-      "label": "বীর মুক্তিযোদ্ধার নাম",
-      "admin_field_label": "",
-      "label_placement": "",
-      "help_message": "",
-      "validation_rules": {
-       "required": {
-        "value": true,
-        "message": "এই তথ্যটি দিন"
-       }
-      },
-      "conditional_logics": [],
-      "prefix_label": "",
-      "suffix_label": "",
-      "is_unique": "no",
-      "unique_validation_message": ""
-     },
-     "editor_options": {
-      "title": "Simple Text",
-      "icon_class": "ff-edit-text",
-      "template": "inputText"
-     },
-     "uniqElKey": "el_bmpc015"
-    },
-    {
-     "index": 11,
-     "element": "container",
-     "attributes": {},
-     "settings": {
-      "container_class": "",
-      "conditional_logics": [],
-      "container_width": ""
-     },
-     "columns": [
-      {
-       "width": 50.0,
-       "fields": [
-        {
          "index": 4,
          "element": "select",
          "attributes": {
-          "name": "relation",
+          "name": "blood",
           "value": "",
           "id": "",
           "class": ""
          },
          "settings": {
           "container_class": "",
-          "label": "আপনার সম্পর্ক",
+          "label": "রক্তের গ্রুপ",
           "admin_field_label": "",
           "label_placement": "",
           "help_message": "",
           "validation_rules": {
            "required": {
-            "value": true,
-            "message": "একটি বাছাই করুন"
+            "value": false,
+            "message": "এই তথ্যটি দিন"
            }
           },
           "conditional_logics": [],
           "placeholder": "বাছাই করুন",
           "advanced_options": [
            {
-            "label": "সন্তান (পুত্র)",
-            "value": "সন্তান (পুত্র)",
+            "label": "এ+ (A+)",
+            "value": "এ+ (A+)",
             "calc_value": ""
            },
            {
-            "label": "সন্তান (কন্যা)",
-            "value": "সন্তান (কন্যা)",
+            "label": "এ− (A−)",
+            "value": "এ− (A−)",
             "calc_value": ""
            },
            {
-            "label": "নাতি / নাতনী",
-            "value": "নাতি / নাতনী",
+            "label": "বি+ (B+)",
+            "value": "বি+ (B+)",
             "calc_value": ""
            },
            {
-            "label": "অন্যান্য প্রজন্ম",
-            "value": "অন্যান্য প্রজন্ম",
+            "label": "বি− (B−)",
+            "value": "বি− (B−)",
+            "calc_value": ""
+           },
+           {
+            "label": "এবি+ (AB+)",
+            "value": "এবি+ (AB+)",
+            "calc_value": ""
+           },
+           {
+            "label": "এবি− (AB−)",
+            "value": "এবি− (AB−)",
+            "calc_value": ""
+           },
+           {
+            "label": "ও+ (O+)",
+            "value": "ও+ (O+)",
+            "calc_value": ""
+           },
+           {
+            "label": "ও− (O−)",
+            "value": "ও− (O−)",
             "calc_value": ""
            }
           ],
@@ -566,7 +371,228 @@
           "element": "select",
           "template": "select"
          },
-         "uniqElKey": "el_bmpc016"
+         "uniqElKey": "el_bmpc009"
+        }
+       ]
+      }
+     ],
+     "editor_options": {
+      "title": "Two Column Container",
+      "icon_class": "ff-edit-column-2"
+     },
+     "uniqElKey": "el_bmpc010"
+    },
+    {
+     "index": 1,
+     "element": "input_text",
+     "attributes": {
+      "type": "text",
+      "name": "workplace",
+      "value": "",
+      "class": "",
+      "placeholder": "প্রতিষ্ঠানের নাম",
+      "maxlength": ""
+     },
+     "settings": {
+      "container_class": "",
+      "label": "কর্মস্থল / প্রতিষ্ঠান",
+      "admin_field_label": "",
+      "label_placement": "",
+      "help_message": "",
+      "validation_rules": {
+       "required": {
+        "value": false,
+        "message": "এই তথ্যটি দিন"
+       }
+      },
+      "conditional_logics": [],
+      "prefix_label": "",
+      "suffix_label": "",
+      "is_unique": "no",
+      "unique_validation_message": ""
+     },
+     "editor_options": {
+      "title": "Simple Text",
+      "icon_class": "ff-edit-text",
+      "template": "inputText"
+     },
+     "uniqElKey": "el_bmpc011"
+    },
+    {
+     "index": 5,
+     "element": "input_radio",
+     "attributes": {
+      "type": "radio",
+      "name": "location",
+      "value": "বাংলাদেশে"
+     },
+     "settings": {
+      "container_class": "",
+      "label": "বর্তমান অবস্থান",
+      "admin_field_label": "",
+      "label_placement": "",
+      "help_message": "",
+      "validation_rules": {
+       "required": {
+        "value": true,
+        "message": "একটি বাছাই করুন"
+       }
+      },
+      "conditional_logics": [],
+      "display_type": "",
+      "layout_class": "ff_list_inline",
+      "advanced_options": [
+       {
+        "label": "বাংলাদেশে",
+        "value": "বাংলাদেশে",
+        "calc_value": ""
+       },
+       {
+        "label": "প্রবাসে (দেশের বাইরে)",
+        "value": "প্রবাসে (দেশের বাইরে)",
+        "calc_value": ""
+       }
+      ],
+      "calc_value_status": false,
+      "enable_image_input": false,
+      "randomize_options": "no"
+     },
+     "editor_options": {
+      "title": "Radio Field",
+      "icon_class": "ff-edit-radio",
+      "element": "input-radio",
+      "template": "inputCheckable"
+     },
+     "uniqElKey": "el_bmpc012"
+    },
+    {
+     "index": 7,
+     "element": "input_file",
+     "attributes": {
+      "type": "file",
+      "name": "photo",
+      "value": "",
+      "id": "",
+      "class": ""
+     },
+     "settings": {
+      "container_class": "",
+      "label": "পাসপোর্ট সাইজ ছবি",
+      "admin_field_label": "",
+      "label_placement": "",
+      "help_message": "পরিচয়পত্র ও সদস্য তালিকার জন্য। JPG বা PNG, সর্বোচ্চ ৫ MB।",
+      "validation_rules": {
+       "required": {
+        "value": true,
+        "message": "ফাইলটি যুক্ত করুন"
+       },
+       "max_file_size": {
+        "value": 5,
+        "_valueFrom": "MB",
+        "message": "ফাইলের আকার সর্বোচ্চ ৫ MB হতে পারবে"
+       },
+       "max_file_count": {
+        "value": 1,
+        "message": "একটি ছবি দিন"
+       },
+       "allowed_file_types": {
+        "value": [
+         "jpg|jpeg|gif|png|bmp"
+        ],
+        "message": "শুধু ছবি (JPG/PNG) দিন"
+       }
+      },
+      "conditional_logics": [],
+      "btn_text": "ফাইল বাছাই করুন",
+      "upload_file_location": "default",
+      "file_location_type": "follow_global_settings"
+     },
+     "editor_options": {
+      "title": "File Upload",
+      "icon_class": "ff-edit-files",
+      "template": "inputFile"
+     },
+     "uniqElKey": "el_bmpc013"
+    },
+    {
+     "index": 8,
+     "element": "section_break",
+     "attributes": {
+      "id": "",
+      "class": "bmpc-step"
+     },
+     "settings": {
+      "label": "খ. মুক্তিযোদ্ধা পিতা বা মাতার তথ্য",
+      "description": "",
+      "align": "left",
+      "conditional_logics": []
+     },
+     "editor_options": {
+      "title": "Section Break",
+      "icon_class": "ff-edit-section-break",
+      "template": "sectionBreak"
+     },
+     "uniqElKey": "el_bmpc014"
+    },
+    {
+     "index": 11,
+     "element": "container",
+     "attributes": {},
+     "settings": {
+      "container_class": "",
+      "conditional_logics": [],
+      "container_width": ""
+     },
+     "columns": [
+      {
+       "width": 50.0,
+       "fields": [
+        {
+         "index": 5,
+         "element": "input_radio",
+         "attributes": {
+          "type": "radio",
+          "name": "relation",
+          "value": ""
+         },
+         "settings": {
+          "container_class": "",
+          "label": "সম্পর্ক",
+          "admin_field_label": "",
+          "label_placement": "",
+          "help_message": "",
+          "validation_rules": {
+           "required": {
+            "value": true,
+            "message": "একটি বাছাই করুন"
+           }
+          },
+          "conditional_logics": [],
+          "display_type": "",
+          "layout_class": "ff_list_inline",
+          "advanced_options": [
+           {
+            "label": "মুক্তিযোদ্ধা পিতা",
+            "value": "মুক্তিযোদ্ধা পিতা",
+            "calc_value": ""
+           },
+           {
+            "label": "মুক্তিযোদ্ধা মাতা",
+            "value": "মুক্তিযোদ্ধা মাতা",
+            "calc_value": ""
+           }
+          ],
+          "calc_value_status": false,
+          "enable_image_input": false,
+          "randomize_options": "no"
+         },
+         "editor_options": {
+          "title": "Radio Field",
+          "icon_class": "ff-edit-radio",
+          "element": "input-radio",
+          "template": "inputCheckable"
+         },
+         "uniqElKey": "el_bmpc015"
         }
        ]
       },
@@ -583,7 +609,7 @@
          },
          "settings": {
           "container_class": "",
-          "label": "বর্তমান অবস্থা",
+          "label": "মুক্তিযোদ্ধার বর্তমান অবস্থা",
           "admin_field_label": "",
           "label_placement": "",
           "help_message": "",
@@ -618,7 +644,7 @@
           "element": "input-radio",
           "template": "inputCheckable"
          },
-         "uniqElKey": "el_bmpc017"
+         "uniqElKey": "el_bmpc016"
         }
        ]
       }
@@ -627,7 +653,7 @@
       "title": "Two Column Container",
       "icon_class": "ff-edit-column-2"
      },
-     "uniqElKey": "el_bmpc018"
+     "uniqElKey": "el_bmpc017"
     },
     {
      "index": 11,
@@ -647,18 +673,59 @@
          "element": "input_text",
          "attributes": {
           "type": "text",
-          "name": "gazette",
+          "name": "ff_name",
           "value": "",
           "class": "",
-          "placeholder": "মুক্তিযোদ্ধা গেজেটের নম্বর",
+          "placeholder": "পূর্ণ নাম",
           "maxlength": ""
          },
          "settings": {
           "container_class": "",
-          "label": "গেজেট নম্বর",
+          "label": "মুক্তিযোদ্ধার পূর্ণ নাম",
           "admin_field_label": "",
           "label_placement": "",
           "help_message": "",
+          "validation_rules": {
+           "required": {
+            "value": true,
+            "message": "এই তথ্যটি দিন"
+           }
+          },
+          "conditional_logics": [],
+          "prefix_label": "",
+          "suffix_label": "",
+          "is_unique": "no",
+          "unique_validation_message": ""
+         },
+         "editor_options": {
+          "title": "Simple Text",
+          "icon_class": "ff-edit-text",
+          "template": "inputText"
+         },
+         "uniqElKey": "el_bmpc018"
+        }
+       ]
+      },
+      {
+       "width": 50.0,
+       "fields": [
+        {
+         "index": 1,
+         "element": "input_text",
+         "attributes": {
+          "type": "text",
+          "name": "gazette",
+          "value": "",
+          "class": "",
+          "placeholder": "সনদ বা গেজেটের নম্বর",
+          "maxlength": ""
+         },
+         "settings": {
+          "container_class": "",
+          "label": "মুক্তিযোদ্ধা সনদ নম্বর / গেজেট নম্বর",
+          "admin_field_label": "",
+          "label_placement": "",
+          "help_message": "মূল সনদ বা গেজেট অনুযায়ী নির্ভুল নম্বর",
           "validation_rules": {
            "required": {
             "value": true,
@@ -679,54 +746,83 @@
          "uniqElKey": "el_bmpc019"
         }
        ]
-      },
-      {
-       "width": 50.0,
-       "fields": [
-        {
-         "index": 1,
-         "element": "input_text",
-         "attributes": {
-          "type": "text",
-          "name": "cert",
-          "value": "",
-          "class": "",
-          "placeholder": "যদি থাকে",
-          "maxlength": ""
-         },
-         "settings": {
-          "container_class": "",
-          "label": "মুক্তিযোদ্ধা সনদ নম্বর (ঐচ্ছিক)",
-          "admin_field_label": "",
-          "label_placement": "",
-          "help_message": "",
-          "validation_rules": {
-           "required": {
-            "value": false,
-            "message": "এই তথ্যটি দিন"
-           }
-          },
-          "conditional_logics": [],
-          "prefix_label": "",
-          "suffix_label": "",
-          "is_unique": "no",
-          "unique_validation_message": ""
-         },
-         "editor_options": {
-          "title": "Simple Text",
-          "icon_class": "ff-edit-text",
-          "template": "inputText"
-         },
-         "uniqElKey": "el_bmpc020"
-        }
-       ]
       }
      ],
      "editor_options": {
       "title": "Two Column Container",
       "icon_class": "ff-edit-column-2"
      },
+     "uniqElKey": "el_bmpc020"
+    },
+    {
+     "index": 7,
+     "element": "input_file",
+     "attributes": {
+      "type": "file",
+      "name": "doc_cert",
+      "value": "",
+      "id": "",
+      "class": ""
+     },
+     "settings": {
+      "container_class": "",
+      "label": "মুক্তিযোদ্ধা সনদ / গেজেট / পরিচয়পত্রের কপি",
+      "admin_field_label": "",
+      "label_placement": "",
+      "help_message": "PDF বা JPG, প্রতিটি ফাইল সর্বোচ্চ ৫ MB।",
+      "validation_rules": {
+       "required": {
+        "value": true,
+        "message": "ফাইলটি যুক্ত করুন"
+       },
+       "max_file_size": {
+        "value": 5,
+        "_valueFrom": "MB",
+        "message": "ফাইলের আকার সর্বোচ্চ ৫ MB হতে পারবে"
+       },
+       "max_file_count": {
+        "value": 2,
+        "message": "সর্বোচ্চ ২টি ফাইল যুক্ত করা যাবে"
+       },
+       "allowed_file_types": {
+        "value": [
+         "jpg|jpeg|gif|png|bmp",
+         "pdf"
+        ],
+        "message": "শুধু ছবি (JPG/PNG) অথবা PDF ফাইল দিন"
+       }
+      },
+      "conditional_logics": [],
+      "btn_text": "ফাইল বাছাই করুন",
+      "upload_file_location": "default",
+      "file_location_type": "follow_global_settings"
+     },
+     "editor_options": {
+      "title": "File Upload",
+      "icon_class": "ff-edit-files",
+      "template": "inputFile"
+     },
      "uniqElKey": "el_bmpc021"
+    },
+    {
+     "index": 8,
+     "element": "section_break",
+     "attributes": {
+      "id": "",
+      "class": "bmpc-step"
+     },
+     "settings": {
+      "label": "গ. জাতীয় পরিচয় ও যোগাযোগের তথ্য",
+      "description": "",
+      "align": "left",
+      "conditional_logics": []
+     },
+     "editor_options": {
+      "title": "Section Break",
+      "icon_class": "ff-edit-section-break",
+      "template": "sectionBreak"
+     },
+     "uniqElKey": "el_bmpc022"
     },
     {
      "index": 11,
@@ -742,102 +838,56 @@
        "width": 50.0,
        "fields": [
         {
-         "index": 4,
-         "element": "select",
+         "index": 5,
+         "element": "input_radio",
          "attributes": {
-          "name": "sector",
-          "value": "",
-          "id": "",
-          "class": ""
+          "type": "radio",
+          "name": "id_type",
+          "value": ""
          },
          "settings": {
           "container_class": "",
-          "label": "যুদ্ধকালীন সেক্টর (ঐচ্ছিক)",
+          "label": "পরিচয়পত্রের ধরন",
           "admin_field_label": "",
           "label_placement": "",
           "help_message": "",
           "validation_rules": {
            "required": {
-            "value": false,
-            "message": "এই তথ্যটি দিন"
+            "value": true,
+            "message": "একটি বাছাই করুন"
            }
           },
           "conditional_logics": [],
-          "placeholder": "বাছাই করুন",
+          "display_type": "",
+          "layout_class": "ff_list_inline",
           "advanced_options": [
            {
-            "label": "অজানা",
-            "value": "অজানা",
+            "label": "জাতীয় পরিচয়পত্র (NID)",
+            "value": "জাতীয় পরিচয়পত্র (NID)",
             "calc_value": ""
            },
            {
-            "label": "সেক্টর ১",
-            "value": "সেক্টর ১",
+            "label": "পাসপোর্ট",
+            "value": "পাসপোর্ট",
             "calc_value": ""
            },
            {
-            "label": "সেক্টর ২",
-            "value": "সেক্টর ২",
-            "calc_value": ""
-           },
-           {
-            "label": "সেক্টর ৩",
-            "value": "সেক্টর ৩",
-            "calc_value": ""
-           },
-           {
-            "label": "সেক্টর ৪",
-            "value": "সেক্টর ৪",
-            "calc_value": ""
-           },
-           {
-            "label": "সেক্টর ৫",
-            "value": "সেক্টর ৫",
-            "calc_value": ""
-           },
-           {
-            "label": "সেক্টর ৬",
-            "value": "সেক্টর ৬",
-            "calc_value": ""
-           },
-           {
-            "label": "সেক্টর ৭",
-            "value": "সেক্টর ৭",
-            "calc_value": ""
-           },
-           {
-            "label": "সেক্টর ৮",
-            "value": "সেক্টর ৮",
-            "calc_value": ""
-           },
-           {
-            "label": "সেক্টর ৯",
-            "value": "সেক্টর ৯",
-            "calc_value": ""
-           },
-           {
-            "label": "সেক্টর ১০",
-            "value": "সেক্টর ১০",
-            "calc_value": ""
-           },
-           {
-            "label": "সেক্টর ১১",
-            "value": "সেক্টর ১১",
+            "label": "জন্ম নিবন্ধন",
+            "value": "জন্ম নিবন্ধন",
             "calc_value": ""
            }
           ],
           "calc_value_status": false,
           "enable_image_input": false,
-          "randomize_options": "no",
-          "enable_select_2": "no"
+          "randomize_options": "no"
          },
          "editor_options": {
-          "title": "Dropdown",
-          "icon_class": "ff-edit-dropdown",
-          "element": "select",
-          "template": "select"
+          "title": "Radio Field",
+          "icon_class": "ff-edit-radio",
+          "element": "input-radio",
+          "template": "inputCheckable"
          },
-         "uniqElKey": "el_bmpc022"
+         "uniqElKey": "el_bmpc023"
         }
        ]
       },
@@ -849,18 +899,18 @@
          "element": "input_text",
          "attributes": {
           "type": "text",
-          "name": "ff_district",
+          "name": "nid",
           "value": "",
           "class": "",
-          "placeholder": "যেমন: কুমিল্লা",
+          "placeholder": "নম্বরটি লিখুন",
           "maxlength": ""
          },
          "settings": {
           "container_class": "",
-          "label": "বীর মুক্তিযোদ্ধার নিজ জেলা",
+          "label": "পরিচয়পত্রের নম্বর",
           "admin_field_label": "",
           "label_placement": "",
-          "help_message": "",
+          "help_message": "প্রবাসে থাকলে এবং NID না থাকলে পাসপোর্ট বা জন্ম নিবন্ধন নম্বর দিন",
           "validation_rules": {
            "required": {
             "value": true,
@@ -878,7 +928,7 @@
           "icon_class": "ff-edit-text",
           "template": "inputText"
          },
-         "uniqElKey": "el_bmpc023"
+         "uniqElKey": "el_bmpc024"
         }
        ]
       }
@@ -887,7 +937,158 @@
       "title": "Two Column Container",
       "icon_class": "ff-edit-column-2"
      },
-     "uniqElKey": "el_bmpc024"
+     "uniqElKey": "el_bmpc025"
+    },
+    {
+     "index": 7,
+     "element": "input_file",
+     "attributes": {
+      "type": "file",
+      "name": "doc_nid",
+      "value": "",
+      "id": "",
+      "class": ""
+     },
+     "settings": {
+      "container_class": "",
+      "label": "NID / পাসপোর্টের কপি",
+      "admin_field_label": "",
+      "label_placement": "",
+      "help_message": "পরিচয় নিশ্চিত করার জন্য। PDF বা JPG, সর্বোচ্চ ৫ MB।",
+      "validation_rules": {
+       "required": {
+        "value": true,
+        "message": "ফাইলটি যুক্ত করুন"
+       },
+       "max_file_size": {
+        "value": 5,
+        "_valueFrom": "MB",
+        "message": "ফাইলের আকার সর্বোচ্চ ৫ MB হতে পারবে"
+       },
+       "max_file_count": {
+        "value": 2,
+        "message": "সর্বোচ্চ ২টি ফাইল যুক্ত করা যাবে"
+       },
+       "allowed_file_types": {
+        "value": [
+         "jpg|jpeg|gif|png|bmp",
+         "pdf"
+        ],
+        "message": "শুধু ছবি (JPG/PNG) অথবা PDF ফাইল দিন"
+       }
+      },
+      "conditional_logics": [],
+      "btn_text": "ফাইল বাছাই করুন",
+      "upload_file_location": "default",
+      "file_location_type": "follow_global_settings"
+     },
+     "editor_options": {
+      "title": "File Upload",
+      "icon_class": "ff-edit-files",
+      "template": "inputFile"
+     },
+     "uniqElKey": "el_bmpc026"
+    },
+    {
+     "index": 11,
+     "element": "container",
+     "attributes": {},
+     "settings": {
+      "container_class": "",
+      "conditional_logics": [],
+      "container_width": ""
+     },
+     "columns": [
+      {
+       "width": 50.0,
+       "fields": [
+        {
+         "index": 1,
+         "element": "input_text",
+         "attributes": {
+          "type": "tel",
+          "name": "phone",
+          "value": "",
+          "class": "",
+          "placeholder": "+8801XXXXXXXXX",
+          "maxlength": ""
+         },
+         "settings": {
+          "container_class": "",
+          "label": "মোবাইল / হোয়াটসঅ্যাপ নম্বর",
+          "admin_field_label": "",
+          "label_placement": "",
+          "help_message": "কান্ট্রি কোডসহ লিখুন (যেমন: +880…), প্রবাসে থাকলে সে দেশের কোড দিন",
+          "validation_rules": {
+           "required": {
+            "value": true,
+            "message": "কান্ট্রি কোডসহ সঠিক নম্বর দিন"
+           }
+          },
+          "conditional_logics": [],
+          "prefix_label": "",
+          "suffix_label": "",
+          "is_unique": "no",
+          "unique_validation_message": ""
+         },
+         "editor_options": {
+          "title": "Simple Text",
+          "icon_class": "ff-edit-text",
+          "template": "inputText"
+         },
+         "uniqElKey": "el_bmpc027"
+        }
+       ]
+      },
+      {
+       "width": 50.0,
+       "fields": [
+        {
+         "index": 2,
+         "element": "input_email",
+         "attributes": {
+          "type": "email",
+          "name": "email",
+          "value": "",
+          "id": "",
+          "class": "",
+          "placeholder": "name@example.com"
+         },
+         "settings": {
+          "container_class": "",
+          "label": "ইমেইল অ্যাড্রেস",
+          "admin_field_label": "",
+          "label_placement": "",
+          "help_message": "আপডেট ও কনফার্মেশন পাঠানোর জন্য",
+          "validation_rules": {
+           "required": {
+            "value": true,
+            "message": "ইমেইল দিন"
+           },
+           "email": {
+            "value": true,
+            "message": "সঠিক ইমেইল দিন"
+           }
+          },
+          "conditional_logics": [],
+          "is_unique": "no",
+          "unique_validation_message": ""
+         },
+         "editor_options": {
+          "title": "Email Address",
+          "icon_class": "ff-edit-email",
+          "template": "inputText"
+         },
+         "uniqElKey": "el_bmpc028"
+        }
+       ]
+      }
+     ],
+     "editor_options": {
+      "title": "Two Column Container",
+      "icon_class": "ff-edit-column-2"
+     },
+     "uniqElKey": "el_bmpc029"
     },
     {
      "index": 8,
@@ -897,7 +1098,7 @@
       "class": "bmpc-step"
      },
      "settings": {
-      "label": "৩. ঠিকানা",
+      "label": "ঘ. ঠিকানা",
       "description": "",
       "align": "left",
       "conditional_logics": []
@@ -907,7 +1108,23 @@
       "icon_class": "ff-edit-section-break",
       "template": "sectionBreak"
      },
-     "uniqElKey": "el_bmpc025"
+     "uniqElKey": "el_bmpc030"
+    },
+    {
+     "index": 9,
+     "element": "custom_html",
+     "attributes": {},
+     "settings": {
+      "html_codes": "<p class=\"bmpc-sub\">স্থায়ী ঠিকানা (বাংলাদেশ)</p>",
+      "conditional_logics": [],
+      "container_class": ""
+     },
+     "editor_options": {
+      "title": "Custom HTML",
+      "icon_class": "ff-edit-html",
+      "template": "customHTML"
+     },
+     "uniqElKey": "el_bmpc031"
     },
     {
      "index": 11,
@@ -998,7 +1215,7 @@
           "element": "select",
           "template": "select"
          },
-         "uniqElKey": "el_bmpc026"
+         "uniqElKey": "el_bmpc032"
         }
        ]
       },
@@ -1039,7 +1256,7 @@
           "icon_class": "ff-edit-text",
           "template": "inputText"
          },
-         "uniqElKey": "el_bmpc027"
+         "uniqElKey": "el_bmpc033"
         }
        ]
       },
@@ -1080,7 +1297,7 @@
           "icon_class": "ff-edit-text",
           "template": "inputText"
          },
-         "uniqElKey": "el_bmpc028"
+         "uniqElKey": "el_bmpc034"
         }
        ]
       }
@@ -1089,61 +1306,7 @@
       "title": "Three Column Container",
       "icon_class": "ff-edit-column-3"
      },
-     "uniqElKey": "el_bmpc029"
-    },
-    {
-     "index": 6,
-     "element": "textarea",
-     "attributes": {
-      "name": "address",
-      "value": "",
-      "id": "",
-      "class": "",
-      "placeholder": "বাড়ি নম্বর, রাস্তা, এলাকা",
-      "rows": 3,
-      "cols": 2,
-      "maxlength": ""
-     },
-     "settings": {
-      "container_class": "",
-      "label": "বর্তমান ঠিকানা",
-      "admin_field_label": "",
-      "label_placement": "",
-      "help_message": "",
-      "validation_rules": {
-       "required": {
-        "value": true,
-        "message": "এই তথ্যটি দিন"
-       }
-      },
-      "conditional_logics": []
-     },
-     "editor_options": {
-      "title": "Text Area",
-      "icon_class": "ff-edit-textarea",
-      "template": "inputTextarea"
-     },
-     "uniqElKey": "el_bmpc030"
-    },
-    {
-     "index": 8,
-     "element": "section_break",
-     "attributes": {
-      "id": "",
-      "class": "bmpc-step"
-     },
-     "settings": {
-      "label": "৪. প্রমাণপত্র",
-      "description": "ছবি (JPG/PNG) অথবা PDF, প্রতিটি ফাইল সর্বোচ্চ ৫ MB। আপনার ব্যক্তিগত তথ্য গোপন রাখা হবে।",
-      "align": "left",
-      "conditional_logics": []
-     },
-     "editor_options": {
-      "title": "Section Break",
-      "icon_class": "ff-edit-section-break",
-      "template": "sectionBreak"
-     },
-     "uniqElKey": "el_bmpc031"
+     "uniqElKey": "el_bmpc035"
     },
     {
      "index": 11,
@@ -1159,263 +1322,88 @@
        "width": 50.0,
        "fields": [
         {
-         "index": 7,
-         "element": "input_file",
+         "index": 1,
+         "element": "input_text",
          "attributes": {
-          "type": "file",
-          "name": "doc_cert",
+          "type": "text",
+          "name": "village",
           "value": "",
-          "id": "",
-          "class": ""
+          "class": "",
+          "placeholder": "গ্রাম বা মহল্লার নাম",
+          "maxlength": ""
          },
          "settings": {
           "container_class": "",
-          "label": "মুক্তিযোদ্ধা সনদ / গেজেটের কপি",
+          "label": "গ্রাম / মহল্লা",
           "admin_field_label": "",
           "label_placement": "",
-          "help_message": "সনদ অথবা গেজেটের পাতা",
+          "help_message": "",
           "validation_rules": {
            "required": {
             "value": true,
-            "message": "ফাইলটি যুক্ত করুন"
-           },
-           "max_file_size": {
-            "value": 5,
-            "_valueFrom": "MB",
-            "message": "ফাইলের আকার সর্বোচ্চ ৫ MB হতে পারবে"
-           },
-           "max_file_count": {
-            "value": 2,
-            "message": "সর্বোচ্চ ২টি ফাইল যুক্ত করা যাবে"
-           },
-           "allowed_file_types": {
-            "value": [
-             "jpg|jpeg|gif|png|bmp",
-             "pdf"
-            ],
-            "message": "শুধু ছবি (JPG/PNG) অথবা PDF ফাইল দিন"
-           }
-          },
-          "conditional_logics": [],
-          "btn_text": "ফাইল বাছাই করুন",
-          "upload_file_location": "default",
-          "file_location_type": "follow_global_settings"
-         },
-         "editor_options": {
-          "title": "File Upload",
-          "icon_class": "ff-edit-files",
-          "template": "inputFile"
-         },
-         "uniqElKey": "el_bmpc032"
-        }
-       ]
-      },
-      {
-       "width": 50.0,
-       "fields": [
-        {
-         "index": 7,
-         "element": "input_file",
-         "attributes": {
-          "type": "file",
-          "name": "doc_nid",
-          "value": "",
-          "id": "",
-          "class": ""
-         },
-         "settings": {
-          "container_class": "",
-          "label": "আবেদনকারীর NID / জন্ম নিবন্ধন",
-          "admin_field_label": "",
-          "label_placement": "",
-          "help_message": "উভয় পাশ",
-          "validation_rules": {
-           "required": {
-            "value": true,
-            "message": "ফাইলটি যুক্ত করুন"
-           },
-           "max_file_size": {
-            "value": 5,
-            "_valueFrom": "MB",
-            "message": "ফাইলের আকার সর্বোচ্চ ৫ MB হতে পারবে"
-           },
-           "max_file_count": {
-            "value": 2,
-            "message": "সর্বোচ্চ ২টি ফাইল যুক্ত করা যাবে"
-           },
-           "allowed_file_types": {
-            "value": [
-             "jpg|jpeg|gif|png|bmp",
-             "pdf"
-            ],
-            "message": "শুধু ছবি (JPG/PNG) অথবা PDF ফাইল দিন"
-           }
-          },
-          "conditional_logics": [],
-          "btn_text": "ফাইল বাছাই করুন",
-          "upload_file_location": "default",
-          "file_location_type": "follow_global_settings"
-         },
-         "editor_options": {
-          "title": "File Upload",
-          "icon_class": "ff-edit-files",
-          "template": "inputFile"
-         },
-         "uniqElKey": "el_bmpc033"
-        }
-       ]
-      }
-     ],
-     "editor_options": {
-      "title": "Two Column Container",
-      "icon_class": "ff-edit-column-2"
-     },
-     "uniqElKey": "el_bmpc034"
-    },
-    {
-     "index": 11,
-     "element": "container",
-     "attributes": {},
-     "settings": {
-      "container_class": "",
-      "conditional_logics": [],
-      "container_width": ""
-     },
-     "columns": [
-      {
-       "width": 50.0,
-       "fields": [
-        {
-         "index": 7,
-         "element": "input_file",
-         "attributes": {
-          "type": "file",
-          "name": "doc_photo",
-          "value": "",
-          "id": "",
-          "class": ""
-         },
-         "settings": {
-          "container_class": "",
-          "label": "আবেদনকারীর ছবি",
-          "admin_field_label": "",
-          "label_placement": "",
-          "help_message": "পাসপোর্ট সাইজ",
-          "validation_rules": {
-           "required": {
-            "value": true,
-            "message": "ফাইলটি যুক্ত করুন"
-           },
-           "max_file_size": {
-            "value": 5,
-            "_valueFrom": "MB",
-            "message": "ফাইলের আকার সর্বোচ্চ ৫ MB হতে পারবে"
-           },
-           "max_file_count": {
-            "value": 2,
-            "message": "সর্বোচ্চ ২টি ফাইল যুক্ত করা যাবে"
-           },
-           "allowed_file_types": {
-            "value": [
-             "jpg|jpeg|gif|png|bmp",
-             "pdf"
-            ],
-            "message": "শুধু ছবি (JPG/PNG) অথবা PDF ফাইল দিন"
-           }
-          },
-          "conditional_logics": [],
-          "btn_text": "ফাইল বাছাই করুন",
-          "upload_file_location": "default",
-          "file_location_type": "follow_global_settings"
-         },
-         "editor_options": {
-          "title": "File Upload",
-          "icon_class": "ff-edit-files",
-          "template": "inputFile"
-         },
-         "uniqElKey": "el_bmpc035"
-        }
-       ]
-      },
-      {
-       "width": 50.0,
-       "fields": [
-        {
-         "index": 7,
-         "element": "input_file",
-         "attributes": {
-          "type": "file",
-          "name": "doc_rel",
-          "value": "",
-          "id": "",
-          "class": ""
-         },
-         "settings": {
-          "container_class": "",
-          "label": "সম্পর্কের প্রমাণ (ঐচ্ছিক)",
-          "admin_field_label": "",
-          "label_placement": "",
-          "help_message": "যেমন: ওয়ারিশ সনদ বা জন্ম নিবন্ধন",
-          "validation_rules": {
-           "required": {
-            "value": false,
             "message": "এই তথ্যটি দিন"
-           },
-           "max_file_size": {
-            "value": 5,
-            "_valueFrom": "MB",
-            "message": "ফাইলের আকার সর্বোচ্চ ৫ MB হতে পারবে"
-           },
-           "max_file_count": {
-            "value": 2,
-            "message": "সর্বোচ্চ ২টি ফাইল যুক্ত করা যাবে"
-           },
-           "allowed_file_types": {
-            "value": [
-             "jpg|jpeg|gif|png|bmp",
-             "pdf"
-            ],
-            "message": "শুধু ছবি (JPG/PNG) অথবা PDF ফাইল দিন"
            }
           },
           "conditional_logics": [],
-          "btn_text": "ফাইল বাছাই করুন",
-          "upload_file_location": "default",
-          "file_location_type": "follow_global_settings"
+          "prefix_label": "",
+          "suffix_label": "",
+          "is_unique": "no",
+          "unique_validation_message": ""
          },
          "editor_options": {
-          "title": "File Upload",
-          "icon_class": "ff-edit-files",
-          "template": "inputFile"
+          "title": "Simple Text",
+          "icon_class": "ff-edit-text",
+          "template": "inputText"
          },
          "uniqElKey": "el_bmpc036"
         }
        ]
+      },
+      {
+       "width": 50.0,
+       "fields": [
+        {
+         "index": 1,
+         "element": "input_text",
+         "attributes": {
+          "type": "text",
+          "name": "postcode",
+          "value": "",
+          "class": "",
+          "placeholder": "যেমন: ৩৫০০",
+          "maxlength": ""
+         },
+         "settings": {
+          "container_class": "",
+          "label": "পোস্ট কোড",
+          "admin_field_label": "",
+          "label_placement": "",
+          "help_message": "",
+          "validation_rules": {
+           "required": {
+            "value": true,
+            "message": "এই তথ্যটি দিন"
+           }
+          },
+          "conditional_logics": [],
+          "prefix_label": "",
+          "suffix_label": "",
+          "is_unique": "no",
+          "unique_validation_message": ""
+         },
+         "editor_options": {
+          "title": "Simple Text",
+          "icon_class": "ff-edit-text",
+          "template": "inputText"
+         },
+         "uniqElKey": "el_bmpc037"
+        }
+       ]
       }
      ],
      "editor_options": {
       "title": "Two Column Container",
       "icon_class": "ff-edit-column-2"
-     },
-     "uniqElKey": "el_bmpc037"
-    },
-    {
-     "index": 8,
-     "element": "section_break",
-     "attributes": {
-      "id": "",
-      "class": "bmpc-step"
-     },
-     "settings": {
-      "label": "৫. অঙ্গীকার",
-      "description": "",
-      "align": "left",
-      "conditional_logics": []
-     },
-     "editor_options": {
-      "title": "Section Break",
-      "icon_class": "ff-edit-section-break",
-      "template": "sectionBreak"
      },
      "uniqElKey": "el_bmpc038"
     },
@@ -1424,7 +1412,7 @@
      "element": "custom_html",
      "attributes": {},
      "settings": {
-      "html_codes": "<details class=\"bmpc-policy\"><summary>সদস্য হওয়ার নীতিমালা পড়ুন</summary><div class=\"bmpc-policy-body\"><h4>১. সদস্যপদ</h4><ul><li>শুধুমাত্র বীর মুক্তিযোদ্ধার সন্তান ও প্রজন্ম এই গ্রুপের সদস্য হতে পারবেন।</li><li>সকল সদস্যকে তাদের প্রকৃত পরিচয়ে অ্যাকাউন্ট তৈরি করতে হবে।</li><li>অনলাইন ফর্ম পূরণ করে সদস্য হতে হবে।</li><li>সকল সদস্যকে পারস্পরিক শ্রদ্ধা প্রদর্শন করতে হবে। কোনো ব্যক্তিগত আক্রমণ বা অসম্মানজনক মন্তব্য গ্রহণযোগ্য নয়।</li></ul><h4>২. ব্যবহারবিধি</h4><ul><li>সকল সদস্যকে পারস্পরিক সম্মান প্রদর্শন করতে হবে।</li><li>অন্যদের ধর্ম, জাতি, লিঙ্গ বা অন্যান্য ব্যক্তিগত পরিচিতির উপর ভিত্তি করে কোনো বৈষম্যমূলক মন্তব্য করা যাবে না।</li><li>কোনো ব্যক্তিগত আক্রমণ বা মানহানিকর বক্তব্য গ্রহণযোগ্য নয়।</li></ul><h4>৩. বিষয়বস্তু এবং পোস্টিং</h4><ul><li>পোস্ট করার আগে তথ্যের সঠিকতা নিশ্চিত করতে হবে।</li><li>মুক্তিযুদ্ধ সম্পর্কিত তথ্য, ছবি, ভিডিও এবং অন্যান্য উপকরণ শেয়ার করা যাবে।</li><li>কোনো ধরণের উস্কানিমূলক, অপমানজনক বা মিথ্যা তথ্য পোস্ট করা যাবে না।</li><li>কোনোরকম স্প্যামিং বা অপ্রাসঙ্গিক বিজ্ঞাপন পোস্ট করা যাবে না।</li><li>মুক্তিযুদ্ধ সংক্রান্ত ঐতিহাসিক তথ্য এবং দৃষ্টিভঙ্গি শেয়ার করার জন্য এটি একটি প্ল্যাটফর্ম। বিভ্রান্তিমূলক বা ভুল তথ্য শেয়ার করা যাবে না।</li></ul><h4>৪. অনুমোদন</h4><ul><li>গ্রুপে পোস্ট করার আগে একজন অ্যাডমিনের অনুমোদন প্রয়োজন হতে পারে।</li><li>গ্রুপের কোনো সদস্য যদি নিয়ম ভঙ্গ করে, তাহলে তাকে প্রথমে সতর্ক করা হবে এবং পরবর্তীতে প্রয়োজনে বহিষ্কার করা হবে।</li><li>গ্রুপের অনুমোদিত প্রচার ছাড়া অন্য কোনো ধরণের ব্যবসায়িক প্রচারণা বা বিজ্ঞাপন নিষিদ্ধ।</li></ul><h4>৫. গোপনীয়তা</h4><ul><li>সদস্যদের ব্যক্তিগত তথ্য গোপন রাখতে হবে।</li><li>কারও অনুমতি ছাড়া ব্যক্তিগত তথ্য শেয়ার করা যাবে না।</li></ul><h4>৬. দায়িত্ব এবং প্রবিধান</h4><ul><li>এই গ্রুপের অ্যাডমিনদের সিদ্ধান্ত চূড়ান্ত এবং অপরিবর্তনীয় হবে।</li><li>এই নিয়মগুলি সময়ে সময়ে পরিবর্তন বা পরিমার্জন করা হতে পারে।</li><li>কোন সদস্য নিয়ম ভঙ্গ করলে, তাকে সতর্ক করা হবে এবং পুনরায় ঘটলে গ্রুপ থেকে বহিষ্কার করা হবে।</li></ul></div></details>",
+      "html_codes": "<p class=\"bmpc-sub\">বর্তমান ঠিকানা</p>",
       "conditional_logics": [],
       "container_class": ""
      },
@@ -1436,33 +1424,177 @@
      "uniqElKey": "el_bmpc039"
     },
     {
-     "index": 10,
-     "element": "terms_and_condition",
+     "index": 6,
+     "element": "textarea",
      "attributes": {
-      "type": "checkbox",
-      "name": "agree_policy",
-      "value": false,
-      "class": ""
+      "name": "address",
+      "value": "",
+      "id": "",
+      "class": "",
+      "placeholder": "উপজেলা ও জেলাসহ লিখুন",
+      "rows": 3,
+      "cols": 2,
+      "maxlength": ""
      },
      "settings": {
-      "tnc_html": "আমি সদস্য হওয়ার নীতিমালা পড়েছি এবং তা মেনে চলব।",
-      "has_checkbox": true,
-      "admin_field_label": "",
       "container_class": "",
+      "label": "বাড়ি, রাস্তা ও এলাকা",
+      "admin_field_label": "",
+      "label_placement": "",
+      "help_message": "",
       "validation_rules": {
        "required": {
         "value": true,
-        "message": "সম্মতি দিন"
+        "message": "এই তথ্যটি দিন"
        }
       },
+      "conditional_logics": {
+       "status": true,
+       "type": "all",
+       "conditions": [
+        {
+         "field": "location",
+         "value": "বাংলাদেশে",
+         "operator": "="
+        }
+       ]
+      }
+     },
+     "editor_options": {
+      "title": "Text Area",
+      "icon_class": "ff-edit-textarea",
+      "template": "inputTextarea"
+     },
+     "uniqElKey": "el_bmpc040"
+    },
+    {
+     "index": 11,
+     "element": "container",
+     "attributes": {},
+     "settings": {
+      "container_class": "",
+      "conditional_logics": {
+       "status": true,
+       "type": "all",
+       "conditions": [
+        {
+         "field": "location",
+         "value": "প্রবাসে (দেশের বাইরে)",
+         "operator": "="
+        }
+       ]
+      },
+      "container_width": ""
+     },
+     "columns": [
+      {
+       "width": 50.0,
+       "fields": [
+        {
+         "index": 1,
+         "element": "input_text",
+         "attributes": {
+          "type": "text",
+          "name": "abroad_city",
+          "value": "",
+          "class": "",
+          "placeholder": "শহরের নাম",
+          "maxlength": ""
+         },
+         "settings": {
+          "container_class": "",
+          "label": "শহর",
+          "admin_field_label": "",
+          "label_placement": "",
+          "help_message": "",
+          "validation_rules": {
+           "required": {
+            "value": true,
+            "message": "এই তথ্যটি দিন"
+           }
+          },
+          "conditional_logics": [],
+          "prefix_label": "",
+          "suffix_label": "",
+          "is_unique": "no",
+          "unique_validation_message": ""
+         },
+         "editor_options": {
+          "title": "Simple Text",
+          "icon_class": "ff-edit-text",
+          "template": "inputText"
+         },
+         "uniqElKey": "el_bmpc041"
+        }
+       ]
+      },
+      {
+       "width": 50.0,
+       "fields": [
+        {
+         "index": 1,
+         "element": "input_text",
+         "attributes": {
+          "type": "text",
+          "name": "abroad_country",
+          "value": "",
+          "class": "",
+          "placeholder": "দেশের নাম",
+          "maxlength": ""
+         },
+         "settings": {
+          "container_class": "",
+          "label": "দেশ",
+          "admin_field_label": "",
+          "label_placement": "",
+          "help_message": "",
+          "validation_rules": {
+           "required": {
+            "value": true,
+            "message": "এই তথ্যটি দিন"
+           }
+          },
+          "conditional_logics": [],
+          "prefix_label": "",
+          "suffix_label": "",
+          "is_unique": "no",
+          "unique_validation_message": ""
+         },
+         "editor_options": {
+          "title": "Simple Text",
+          "icon_class": "ff-edit-text",
+          "template": "inputText"
+         },
+         "uniqElKey": "el_bmpc042"
+        }
+       ]
+      }
+     ],
+     "editor_options": {
+      "title": "Two Column Container",
+      "icon_class": "ff-edit-column-2"
+     },
+     "uniqElKey": "el_bmpc043"
+    },
+    {
+     "index": 8,
+     "element": "section_break",
+     "attributes": {
+      "id": "",
+      "class": "bmpc-step"
+     },
+     "settings": {
+      "label": "ঙ. ঘোষণা ও সম্মতি",
+      "description": "",
+      "align": "left",
       "conditional_logics": []
      },
      "editor_options": {
-      "title": "Terms & Conditions",
-      "icon_class": "ff-edit-terms-condition",
-      "template": "termsCheckbox"
+      "title": "Section Break",
+      "icon_class": "ff-edit-section-break",
+      "template": "sectionBreak"
      },
-     "uniqElKey": "el_bmpc040"
+     "uniqElKey": "el_bmpc044"
     },
     {
      "index": 10,
@@ -1474,7 +1606,7 @@
       "class": ""
      },
      "settings": {
-      "tnc_html": "আমি নিশ্চিত করছি যে উপরের সকল তথ্য সত্য এবং আমি একজন বীর মুক্তিযোদ্ধার সন্তান বা প্রজন্ম।",
+      "tnc_html": "আমি এই মর্মে ঘোষণা করছি যে, প্রদত্ত সকল তথ্য সঠিক ও সত্য। তথ্য মিথ্যা প্রমাণিত হলে আমার সদস্যপদ বাতিল বলে গণ্য হবে।",
       "has_checkbox": true,
       "admin_field_label": "",
       "container_class": "",
@@ -1491,7 +1623,52 @@
       "icon_class": "ff-edit-terms-condition",
       "template": "termsCheckbox"
      },
-     "uniqElKey": "el_bmpc041"
+     "uniqElKey": "el_bmpc045"
+    },
+    {
+     "index": 9,
+     "element": "custom_html",
+     "attributes": {},
+     "settings": {
+      "html_codes": "<details class=\"bmpc-policy\"><summary>সংগঠনের নিয়মাবলি পড়ুন</summary><div class=\"bmpc-policy-body\"><h4>১. সদস্যপদ</h4><ul><li>শুধুমাত্র বীর মুক্তিযোদ্ধার সন্তান ও প্রজন্ম এই গ্রুপের সদস্য হতে পারবেন।</li><li>সকল সদস্যকে তাদের প্রকৃত পরিচয়ে অ্যাকাউন্ট তৈরি করতে হবে।</li><li>অনলাইন ফর্ম পূরণ করে সদস্য হতে হবে।</li><li>সকল সদস্যকে পারস্পরিক শ্রদ্ধা প্রদর্শন করতে হবে। কোনো ব্যক্তিগত আক্রমণ বা অসম্মানজনক মন্তব্য গ্রহণযোগ্য নয়।</li></ul><h4>২. ব্যবহারবিধি</h4><ul><li>সকল সদস্যকে পারস্পরিক সম্মান প্রদর্শন করতে হবে।</li><li>অন্যদের ধর্ম, জাতি, লিঙ্গ বা অন্যান্য ব্যক্তিগত পরিচিতির উপর ভিত্তি করে কোনো বৈষম্যমূলক মন্তব্য করা যাবে না।</li><li>কোনো ব্যক্তিগত আক্রমণ বা মানহানিকর বক্তব্য গ্রহণযোগ্য নয়।</li></ul><h4>৩. বিষয়বস্তু এবং পোস্টিং</h4><ul><li>পোস্ট করার আগে তথ্যের সঠিকতা নিশ্চিত করতে হবে।</li><li>মুক্তিযুদ্ধ সম্পর্কিত তথ্য, ছবি, ভিডিও এবং অন্যান্য উপকরণ শেয়ার করা যাবে।</li><li>কোনো ধরণের উস্কানিমূলক, অপমানজনক বা মিথ্যা তথ্য পোস্ট করা যাবে না।</li><li>কোনোরকম স্প্যামিং বা অপ্রাসঙ্গিক বিজ্ঞাপন পোস্ট করা যাবে না।</li><li>মুক্তিযুদ্ধ সংক্রান্ত ঐতিহাসিক তথ্য এবং দৃষ্টিভঙ্গি শেয়ার করার জন্য এটি একটি প্ল্যাটফর্ম। বিভ্রান্তিমূলক বা ভুল তথ্য শেয়ার করা যাবে না।</li></ul><h4>৪. অনুমোদন</h4><ul><li>গ্রুপে পোস্ট করার আগে একজন অ্যাডমিনের অনুমোদন প্রয়োজন হতে পারে।</li><li>গ্রুপের কোনো সদস্য যদি নিয়ম ভঙ্গ করে, তাহলে তাকে প্রথমে সতর্ক করা হবে এবং পরবর্তীতে প্রয়োজনে বহিষ্কার করা হবে।</li><li>গ্রুপের অনুমোদিত প্রচার ছাড়া অন্য কোনো ধরণের ব্যবসায়িক প্রচারণা বা বিজ্ঞাপন নিষিদ্ধ।</li></ul><h4>৫. গোপনীয়তা</h4><ul><li>সদস্যদের ব্যক্তিগত তথ্য গোপন রাখতে হবে।</li><li>কারও অনুমতি ছাড়া ব্যক্তিগত তথ্য শেয়ার করা যাবে না।</li></ul><h4>৬. দায়িত্ব এবং প্রবিধান</h4><ul><li>এই গ্রুপের অ্যাডমিনদের সিদ্ধান্ত চূড়ান্ত এবং অপরিবর্তনীয় হবে।</li><li>এই নিয়মগুলি সময়ে সময়ে পরিবর্তন বা পরিমার্জন করা হতে পারে।</li><li>কোন সদস্য নিয়ম ভঙ্গ করলে, তাকে সতর্ক করা হবে এবং পুনরায় ঘটলে গ্রুপ থেকে বহিষ্কার করা হবে।</li></ul></div></details>",
+      "conditional_logics": [],
+      "container_class": ""
+     },
+     "editor_options": {
+      "title": "Custom HTML",
+      "icon_class": "ff-edit-html",
+      "template": "customHTML"
+     },
+     "uniqElKey": "el_bmpc046"
+    },
+    {
+     "index": 10,
+     "element": "terms_and_condition",
+     "attributes": {
+      "type": "checkbox",
+      "name": "agree_policy",
+      "value": false,
+      "class": ""
+     },
+     "settings": {
+      "tnc_html": "আমি সংগঠনের নিয়মাবলি ও গোপনীয়তা নীতিমালায় সম্মতি দিচ্ছি।",
+      "has_checkbox": true,
+      "admin_field_label": "",
+      "container_class": "",
+      "validation_rules": {
+       "required": {
+        "value": true,
+        "message": "সম্মতি দিন"
+       }
+      },
+      "conditional_logics": []
+     },
+     "editor_options": {
+      "title": "Terms & Conditions",
+      "icon_class": "ff-edit-terms-condition",
+      "template": "termsCheckbox"
+     },
+     "uniqElKey": "el_bmpc047"
     }
    ],
    "submitButton": {
@@ -1523,7 +1700,7 @@
   "metas": [
    {
     "meta_key": "formSettings",
-    "value": "{\"confirmation\": {\"redirectTo\": \"samePage\", \"messageToShow\": \"<h3>ধন্যবাদ, আপনার আবেদন জমা হয়েছে।</h3><p>অ্যাডমিন আপনার তথ্য যাচাই করে মোবাইল নম্বরে যোগাযোগ করবেন। যাচাইয়ের সময় আপনার জাতীয় পরিচয়পত্র/জন্ম নিবন্ধন, বীর মুক্তিযোদ্ধার গেজেট ও সনদের কপি এবং ছবি প্রস্তুত রাখুন। যাচাই সম্পন্ন হলে আপনাকে সদস্য হিসেবে অন্তর্ভুক্ত করা হবে।</p>\", \"customPage\": null, \"samePageFormBehavior\": \"hide_form\", \"customUrl\": null}, \"restrictions\": {\"limitNumberOfEntries\": {\"enabled\": false, \"numberOfEntries\": null, \"period\": \"total\", \"limitReachedMsg\": \"\"}, \"scheduleForm\": {\"enabled\": false, \"start\": null, \"end\": null, \"pendingMsg\": \"\", \"expiredMsg\": \"\"}, \"requireLogin\": {\"enabled\": false, \"requireLoginMsg\": \"\"}, \"denyEmptySubmission\": {\"enabled\": true, \"message\": \"ফর্মটি খালি জমা দেওয়া যাবে না।\"}}, \"layout\": {\"labelPlacement\": \"top\", \"helpMessagePlacement\": \"with_label\", \"errorMessagePlacement\": \"inline\", \"cssClassName\": \"bmpc-form\", \"asteriskPlacement\": \"asterisk-right\"}}"
+    "value": "{\"confirmation\": {\"redirectTo\": \"samePage\", \"messageToShow\": \"<h3>ধন্যবাদ, আপনার আবেদন জমা হয়েছে।</h3><p>অ্যাডমিন আপনার তথ্য ও কাগজপত্র যাচাই করে মোবাইল বা হোয়াটসঅ্যাপ নম্বরে যোগাযোগ করবেন। যাচাই সম্পন্ন হলে আপনাকে সদস্য হিসেবে অন্তর্ভুক্ত করা হবে।</p>\", \"customPage\": null, \"samePageFormBehavior\": \"hide_form\", \"customUrl\": null}, \"restrictions\": {\"limitNumberOfEntries\": {\"enabled\": false, \"numberOfEntries\": null, \"period\": \"total\", \"limitReachedMsg\": \"\"}, \"scheduleForm\": {\"enabled\": false, \"start\": null, \"end\": null, \"pendingMsg\": \"\", \"expiredMsg\": \"\"}, \"requireLogin\": {\"enabled\": false, \"requireLoginMsg\": \"\"}, \"denyEmptySubmission\": {\"enabled\": true, \"message\": \"ফর্মটি খালি জমা দেওয়া যাবে না।\"}}, \"layout\": {\"labelPlacement\": \"top\", \"helpMessagePlacement\": \"under_input\", \"errorMessagePlacement\": \"inline\", \"cssClassName\": \"bmpc-form\", \"asteriskPlacement\": \"asterisk-right\"}}"
    },
    {
     "meta_key": "template_name",
