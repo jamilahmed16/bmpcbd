@@ -88,7 +88,7 @@ def manifesto(content):
     css=COMMON_CSS+'''
 .doc{padding-block:72px 88px}
 .doc .sheet{max-width:860px;margin:0 auto;background:var(--field);border:2px solid var(--ink);box-shadow:10px 10px 0 var(--green);padding:56px clamp(20px,5vw,64px);position:relative}
-.seal{position:absolute;top:-38px;right:clamp(16px,4vw,48px);width:84px;height:84px;border-radius:50%;background:#fff;box-shadow:0 0 0 3px var(--green),0 0 0 6px var(--paper)}
+.seal{position:absolute;top:-38px;right:clamp(16px,4vw,48px);width:84px;height:84px;border-radius:50%;background:transparent;box-shadow:0 0 0 2px #E7C978,0 0 0 5px var(--paper)}
 .seal img{width:100%;height:100%;border-radius:50%;display:block}
 .doc .pre{font:500 clamp(19px,2vw,22px)/1.9 var(--f-body);padding-bottom:32px;border-bottom:2px solid var(--ink)}
 .pledge{display:grid;grid-template-columns:72px minmax(0,1fr);gap:20px;padding:30px 0;border-bottom:1px solid var(--rule)}

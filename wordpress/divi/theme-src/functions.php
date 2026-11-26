@@ -4,7 +4,7 @@
  */
 if ( ! defined( 'ABSPATH' ) ) { exit; }
 
-define( 'BMPC_VER', '1.1.2' );
+define( 'BMPC_VER', '1.1.3' );
 define( 'BMPC_DIR', get_stylesheet_directory() );
 define( 'BMPC_URI', get_stylesheet_directory_uri() );
 
