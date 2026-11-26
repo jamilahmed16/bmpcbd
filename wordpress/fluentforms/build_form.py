@@ -87,8 +87,8 @@ def shown_if(el, field, value):
     el["settings"]["conditional_logics"] = when(field, value)
     return el
 
-def image_upload(name, label, help_):
-    el = upload(name, label, help_)
+def image_upload(name, label, help_, required=True):
+    el = upload(name, label, help_, required=required)
     el["settings"]["validation_rules"]["allowed_file_types"] = {"value": ["jpg|jpeg|gif|png|bmp"], "message": "শুধু ছবি (JPG/PNG) দিন"}
     el["settings"]["validation_rules"]["max_file_count"] = {"value": 1, "message": "একটি ছবি দিন"}
     return el
@@ -100,14 +100,14 @@ def fields(with_uploads=True):
         section("ক. ব্যক্তিগত তথ্য"),
         cols([text("name_bn", "পূর্ণ নাম (বাংলায়)", "যেমন: মোঃ রফিকুল ইসলাম", help_="এনআইডি বা পাসপোর্ট অনুযায়ী")],
              [text("name_en", "পূর্ণ নাম (ইংরেজিতে)", "e.g. Md. Rafiqul Islam", help_="এনআইডি বা পাসপোর্ট অনুযায়ী")]),
-        cols([date("dob", "জন্ম তারিখ")], [text("job", "পেশা ও পদবি", "যেমন: শিক্ষক, সহকারী প্রধান শিক্ষক")]),
+        cols([date("dob", "জন্ম তারিখ")], [text("job", "পেশা ও পদবি", "যেমন: শিক্ষক, সহকারী প্রধান শিক্ষক", required=False)]),
         cols([radio("gender", "লিঙ্গ", ["পুরুষ", "নারী", "অন্যান্য"], required=False)],
-             [select("blood", "রক্তের গ্রুপ", BLOOD, required=False)]),
+             [select("blood", "রক্তের গ্রুপ", BLOOD)]),
         text("workplace", "কর্মস্থল / প্রতিষ্ঠান", "প্রতিষ্ঠানের নাম", required=False),
         radio("location", "বর্তমান অবস্থান", [HOME, ABROAD], default=HOME),
     ]
     if with_uploads:
-        f.append(image_upload("photo", "পাসপোর্ট সাইজ ছবি", "পরিচয়পত্র ও সদস্য তালিকার জন্য। JPG বা PNG, সর্বোচ্চ ৫ MB।"))
+        f.append(image_upload("photo", "পাসপোর্ট সাইজ ছবি", "পরিচয়পত্র ও সদস্য তালিকার জন্য। JPG বা PNG, সর্বোচ্চ ৫ MB।", required=False))
     f += [
         section("খ. মুক্তিযোদ্ধা পিতা বা মাতার তথ্য"),
         cols([radio("relation", "সম্পর্ক", ["মুক্তিযোদ্ধা পিতা", "মুক্তিযোদ্ধা মাতা"])],

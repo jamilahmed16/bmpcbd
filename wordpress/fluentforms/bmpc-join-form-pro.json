@@ -199,7 +199,7 @@
           "help_message": "",
           "validation_rules": {
            "required": {
-            "value": true,
+            "value": false,
             "message": "এই তথ্যটি দিন"
            }
           },
@@ -312,8 +312,8 @@
           "help_message": "",
           "validation_rules": {
            "required": {
-            "value": false,
-            "message": "এই তথ্যটি দিন"
+            "value": true,
+            "message": "একটি বাছাই করুন"
            }
           },
           "conditional_logics": [],
@@ -483,8 +483,8 @@
       "help_message": "পরিচয়পত্র ও সদস্য তালিকার জন্য। JPG বা PNG, সর্বোচ্চ ৫ MB।",
       "validation_rules": {
        "required": {
-        "value": true,
-        "message": "ফাইলটি যুক্ত করুন"
+        "value": false,
+        "message": "এই তথ্যটি দিন"
        },
        "max_file_size": {
         "value": 5,
