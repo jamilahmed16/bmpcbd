@@ -64,7 +64,7 @@ def about(content):
     body=phero('<span>আমাদের সম্পর্কে</span>','আমাদের সম্পর্কে','মুক্তিযুদ্ধের চেতনা ধারণকারী, বীর মুক্তিযোদ্ধার সন্তান ও প্রজন্মের অরাজনৈতিক সংগঠন।', art.torch_svg())+f'''
 <section class="intro"><div class="wrap">
  <div><span class="script">পরিচিতি</span><p class="big" style="margin-top:12px">{about_txt.replace("অরাজনৈতিক","<strong>অরাজনৈতিক</strong>",1)}</p></div>
- <figure><img src="img/welcome-banner.jpg" alt="বাংলাদেশ মুক্তিযোদ্ধা প্রজন্ম কাউন্সিল (BMPC): মুক্তিযোদ্ধা প্রজন্মের একমাত্র অরাজনৈতিক সংগঠনে আপনাকে স্বাগতম" width="960" height="354" loading="lazy"><figcaption>স্বাগত ব্যানার (লাইভ সাইট থেকে, মূল ফাইল দিয়ে প্রতিস্থাপন করুন)</figcaption></figure>
+ <figure><img src="img/welcome-banner.jpg" alt="বাংলাদেশ মুক্তিযোদ্ধা প্রজন্ম কাউন্সিল (BMPC): মুক্তিযোদ্ধা প্রজন্মের একমাত্র অরাজনৈতিক সংগঠনে আপনাকে স্বাগতম" width="960" height="354" loading="lazy"><figcaption>মুক্তিযোদ্ধা প্রজন্মের একমাত্র অরাজনৈতিক সংগঠন: বাংলাদেশ মুক্তিযোদ্ধা প্রজন্ম কাউন্সিল (BMPC)</figcaption></figure>
 </div></section>
 <section class="rules" id="policy"><div class="wrap">
  <div class="sec-head"><span class="script">সদস্য নীতিমালা</span><h2>গ্রুপের সদস্য হওয়ার নীতিমালা</h2></div>
